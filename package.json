@@ -4,7 +4,12 @@
   "description": "Front end web development capstone project. Hackreactor 2021",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "react-dev": "webpack --watch",
+    "start": "npx nodemon server/index.js",
+    "bundle": "npm run react-dev & npm start",
+    "live-server": "npm run live-server"
   },
   "repository": {
     "type": "git",
@@ -19,11 +24,28 @@
   "homepage": "https://github.com/Send-It-Industries/Front-End-Capstone#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "eslint": "^7.31.0",
+    "cors": "^2.8.5",
     "live-server": "^1.2.1",
     "lodash": "^4.17.21",
+    "nodemon": "^2.0.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "underscore": "^1.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
   }
 }

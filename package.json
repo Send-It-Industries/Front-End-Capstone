@@ -4,7 +4,7 @@
   "description": "Front end web development capstone project. Hackreactor 2021",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch tests",
+    "test": "jest tests",
     "build": "webpack",
     "react-dev": "webpack --watch",
     "start": "npx nodemon server/index.js",

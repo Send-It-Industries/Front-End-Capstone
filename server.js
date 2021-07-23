@@ -22,7 +22,6 @@ app.all('/*', (req, res) => {
     method,
     url,
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/',
-    // auth: TOKEN,
     headers: {
       'User-Agent': 'request',
       Authorization: `${token.TOKEN}`,

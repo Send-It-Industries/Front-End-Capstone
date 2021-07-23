@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "react-dev": "webpack --watch",
-    "start": "npx nodemon server/index.js",
+    "start": "npx nodemon server.js",
     "bundle": "npm run react-dev & npm start",
     "live-server": "npm run live-server"
   },
@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",
+    "express": "^4.17.1",
     "live-server": "^1.2.1",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.12",

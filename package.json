@@ -8,8 +8,7 @@
     "build": "webpack",
     "react-dev": "webpack --watch",
     "start": "npx nodemon server.js",
-    "bundle": "npm run react-dev & npm start",
-    "live-server": "npm run live-server"
+    "bundle": "npm run react-dev & npm start"
   },
   "repository": {
     "type": "git",

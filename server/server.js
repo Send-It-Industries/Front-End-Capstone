@@ -1,10 +1,15 @@
+// This file odes not work for some reason. it appears that the path in
+// express.static isn't working corectly. however I cannot figure out why
+// This file is identical to server.js in the root directory however paths
+// have been updated to account for moving this into a server folder
+
 const express = require('express');
 
 const app = express();
 const axios = require('axios');
-const token = require('./config/config');
+const token = require('../config/config'); // updated path works
 
-app.use(express.static('./client/dist'));
+app.use(express.static('../client/dist')); // updated path doesn't work
 app.use(express.json());
 
 app.all('/*', (req, res) => {

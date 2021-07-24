@@ -7,10 +7,9 @@ node_modules/
 ## Compiled files ##
 client/dist/bundle.js
 
+# package-lock.json
 ## API keys All Access Key for GitHub ##
-config
-
-server
+config/config.js
 
 
-package-lock.json
+./README.md

@@ -1,24 +1,26 @@
-// This file odes not work for some reason. it appears that the path in
-// express.static isn't working corectly. however I cannot figure out why
-// This file is identical to server.js in the root directory however paths
-// have been updated to account for moving this into a server folder
-
+/* eslint-disable linebreak-style */
 const express = require('express');
 
 const app = express();
+const path = require('path');
 const axios = require('axios');
-const token = require('../config/config'); // updated path works
+const token = require('../config/config'); 
 
-app.use(express.static('../client/dist')); // updated path doesn't work
+app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use(express.json());
 
-app.all('/*', (req, res) => {
+app.all('/api*', (req, res) => {
   const {
     method,
-    url,
     params,
     query,
   } = req;
+
+  let {
+    url,
+  } = req;
+  url = url.split('/api').join('');
+
   console.log('url: ', url);
   console.log('query: ', query);
   console.log('params: ', params);

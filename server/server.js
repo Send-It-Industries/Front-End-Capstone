@@ -9,13 +9,18 @@ const token = require('../config/config');
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use(express.json());
 
-app.all('/*', (req, res) => {
+app.all('/api*', (req, res) => {
   const {
     method,
-    url,
     params,
     query,
   } = req;
+
+  let {
+    url,
+  } = req;
+  url = url.split('/api').join('');
+
   console.log('url: ', url);
   console.log('query: ', query);
   console.log('params: ', params);

@@ -7,7 +7,7 @@
     "test": "jest tests",
     "build": "webpack",
     "react-dev": "webpack --watch",
-    "start": "npx nodemon server.js",
+    "start": "npx nodemon server/server.js",
     "bundle": "npm run react-dev & npm start"
   },
   "repository": {

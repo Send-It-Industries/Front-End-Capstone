@@ -1,7 +1,14 @@
 import React from 'react';
+import ReviewSummary from './Reviews/summary-reviews';
+import ProductFeed from './RelatedProducts/ProductFeed';
 
 const App = () => (
-  <h1>Hello World!</h1>
+  <div>
+    <h1>Hello World!</h1>
+    <ReviewSummary />
+    <ProductFeed />
+    <ProductFeed />
+  </div>
 );
 
 export default App;

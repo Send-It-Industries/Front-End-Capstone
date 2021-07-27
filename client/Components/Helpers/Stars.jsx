@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Stars = function () {
+const Stars = () => {
+  const a = 'Stars';
   return (
     <div>
-      STARS STARS
+      {a}
     </div>
   );
 };

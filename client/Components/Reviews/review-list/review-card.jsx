@@ -1,6 +1,6 @@
 import React from 'react';
 import HelpfulButtons from './helpful-buttons';
-import Stars from '../star-display';
+import Stars from '../../Helpers/Stars';
 
 const ReviewCard = function () {
   return (

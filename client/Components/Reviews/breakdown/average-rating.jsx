@@ -1,5 +1,5 @@
 import React from 'react';
-import Stars from '../star-display';
+import Stars from '../../Helpers/Stars';
 
 const AverageRating = function () {
   return (

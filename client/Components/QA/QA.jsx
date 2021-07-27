@@ -7,7 +7,9 @@ import AddQ from './AddQ';
 const QA = () => {
   return (
     <div>
+      <h2>QA Section</h2>
       <SearchBar />
+      <div>😉 QA FEED HERE 😉</div>
       {/* Map to QA_IND */}
       <MoreQ />
       <AddQ />

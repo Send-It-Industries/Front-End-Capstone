@@ -3,10 +3,10 @@ import ProductCard from './ProductCard';
 import ComparisonModal from './ComparisonModal';
 
 const ProductFeed = () => {
-  const a = 'Product Feed';
+  const name = 'Product Feed';
   return (
     <div>
-      <div>{a}</div>
+      <h2>{name}</h2>
       <ProductCard />
       <ComparisonModal />
     </div>

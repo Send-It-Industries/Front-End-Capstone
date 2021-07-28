@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Price = () => {
-  const a = 'Price';
+  const name = 'Price';
   return (
     <div>
-      {a}
+      <h5>{name}</h5>
     </div>
   );
 };

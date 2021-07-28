@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Stars = () => {
-  const a = 'Stars';
+  const name = 'Stars';
   return (
     <div>
-      {a}
+      <h5>{name}</h5>
     </div>
   );
 };

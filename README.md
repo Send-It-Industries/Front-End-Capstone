@@ -25,4 +25,4 @@ Clone this repo to your desktop and run `npm install` to install all the depende
 ## Usage
 After you clone this repo to your desktop, go to its root directory and run `npm install` to install its dependencies.
 
-Once the dependencies are installed, you can run  `npm start` to start the application. You will then be able to access it at localhost:3000
+Once the dependencies are installed, you can run  `npm run bundle` to start the application. This will compile all the jsx to your local machine under 'client/dist/bundle.js' and start an express server on port 3000 through nodemon. You will then be able to access it at localhost:3000

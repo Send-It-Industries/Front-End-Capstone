@@ -28,7 +28,7 @@ const ImageDisplay = () => {
     <div>
       <h4>{name}</h4>
       <button type="button" onClick={decrementDisplayImageIndex}>decrement</button>
-      <img src={selectedStyle.photos ? selectedStyle.photos[displayImageIndex].url : null} alt="Product Display" />
+      <img src={selectedStyle.photos[displayImageIndex].url} alt="Product Display" />
       <button type="button" onClick={incrementDisplayImageIndex}>increment</button>
       <ThumbnailDisplay />
     </div>

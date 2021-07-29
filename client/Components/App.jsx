@@ -13,6 +13,8 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   const [productId, setProductId] = useState('18080');
   const [productOverview, setProductOverview] = useState({});
+  const [selectedStyle, setSelectedStyle] = useState({});
+  const [displayImageIndex, setDisplayImageIndex] = useState(0);
   const [QAs, setQAs] = useState('');
   const [reviews, setReviews] = useState('');
   const [reviewMeta, setReviewMeta] = useState('');
@@ -27,12 +29,14 @@ const App = () => {
 
   const createAnswer = () => { };
   // ------------------                 Read                 ----------------------------
-  const fetchProductOverview = (id) => (
+  const fetchProduct = (id) => (
     Promise.all([axios.get(`/api/products/${id}`), axios.get(`/api/products/${id}/styles`)])
       .then(([infoRes, styleRes]) => ([infoRes.data, styleRes.data]))
-      .then(([productInfo, productStyles]) => (
-        setProductOverview({ ...productInfo, styles: productStyles.results })
-      ))
+      .then(([productInfo, productStyles]) => {
+        setProductOverview({ ...productInfo, styles: productStyles.results });
+        setSelectedStyle(productStyles.results.filter((style) => (style['default?']))[0]);
+        setDisplayImageIndex(0);
+      })
   );
   // const fetchProductInfo = (id) => axios.get(`/api/products/${id}`);
   // const fetchProductStyles = (id) => axios.get(`/api/products/${id}/styles`);
@@ -60,7 +64,7 @@ const App = () => {
   // ------------------              Initialize              ----------------------------
   // ------------------------------------------------------------------------------------
   useEffect(() => {
-    fetchProductOverview(productId)
+    fetchProduct(productId)
       .then(() => (
         Promise.all([fetchQA(productId), fetchReviews(productId), fetchMetaReview(productId)])
       ));
@@ -78,6 +82,10 @@ const App = () => {
     fetchReviews,
     updateHelpful,
     updateReport,
+    selectedStyle,
+    setSelectedStyle,
+    displayImageIndex,
+    setDisplayImageIndex,
   };
 
   return (

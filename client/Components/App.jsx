@@ -13,8 +13,26 @@ const App = () => {
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
   const [productId, setProductId] = useState('18080');
-  const [productOverview, setProductOverview] = useState({});
-  const [selectedStyle, setSelectedStyle] = useState({});
+  const [productOverview, setProductOverview] = useState({
+    name: '',
+    slogan: '',
+    description: '',
+    category: '',
+    features: [],
+    styles: [],
+  });
+  const [selectedStyle, setSelectedStyle] = useState({
+    style_id: '',
+    name: '',
+    original_price: '',
+    sale_price: '',
+    'default?': false,
+    photos: [{
+      url: '',
+      thumbnail_url: '',
+    }],
+    skus: [],
+  });
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
   const [QAs, setQAs] = useState([]);
   const [reviews, setReviews] = useState('');

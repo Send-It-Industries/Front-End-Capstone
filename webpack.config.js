@@ -1,7 +1,8 @@
+/* eslint-disable linebreak-style */
 const path = require('path');
 
 module.exports = {
-  // set mode to dev to set process.env.NODE_ENV on DefinePlugin to value development
+  // set mode to dev to set process.env.NODE_ENV on DefinePlugin to value development;
   mode: 'development',
   // entry point for this application will be in client dir w/in index.js
   entry: path.resolve(__dirname, 'client', 'index.jsx'),

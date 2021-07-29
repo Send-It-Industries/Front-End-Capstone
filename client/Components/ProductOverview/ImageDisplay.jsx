@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import ThumbnailDisplay from './ThumbnailDisplay';
 
 import AppContext from '../Contexts/AppContext';
@@ -12,13 +12,13 @@ const ImageDisplay = () => {
     setDisplayImageIndex,
   } = useContext(AppContext);
 
-  const incrementDisplayImageIndex = (e) => (
+  const incrementDisplayImageIndex = () => (
     setDisplayImageIndex((prevIndex) => (
       (prevIndex + 1) % selectedStyle.photos.length
     ))
   );
 
-  const decrementDisplayImageIndex = (e) => (
+  const decrementDisplayImageIndex = () => (
     setDisplayImageIndex((prevIndex) => (
       (prevIndex > 0) ? (prevIndex - 1) : (selectedStyle.photos.length - 1)
     ))

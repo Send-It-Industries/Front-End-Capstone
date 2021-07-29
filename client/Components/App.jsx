@@ -7,6 +7,7 @@ import ReviewSummary from './Reviews/summary-reviews';
 import QA from './QA/QA';
 import ProductOverview from './ProductOverview/ProductOverview';
 
+<<<<<<< HEAD
 const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
@@ -91,5 +92,17 @@ const App = () => {
     </AppContext.Provider>
   );
 };
+=======
+const App = () => (
+  <div>
+    <h1>APP GOES HERE</h1>
+    <ProductOverview />
+    {/* <ProductFeed />
+    <ProductFeed /> */}
+    <QA />
+    <ReviewSummary />
+  </div>
+);
+>>>>>>> main
 
 export default App;

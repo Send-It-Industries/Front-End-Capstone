@@ -1,25 +1,43 @@
-/* eslint-disable no-multiple-empty-lines */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable arrow-body-style */
-import React from 'react';
+/* eslint-disable linebreak-style */
+import React, { useEffect, useState } from 'react';
 import AddAnswer from './AddAnswer';
+import Answers from './Answers';
 
-const QA_IND = () => {
+const QA_IND = ({ Q }) => {
+  const [answers, setAnswers] = useState('');
+
+  useEffect(() => {
+    setAnswers(Q.answers);
+  }, [answers]);
+
   return (
     <div>
-      {/* Question */}
-      {/* Answers */}
-        {/* Helpful/Yes Btn */}
-            <button type="button">Yes</button>
-        <button type="button">Report</button>
-        <button type="button">Load More Answers</button>
-      
-      
-      {/* Buttons on side */}
-        {/* Helpful/Yes Btn */}
-            <button type="button">Yes</button>
-        <AddAnswer />
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          border: '1px solid black',
+        }}
+      >
+        <span style={{ fontWeight: 'bold' }}>
+          Q:
+          {Q.question_body}
+        </span>
+        <div>
+          Helpful?
+          <button type="button">Yes(99)</button>
+          |
+          <AddAnswer />
+        </div>
+      </div>
+      <div style={{ border: '1px solid black' }}>
+        {Object.entries(Q.answers)
+          .slice(0, 2)
+          .map((answer) => (
+            <Answers answer={answer[1]} key={answer[0]} />
+          ))}
+      </div>
     </div>
   );
 };

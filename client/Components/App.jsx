@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import AppContext from './Contexts/AppContext';
@@ -7,25 +8,13 @@ import ReviewSummary from './Reviews/summary-reviews';
 import QA from './QA/QA';
 import ProductOverview from './ProductOverview/ProductOverview';
 
-<<<<<<< HEAD
-const App = () => (
-  <div>
-    <h1>APP GOES HERE</h1>
-    <ProductOverview />
-    {/* <ProductFeed /> */}
-    {/* <ProductFeed /> */}
-    <QA />
-    <ReviewSummary />
-  </div>
-);
-=======
 const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
   const [productId, setProductId] = useState('18080');
   const [productOverview, setProductOverview] = useState({});
-  const [QAs, setQAs] = useState('');
+  const [QAs, setQAs] = useState([]);
   const [reviews, setReviews] = useState('');
   const [reviewMeta, setReviewMeta] = useState('');
 
@@ -49,8 +38,8 @@ const App = () => {
   // const fetchProductInfo = (id) => axios.get(`/api/products/${id}`);
   // const fetchProductStyles = (id) => axios.get(`/api/products/${id}/styles`);
   const fetchQA = (id) => (
-    axios.get(`/api/qa/questions?product_id=${id}`)
-      .then(({ data }) => setQAs(data))
+    axios.get(`/api/qa/questions?count=1000&product_id=${id}`)
+      .then(({ data }) => setQAs(data.results))
   );
 
   const fetchReviews = (id, sort = 'relevant') => (
@@ -103,6 +92,5 @@ const App = () => {
     </AppContext.Provider>
   );
 };
->>>>>>> dd04c9cf76665011e60ea615edf3ad9af5a81352
 
 export default App;

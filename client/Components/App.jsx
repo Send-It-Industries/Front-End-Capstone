@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import AppContext from './Contexts/AppContext';
@@ -15,7 +16,7 @@ const App = () => {
   const [productOverview, setProductOverview] = useState({});
   const [selectedStyle, setSelectedStyle] = useState({});
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
-  const [QAs, setQAs] = useState('');
+  const [QAs, setQAs] = useState([]);
   const [reviews, setReviews] = useState('');
   const [reviewMeta, setReviewMeta] = useState('');
 
@@ -41,8 +42,8 @@ const App = () => {
   // const fetchProductInfo = (id) => axios.get(`/api/products/${id}`);
   // const fetchProductStyles = (id) => axios.get(`/api/products/${id}/styles`);
   const fetchQA = (id) => (
-    axios.get(`/api/qa/questions?product_id=${id}`)
-      .then(({ data }) => setQAs(data))
+    axios.get(`/api/qa/questions?count=1000&product_id=${id}`)
+      .then(({ data }) => setQAs(data.results))
   );
 
   const fetchReviews = (id, sort = 'relevant') => (

@@ -1,13 +1,15 @@
-/* eslint-disable arrow-body-style */
+/* eslint-disable linebreak-style */
+
 import React from 'react';
 
-const SearchBar = () => {
-  return (
-    <div>
-      <input placeholder="search" />
+const SearchBar = () => (
+  <div>
+    <input
+      placeholder="search"
+      style={{ width: '100vh' }}
+    />
 
-    </div>
-  );
-};
+  </div>
+);
 
 export default SearchBar;

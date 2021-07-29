@@ -7,12 +7,10 @@ const ImageDisplay = () => {
   const name = 'Image Display';
 
   const {
-    productOverview,
     selectedStyle,
     displayImageIndex,
     setDisplayImageIndex,
   } = useContext(AppContext);
-  // const { styles } = productOverview;
 
   const incrementDisplayImageIndex = (e) => (
     setDisplayImageIndex((prevIndex) => (
@@ -25,10 +23,7 @@ const ImageDisplay = () => {
       (prevIndex > 0) ? (prevIndex - 1) : (selectedStyle.photos.length - 1)
     ))
   );
-  // State NEEDED
-  //   SelectedStyleID
-  //   displayImgIndex
-  console.log(selectedStyle.photos);
+
   return (
     <div>
       <h4>{name}</h4>

@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const axios = require('axios');
-const token = require('../config/config'); 
+const token = require('../config/config');
 
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use(express.json());

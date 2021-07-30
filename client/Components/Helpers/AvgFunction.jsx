@@ -1,5 +1,3 @@
-import React from 'react';
-
 const reviewAvg = (resultsObj) => {
   const twoplesArr = Object.entries(resultsObj);
   // console.log(twoplesArr);
@@ -10,9 +8,9 @@ const reviewAvg = (resultsObj) => {
     count += val;
     return (acc + (key * val));
   }, 0);
-  const avg = Number((total / count).toFixed(1));
+  const average = Number((total / count).toFixed(1));
   // console.log('avg rating: ', total / count);
-  return avg;
+  return { average, count };
 };
 
 export default reviewAvg;

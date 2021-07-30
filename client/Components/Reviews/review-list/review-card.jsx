@@ -4,7 +4,7 @@ import HelpfulButtons from './helpful-buttons';
 import Stars from '../../Helpers/Stars';
 
 const ReviewCard = ({ review }) => {
-  const date = review.date.slice(0, 9);
+  const date = review.date.slice(0, 10);
 
   return (
     <div style={{

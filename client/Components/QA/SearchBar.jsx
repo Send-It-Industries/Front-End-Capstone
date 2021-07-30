@@ -6,7 +6,7 @@ const SearchBar = () => (
   <div>
     <input
       placeholder="search"
-      style={{ width: '100vh' }}
+      style={{ width: '85vh' }}
     />
 
   </div>

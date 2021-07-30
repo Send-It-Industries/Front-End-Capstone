@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 import AddAnswer from './AddAnswer';
 import Answers from './Answers';
 
-const QA_IND = ({ Q }) => {
+const Questions = ({ Q }) => {
   const [answers, setAnswers] = useState('');
 
   useEffect(() => {
     setAnswers(Q.answers);
   }, [answers]);
-
+// console.log(Q)
   return (
     <div>
       <div
@@ -28,7 +28,7 @@ const QA_IND = ({ Q }) => {
           Helpful?
           <button type="button">Yes(99)</button>
           |
-          <AddAnswer />
+          <AddAnswer question_id={Q.question_id} />
         </div>
       </div>
       <div style={{ border: '1px solid black' }}>
@@ -42,4 +42,4 @@ const QA_IND = ({ Q }) => {
   );
 };
 
-export default QA_IND;
+export default Questions;

@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Stars = () => {
-  const name = 'StarsStars';
+const Stars = (props) => {
+  const { stars } = props;
+  const name = 'Stars';
   return (
     <>
+      {stars}
       {name}
     </>
   );

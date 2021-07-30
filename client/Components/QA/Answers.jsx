@@ -8,11 +8,18 @@ const Answers = ({ answer }) => (
     {answer.body}
     <br />
     <div style={{ display: 'flex', flexDirection: 'row' }}>
-      by (
+      by
+      {' '}
       {answer.answerer_name}
-      ) | DATE |
+      , date |
       <Helpful value={answer.helpfulness} />
-      {/* <button type="button">Report</button> */}
+      |
+      <span
+        onClick={() => { console.log('click'); }}
+        style={{ textDecorationLine: 'underline' }}
+      >
+        Report
+      </span>
     </div>
   </div>
 );

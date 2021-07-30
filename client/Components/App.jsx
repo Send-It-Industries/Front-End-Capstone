@@ -12,7 +12,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18080');
+  const [productId, setProductId] = useState('18079');
   const [productInfo, setProductInfo] = useState({
     name: '',
     slogan: '',
@@ -64,7 +64,12 @@ const App = () => {
       .then(([infoRes, styleRes]) => ([infoRes.data, styleRes.data]))
       .then(([productInfo, productStyles]) => {
         setProductInfo({ ...productInfo, styles: productStyles.results });
-        setSelectedStyle(productStyles.results.filter((style) => (style['default?']))[0]);
+        setSelectedStyle(() => {
+          debugger;
+          return (
+            productStyles.results.filter((style) => (style['default?']))[0] || productStyles.results[0]
+          );
+        }); // need to aaccount for no default product
         setDisplayImageIndex(0);
       })
   );

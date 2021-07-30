@@ -9,6 +9,7 @@ const StyleSelector = () => {
     displayImageIndex,
     setSelectedStyle,
   } = useContext(AppContext);
+
   const selected = { border: '5px solid blue' };
 
   const handleStyleChange = (newStyle) => {
@@ -28,7 +29,7 @@ const StyleSelector = () => {
           src={style.photos[displayImageIndex].thumbnail_url}
           alt={`Style Thumbnail for style ID: ${style.style_id}`}
           key={i}
-          onClick={() => (handleStyleChange(style, i))} />
+          onClick={() => (handleStyleChange(style))} />
       ))}
     </div>
   );

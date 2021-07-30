@@ -13,9 +13,7 @@ const StyleSelector = () => {
 
   const handleStyleChange = (newStyle) => {
     setSelectedStyle(newStyle);
-    // setDisplayImageIndex(newIndex);
   };
-  // setDisplayImageIndex(newIndex)
 
   return (
     <div>

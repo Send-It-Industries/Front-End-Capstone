@@ -35,7 +35,7 @@ const AddAnswer = ({ question_id }) => {
         Add Answer
       </div>
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
-        <h2>Add a answer</h2>
+        <h2>Add Answer</h2>
         <label>Name:</label>
         <input
           name="name"

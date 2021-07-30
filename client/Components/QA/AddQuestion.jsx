@@ -33,7 +33,7 @@ const AddQuestion = ({ PId }) => {
         Add question
       </button>
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
-        <h2>Add a question</h2>
+        <h2>Add Question</h2>
         <label>Name:</label>
         <input
           name="name"

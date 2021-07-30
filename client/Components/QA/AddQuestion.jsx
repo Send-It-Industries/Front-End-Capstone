@@ -15,7 +15,7 @@ const AddQuestion = ({ PId }) => {
     setQuestion({ ...question, product_id: { PId } });
   }, []);
 
-  console.log(PId);
+  // console.log(PId);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

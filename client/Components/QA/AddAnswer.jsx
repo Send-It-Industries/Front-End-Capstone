@@ -29,11 +29,13 @@ const AddAnswer = ({ question_id }) => {
 
   return (
     <div>
-      <button type="button" onClick={() => setOpen(true)}>
+      <div 
+      style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
+      onClick={() => setOpen(true)}>
         Add Answer
-      </button>
+      </div>
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
-        <h2>Add a answer</h2>
+        <h2>Add Answer</h2>
         <label>Name:</label>
         <input
           name="name"

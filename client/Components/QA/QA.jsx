@@ -17,7 +17,7 @@ const QA = () => {
     setQs(QAs);
     setId(productId);
   });
-// console.log(productId);
+// console.log(Qs);
   return (
     <div style={{ width: '100vh' }}>
       <h2>QA Section</h2>

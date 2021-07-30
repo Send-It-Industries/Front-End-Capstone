@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import AddAnswer from './AddAnswer';
 import Answers from './Answers';
+import Helpful from './Helpful';
 
 const Questions = ({ Q }) => {
   const [answers, setAnswers] = useState('');
@@ -9,7 +10,7 @@ const Questions = ({ Q }) => {
   useEffect(() => {
     setAnswers(Q.answers);
   }, [answers]);
-// console.log(Q)
+console.log(Q)
   return (
     <div>
       <div
@@ -24,9 +25,8 @@ const Questions = ({ Q }) => {
           Q:
           {Q.question_body}
         </span>
-        <div>
-          Helpful?
-          <button type="button">Yes(99)</button>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <Helpful value={Q.question_helpfulness}/>
           |
           <AddAnswer question_id={Q.question_id} />
         </div>
@@ -37,6 +37,7 @@ const Questions = ({ Q }) => {
           .map((answer) => (
             <Answers answer={answer[1]} key={answer[0]} />
           ))}
+          {/* load more answers */}
       </div>
     </div>
   );

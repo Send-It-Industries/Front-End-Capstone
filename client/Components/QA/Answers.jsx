@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
+import Helpful from './Helpful';
 
 const Answers = ({ answer }) => (
   <div>
@@ -9,11 +10,10 @@ const Answers = ({ answer }) => (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
       by (
       {answer.answerer_name}
-      ) | DATE | Helpful?
-      <button type="button">Yes(99)</button>
-      <button type="button">Report</button>
+      ) | DATE |
+      <Helpful value={answer.helpfulness} />
+      {/* <button type="button">Report</button> */}
     </div>
   </div>
 );
-
 export default Answers;

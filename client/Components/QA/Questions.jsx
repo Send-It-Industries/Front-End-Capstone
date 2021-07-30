@@ -10,7 +10,7 @@ const Questions = ({ Q }) => {
   useEffect(() => {
     setAnswers(Q.answers);
   }, [answers]);
-console.log(Q)
+// console.log(Q)
   return (
     <div>
       <div

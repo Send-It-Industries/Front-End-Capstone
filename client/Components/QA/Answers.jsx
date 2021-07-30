@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
-import Helpful from './Helpful';
+import Helpful from '../Helpers/Helpful';
+import Report from '../Helpers/Report';
 
 const Answers = ({ answer }) => (
   <div>
@@ -14,14 +15,7 @@ const Answers = ({ answer }) => (
       , date |
       <Helpful value={answer.helpfulness} />
       |
-      <span
-        onClick={() => {
-          console.log('click');
-        }}
-        style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
-      >
-        Report
-      </span>
+    <Report />
 
     </div>
   </div>

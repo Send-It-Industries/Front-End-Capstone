@@ -2,24 +2,19 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 
-const Helpful = ({ value }) => {
+const Report = () => {
   return (
     <div>
-      Helpful?
-      {' '}
       <span
         onClick={() => {
-          console.log('click');
+          console.log('Im tElLiNgG!');
         }}
         style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       >
-        Yes
+        Report
       </span>
-      (
-      { value }
-      )
     </div>
   );
 };
 
-export default Helpful;
+export default Report;

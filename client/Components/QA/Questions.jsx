@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import AddAnswer from './AddAnswer';
 import Answers from './Answers';
-import Helpful from './Helpful';
+import Helpful from '../Helpers/Helpful';
 
 const Questions = ({ Q }) => {
   const [answers, setAnswers] = useState('');

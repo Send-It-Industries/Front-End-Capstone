@@ -2,7 +2,6 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import SearchBar from './SearchBar';
-import MoreQ from './MoreQ';
 import AddQuestion from './AddQuestion';
 import AppContext from '../Contexts/AppContext';
 import Questions from './Questions';

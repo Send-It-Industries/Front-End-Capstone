@@ -18,7 +18,7 @@ const Questions = ({ Q }) => {
     console.log(answerCount);
   });
 
-// console.log(Q)
+  // console.log(Q)
 
   return (
     <div>
@@ -35,23 +35,29 @@ const Questions = ({ Q }) => {
           {Q.question_body}
         </span>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <Helpful value={Q.question_helpfulness}/>
+          <Helpful value={Q.question_helpfulness} />
           |
           <AddAnswer question_id={Q.question_id} />
         </div>
       </div>
-      <div style={{ border: '1px solid black' }}>
+      <div
+        style={{
+          border: '1px solid black',
+          maxHeight: '100px',
+          overflowY: 'auto',
+        }}
+      >
         {Object.entries(Q.answers)
           .slice(0, answerCount)
           .map((answer) => (
             <Answers answer={answer[1]} key={answer[0]} />
           ))}
-              <span
-      onClick={moreAnswers}
-      style={{ fontWeight: 'bold', cursor: 'pointer' }}
-    >
-      Load More Answers
-    </span>
+        <span
+          onClick={moreAnswers}
+          style={{ fontWeight: 'bold', cursor: 'pointer' }}
+        >
+          Load More Answers
+        </span>
       </div>
     </div>
   );

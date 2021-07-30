@@ -7,12 +7,11 @@ const StyleSelector = () => {
     productInfo,
     selectedStyle,
     displayImageIndex,
-    setDisplayImageIndex,
     setSelectedStyle,
   } = useContext(AppContext);
   const selected = { border: '5px solid blue' };
 
-  const handleStyleChange = (newStyle, newIndex) => {
+  const handleStyleChange = (newStyle) => {
     setSelectedStyle(newStyle);
     // setDisplayImageIndex(newIndex);
   };
@@ -21,7 +20,10 @@ const StyleSelector = () => {
   return (
     <div>
       <h5>{name}</h5>
-      <div>STYLE > {selectedStyle.name}</div>
+      <div>
+        <span>STYLE &gt; </span>
+        {selectedStyle.name}
+      </div>
       {productInfo.styles.map((style, i) => (
         <img
           style={(style.style_id === selectedStyle.style_id) ? selected : null}

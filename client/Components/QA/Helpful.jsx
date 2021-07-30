@@ -11,7 +11,7 @@ const Helpful = ({ value }) => {
         onClick={() => {
           console.log('click');
         }}
-        style={{ textDecorationLine: 'underline' }}
+        style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       >
         Yes
       </span>

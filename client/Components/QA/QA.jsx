@@ -34,7 +34,6 @@ const QA = () => {
       {Qs.slice(0, count).map((Q) => (
         <Questions Q={Q} key={Q.question_id} />
       ))}
-      {/* <MoreQ /> */}
       <button type="button" onClick={moreQuestions}>
         More Answered Questions
       </button>

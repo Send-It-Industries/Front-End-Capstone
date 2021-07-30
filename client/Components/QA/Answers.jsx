@@ -15,12 +15,23 @@ const Answers = ({ answer }) => (
       <Helpful value={answer.helpfulness} />
       |
       <span
-        onClick={() => { console.log('click'); }}
-        style={{ textDecorationLine: 'underline' }}
+        onClick={() => {
+          console.log('click');
+        }}
+        style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       >
         Report
       </span>
+
     </div>
+    <span
+      onClick={() => {
+        console.log('click');
+      }}
+      style={{ fontWeight: 'bold', cursor: 'pointer' }}
+    >
+      Load More Answers
+    </span>
   </div>
 );
 export default Answers;

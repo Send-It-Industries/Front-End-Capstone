@@ -30,7 +30,7 @@ const AddAnswer = ({ question_id }) => {
   return (
     <div>
       <div 
-      style={{ textDecorationLine: 'underline' }}
+      style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       onClick={() => setOpen(true)}>
         Add Answer
       </div>

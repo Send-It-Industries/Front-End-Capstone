@@ -21,6 +21,7 @@ const StyleSelector = () => {
   return (
     <div>
       <h5>{name}</h5>
+      <div>STYLE > {selectedStyle.name}</div>
       {productInfo.styles.map((style, i) => (
         <img
           style={(style.style_id === selectedStyle.style_id) ? selected : null}

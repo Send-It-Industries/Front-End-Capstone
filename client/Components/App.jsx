@@ -13,8 +13,37 @@ const App = () => {
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
   const [productId, setProductId] = useState('18080');
-  const [productOverview, setProductOverview] = useState({});
-  const [selectedStyle, setSelectedStyle] = useState({});
+  const [productInfo, setProductInfo] = useState({
+    name: '',
+    slogan: '',
+    description: '',
+    category: '',
+    features: [],
+    styles: [{
+      style_id: '',
+      name: '',
+      original_price: '',
+      sale_price: '',
+      'default?': false,
+      photos: [{
+        url: '',
+        thumbnail_url: '',
+      }],
+      skus: [],
+    }],
+  });
+  const [selectedStyle, setSelectedStyle] = useState({
+    style_id: '',
+    name: '',
+    original_price: '',
+    sale_price: '',
+    'default?': false,
+    photos: [{
+      url: '',
+      thumbnail_url: '',
+    }],
+    skus: [],
+  });
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
   const [QAs, setQAs] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -34,7 +63,7 @@ const App = () => {
     Promise.all([axios.get(`/api/products/${id}`), axios.get(`/api/products/${id}/styles`)])
       .then(([infoRes, styleRes]) => ([infoRes.data, styleRes.data]))
       .then(([productInfo, productStyles]) => {
-        setProductOverview({ ...productInfo, styles: productStyles.results });
+        setProductInfo({ ...productInfo, styles: productStyles.results });
         setSelectedStyle(productStyles.results.filter((style) => (style['default?']))[0]);
         setDisplayImageIndex(0);
       })
@@ -75,7 +104,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   const contextVal = {
     setProductId,
-    productOverview,
+    productInfo,
     QAs,
     fetchQA,
     reviews,

@@ -6,7 +6,12 @@ import CharacteristicBreakdown from './characteristics-breakdown';
 
 const Breakdown = function () {
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: '25%',
+      }}
+    >
+      Ratings & Reviews
       <AverageRating />
       <Recommended />
       <StarBreakdown />

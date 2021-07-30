@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../../Contexts/AppContext';
 
-const Sort = function () {
+const Sort = () => {
+  const currentSort = 'relevance';
+  const { reviews } = useContext(AppContext);
+  const reviewCount = reviews.length;
+
   return (
-    <div>
-      SORT BY RELEVANCE?
+    <div
+      style={{
+        fontWeight: 'bold',
+        marginBottom: '10px',
+      }}
+    >
+      {reviewCount}
+      {' '}
+      reviews, sort:
+      {' '}
+      {currentSort}
     </div>
   );
 };

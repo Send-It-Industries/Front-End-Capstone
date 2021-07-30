@@ -1,6 +1,11 @@
 import React from 'react';
 
-const StarBreakdown = function () {
+const StarBreakdown = () => {
+  const indyStars = (() => {
+    // const { count } = avgData;
+    // starData.map((currenStar) => currenStar / count);
+  })();
+
   return (
     <div>
       <div>5 stars</div>

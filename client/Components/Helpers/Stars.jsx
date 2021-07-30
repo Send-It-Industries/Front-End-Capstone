@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Stars = () => {
+const Stars = (props) => {
+  const { stars } = props;
   const name = 'Stars';
   return (
-    <div>
-      <h5>{name}</h5>
-    </div>
+    <>
+      {stars}
+      {name}
+    </>
   );
 };
 

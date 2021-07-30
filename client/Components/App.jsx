@@ -7,6 +7,7 @@ import ReviewSummary from './Reviews/summary-reviews';
 // import ProductFeed from './RelatedProducts/ProductFeed';
 import QA from './QA/QA';
 import ProductOverview from './ProductOverview/ProductOverview';
+import reviewAvg from './Helpers/AvgFunction';
 
 const App = () => {
   // ------------------------------------------------------------------------------------
@@ -48,6 +49,7 @@ const App = () => {
   const [QAs, setQAs] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
+  const [avgReview, setAvgReview] = useState(0);
 
   // ------------------------------------------------------------------------------------
   // ------------------            HTTP Requests             ----------------------------
@@ -99,6 +101,13 @@ const App = () => {
         Promise.all([fetchQA(productId), fetchReviews(productId), fetchMetaReview(productId)])
       ));
   }, []);
+
+  useEffect(() => {
+    if (reviewMeta.product_id) {
+      const avg = reviewAvg(reviewMeta.ratings);
+      setAvgReview(avg);
+    }
+  }, [reviewMeta]);
   // ------------------------------------------------------------------------------------
   // ------------------                Render                ----------------------------
   // ------------------------------------------------------------------------------------
@@ -111,6 +120,7 @@ const App = () => {
     reviews,
     reviewMeta,
     fetchReviews,
+    avgReview,
     updateHelpful,
     updateReport,
     selectedStyle,

@@ -1,11 +1,11 @@
 /* eslint-disable linebreak-style */
-import React, { useEffect, useState } from 'react';
-import AddAnswer from './AddAnswer';
-import Answers from './Answers';
-import Helpful from '../Helpers/Helpful';
+import React, { useEffect, useState } from "react";
+import AddAnswer from "./AddAnswer";
+import Answers from "./Answers";
+import Helpful from "../Helpers/Helpful";
 
 const Questions = ({ Q }) => {
-  const [answers, setAnswers] = useState('');
+  const [answers, setAnswers] = useState("");
   const [answerCount, setAnswerCount] = useState(2);
 
   const moreAnswers = () => {
@@ -24,17 +24,17 @@ const Questions = ({ Q }) => {
     <div>
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          border: '1px solid black',
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          border: "1px solid black",
         }}
       >
-        <span style={{ fontWeight: 'bold' }}>
+        <span style={{ fontWeight: "bold" }}>
           Q:
           {Q.question_body}
         </span>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ display: "flex", flexDirection: "row" }}>
           <Helpful value={Q.question_helpfulness} />
           |
           <AddAnswer question_id={Q.question_id} />
@@ -42,7 +42,7 @@ const Questions = ({ Q }) => {
       </div>
       <div
         style={{
-          border: '1px solid black',
+          border: "1px solid black",
         }}
       >
         {Object.entries(Q.answers)
@@ -52,9 +52,22 @@ const Questions = ({ Q }) => {
           ))}
         <span
           onClick={moreAnswers}
-          style={{ fontWeight: 'bold', cursor: 'pointer' }}
+          style={{ fontWeight: "bold", cursor: "pointer" }}
         >
           Load More Answers
+        </span>
+        {/* Add Collapse Answers Btn here */}
+        <span
+          style={{
+            visibility: answerCount > 2 ? "visible" : "hidden",
+            fontWeight: "bold",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            setAnswerCount(2);
+          }}
+        >
+          Collapse Answers
         </span>
       </div>
     </div>

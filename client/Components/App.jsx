@@ -13,10 +13,41 @@ const App = () => {
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
   const [productId, setProductId] = useState('18080');
-  const [productOverview, setProductOverview] = useState({});
+  const [productInfo, setProductInfo] = useState({
+    name: '',
+    slogan: '',
+    description: '',
+    category: '',
+    features: [],
+    styles: [{
+      style_id: '',
+      name: '',
+      original_price: '',
+      sale_price: '',
+      'default?': false,
+      photos: [{
+        url: '',
+        thumbnail_url: '',
+      }],
+      skus: [],
+    }],
+  });
+  const [selectedStyle, setSelectedStyle] = useState({
+    style_id: '',
+    name: '',
+    original_price: '',
+    sale_price: '',
+    'default?': false,
+    photos: [{
+      url: '',
+      thumbnail_url: '',
+    }],
+    skus: [],
+  });
+  const [displayImageIndex, setDisplayImageIndex] = useState(0);
   const [QAs, setQAs] = useState([]);
-  const [reviews, setReviews] = useState('');
-  const [reviewMeta, setReviewMeta] = useState('');
+  const [reviews, setReviews] = useState([]);
+  const [reviewMeta, setReviewMeta] = useState({});
 
   // ------------------------------------------------------------------------------------
   // ------------------            HTTP Requests             ----------------------------
@@ -28,12 +59,14 @@ const App = () => {
 
   const createAnswer = () => { };
   // ------------------                 Read                 ----------------------------
-  const fetchProductOverview = (id) => (
+  const fetchProduct = (id) => (
     Promise.all([axios.get(`/api/products/${id}`), axios.get(`/api/products/${id}/styles`)])
       .then(([infoRes, styleRes]) => ([infoRes.data, styleRes.data]))
-      .then(([productInfo, productStyles]) => (
-        setProductOverview({ ...productInfo, styles: productStyles.results })
-      ))
+      .then(([productInfo, productStyles]) => {
+        setProductInfo({ ...productInfo, styles: productStyles.results });
+        setSelectedStyle(productStyles.results.filter((style) => (style['default?']))[0]);
+        setDisplayImageIndex(0);
+      })
   );
   // const fetchProductInfo = (id) => axios.get(`/api/products/${id}`);
   // const fetchProductStyles = (id) => axios.get(`/api/products/${id}/styles`);
@@ -43,8 +76,8 @@ const App = () => {
   );
 
   const fetchReviews = (id, sort = 'relevant') => (
-    axios.get(`/api/reviews?count=2&product_id=${id}&sort=${sort}`)
-      .then(({ data }) => setReviews(data))
+    axios.get(`/api/reviews?count=1000&product_id=${id}&sort=${sort}`)
+      .then(({ data }) => setReviews(data.results))
   );
 
   const fetchMetaReview = (id) => (
@@ -61,7 +94,7 @@ const App = () => {
   // ------------------              Initialize              ----------------------------
   // ------------------------------------------------------------------------------------
   useEffect(() => {
-    fetchProductOverview(productId)
+    fetchProduct(productId)
       .then(() => (
         Promise.all([fetchQA(productId), fetchReviews(productId), fetchMetaReview(productId)])
       ));
@@ -72,7 +105,7 @@ const App = () => {
   const contextVal = {
     productId,
     setProductId,
-    productOverview,
+    productInfo,
     QAs,
     fetchQA,
     reviews,
@@ -80,6 +113,10 @@ const App = () => {
     fetchReviews,
     updateHelpful,
     updateReport,
+    selectedStyle,
+    setSelectedStyle,
+    displayImageIndex,
+    setDisplayImageIndex,
   };
 
   return (

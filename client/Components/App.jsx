@@ -85,9 +85,6 @@ const App = () => {
   const fetchMetaReview = (id) => (
     axios.get(`/api/reviews/meta?product_id=${id}`)
       .then(({ data }) => setReviewMeta(data))
-      // .then(() => reviewAvg(reviewMeta.ratings))
-      // .then(console.log('Promise Chain :', reviewMeta))
-      // .then((avg) => setAvgReview(avg))
   );
   // ------------------                Update                ----------------------------
   const updateHelpful = () => { };

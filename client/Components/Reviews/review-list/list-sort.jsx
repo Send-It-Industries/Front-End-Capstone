@@ -13,11 +13,12 @@ const Sort = () => {
         marginBottom: '10px',
       }}
     >
-      {reviewCount}
-      {' '}
-      reviews, sort:
-      {' '}
-      {currentSort}
+      {`${reviewCount} reviews, sorted by: `}
+      <select name="sortType" defaultValue={currentSort}>
+        <option value="relevance"> relevance</option>
+        <option value="recent"> recent </option>
+        <option value="helpful"> helpful</option>
+      </select>
     </div>
   );
 };

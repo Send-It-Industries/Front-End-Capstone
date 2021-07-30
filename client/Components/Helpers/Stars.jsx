@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../Contexts/AppContext';
 
-const Stars = (props) => {
-  const { stars } = props;
+const Stars = () => {
+  const { avgReview } = useContext(AppContext);
+  // console.log (avgReview.average);
+  const avgStars = ((Math.round((avgReview.average) * 4) / 4).toFixed(2));
+  // console.log (avgStars);
   const name = 'Stars';
   return (
     <>
-      {stars}
+      {avgStars}
       {name}
     </>
   );

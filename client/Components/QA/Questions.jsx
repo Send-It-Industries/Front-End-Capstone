@@ -9,7 +9,7 @@ const Questions = ({ Q }) => {
   useEffect(() => {
     setAnswers(Q.answers);
   }, [answers]);
-
+// console.log(Q)
   return (
     <div>
       <div
@@ -28,7 +28,7 @@ const Questions = ({ Q }) => {
           Helpful?
           <button type="button">Yes(99)</button>
           |
-          <AddAnswer />
+          <AddAnswer question_id={Q.question_id} />
         </div>
       </div>
       <div style={{ border: '1px solid black' }}>

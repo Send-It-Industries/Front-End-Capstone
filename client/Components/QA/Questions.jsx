@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import AddAnswer from './AddAnswer';
 import Answers from './Answers';
 
-const QA_IND = ({ Q }) => {
+const Questions = ({ Q }) => {
   const [answers, setAnswers] = useState('');
 
   useEffect(() => {
@@ -42,4 +42,4 @@ const QA_IND = ({ Q }) => {
   );
 };
 
-export default QA_IND;
+export default Questions;

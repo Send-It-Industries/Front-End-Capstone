@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 import MoreQ from './MoreQ';
 import AddQ from './AddQ';
 import AppContext from '../Contexts/AppContext';
-import QA_IND from './QA_IND';
+import Questions from './Questions';
 
 const QA = () => {
   const { QAs } = useContext(AppContext);
@@ -19,7 +19,7 @@ const QA = () => {
     <div style={{ width: '100vh' }}>
       <h2>QA Section</h2>
       <SearchBar />
-      {Qs.slice(0, 4).map((Q) => <QA_IND Q={Q} key={Q.question_id} />)}
+      {Qs.slice(0, 4).map((Q) => <Questions Q={Q} key={Q.question_id} />)}
       <MoreQ />
       <AddQ />
     </div>

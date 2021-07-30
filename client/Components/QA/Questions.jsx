@@ -6,11 +6,20 @@ import Helpful from './Helpful';
 
 const Questions = ({ Q }) => {
   const [answers, setAnswers] = useState('');
+  const [answerCount, setAnswerCount] = useState(2);
+
+  const moreAnswers = () => {
+    setAnswerCount(answerCount + 2);
+  };
 
   useEffect(() => {
     setAnswers(Q.answers);
-  }, [answers]);
+    setAnswerCount(answerCount);
+    console.log(answerCount);
+  });
+
 // console.log(Q)
+
   return (
     <div>
       <div
@@ -33,11 +42,16 @@ const Questions = ({ Q }) => {
       </div>
       <div style={{ border: '1px solid black' }}>
         {Object.entries(Q.answers)
-          .slice(0, 2)
+          .slice(0, answerCount)
           .map((answer) => (
             <Answers answer={answer[1]} key={answer[0]} />
           ))}
-          {/* load more answers */}
+              <span
+      onClick={moreAnswers}
+      style={{ fontWeight: 'bold', cursor: 'pointer' }}
+    >
+      Load More Answers
+    </span>
       </div>
     </div>
   );

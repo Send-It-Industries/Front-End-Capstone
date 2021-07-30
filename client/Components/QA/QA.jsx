@@ -12,17 +12,16 @@ const QA = () => {
   const [Qs, setQs] = useState([]);
   const { productId } = useContext(AppContext);
   const [id, setId] = useState('');
-  const [count, setCount] = useState(4);
+  const [questionCount, setQuestionCount] = useState(4);
 
   const moreQuestions = () => {
-    setCount(count + 2);
-    console.log(count);
+    setQuestionCount(questionCount + 2);
   };
 
   useEffect(() => {
     setQs(QAs);
     setId(productId);
-    setCount(count);
+    setQuestionCount(questionCount);
   });
 
   // console.log(count);
@@ -31,7 +30,7 @@ const QA = () => {
     <div style={{ width: '100vh' }}>
       <h2>QA Section</h2>
       <SearchBar />
-      {Qs.slice(0, count).map((Q) => (
+      {Qs.slice(0, questionCount).map((Q) => (
         <Questions Q={Q} key={Q.question_id} />
       ))}
       <button type="button" onClick={moreQuestions}>

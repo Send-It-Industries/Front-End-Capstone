@@ -24,14 +24,6 @@ const Answers = ({ answer }) => (
       </span>
 
     </div>
-    <span
-      onClick={() => {
-        console.log('click');
-      }}
-      style={{ fontWeight: 'bold', cursor: 'pointer' }}
-    >
-      Load More Answers
-    </span>
   </div>
 );
 export default Answers;

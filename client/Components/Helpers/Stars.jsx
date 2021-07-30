@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Stars = () => {
-  const name = 'Stars';
+  const name = 'StarsStars';
   return (
-    <div>
-      <h5>{name}</h5>
-    </div>
+    <>
+      {name}
+    </>
   );
 };
 

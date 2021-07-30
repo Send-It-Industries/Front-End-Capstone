@@ -17,8 +17,8 @@ const App = () => {
   const [selectedStyle, setSelectedStyle] = useState({});
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
   const [QAs, setQAs] = useState([]);
-  const [reviews, setReviews] = useState('');
-  const [reviewMeta, setReviewMeta] = useState('');
+  const [reviews, setReviews] = useState([]);
+  const [reviewMeta, setReviewMeta] = useState({});
 
   // ------------------------------------------------------------------------------------
   // ------------------            HTTP Requests             ----------------------------
@@ -47,8 +47,8 @@ const App = () => {
   );
 
   const fetchReviews = (id, sort = 'relevant') => (
-    axios.get(`/api/reviews?count=2&product_id=${id}&sort=${sort}`)
-      .then(({ data }) => setReviews(data))
+    axios.get(`/api/reviews?count=1000&product_id=${id}&sort=${sort}`)
+      .then(({ data }) => setReviews(data.results))
   );
 
   const fetchMetaReview = (id) => (

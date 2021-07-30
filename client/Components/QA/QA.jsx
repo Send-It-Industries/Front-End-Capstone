@@ -29,9 +29,11 @@ const QA = () => {
     <div style={{ width: '100vh' }}>
       <h2>QA Section</h2>
       <SearchBar />
-      {Qs.slice(0, questionCount).map((Q) => (
-        <Questions Q={Q} key={Q.question_id} />
-      ))}
+      <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+        {Qs.slice(0, questionCount).map((Q) => (
+          <Questions Q={Q} key={Q.question_id} />
+        ))}
+      </div>
       <button type="button" onClick={moreQuestions}>
         More Answered Questions
       </button>

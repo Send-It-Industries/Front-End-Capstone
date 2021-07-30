@@ -43,8 +43,6 @@ const Questions = ({ Q }) => {
       <div
         style={{
           border: '1px solid black',
-          maxHeight: '100px',
-          overflowY: 'auto',
         }}
       >
         {Object.entries(Q.answers)

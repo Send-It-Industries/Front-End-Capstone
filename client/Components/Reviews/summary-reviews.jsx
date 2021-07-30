@@ -1,16 +1,19 @@
 import React from 'react';
 import ReviewList from './review-list/review-list';
-import MoreReviews from './more-reviews';
 import Breakdown from './breakdown/summary-breakdown';
-import AddReview from './add-review/add-review';
 
 const ReviewSummary = function () {
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: '85%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+      }}
+    >
       <Breakdown />
       <ReviewList />
-      <MoreReviews />
-      <AddReview />
     </div>
   );
 };

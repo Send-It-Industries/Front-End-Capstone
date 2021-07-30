@@ -3,21 +3,49 @@ import React from 'react';
 import Helpful from '../Helpers/Helpful';
 import Report from '../Helpers/Report';
 
-const Answers = ({ answer }) => (
-  <div>
-    <span style={{ fontWeight: 'bold' }}>A: </span>
-    {answer.body}
-    <br />
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
-      by
-      {' '}
-      {answer.answerer_name}
-      , date |
-      <Helpful value={answer.helpfulness} />
-      |
-    <Report />
+const Answers = ({ answer }) => {
+  const date = answer.date.slice(0, 10);
+  const newDate = (() => {
+    const monthsArr = [
+      'placeholder',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    const dateArr = date.split('-');
+    const month = parseInt(dateArr[1], 10);
+    const result = `${monthsArr[month]} ${dateArr[2]}, ${dateArr[0]}`;
+    return result;
+  })();
 
+  return (
+    <div>
+      <span style={{ fontWeight: 'bold' }}>A: </span>
+      {answer.body}
+      <br />
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        by
+        {' '}
+        {answer.answerer_name}
+        ,
+        {' '}
+        {newDate}
+        {' '}
+        |
+        <Helpful value={answer.helpfulness} />
+        |
+        <Report />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 export default Answers;

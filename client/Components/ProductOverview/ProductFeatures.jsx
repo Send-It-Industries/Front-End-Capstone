@@ -8,8 +8,8 @@ const ProductFeatures = () => {
   return (
     <div>
       <h4>{name}</h4>
-      <div>{productInfo.slogan}</div>
-      <div>{productInfo.description}</div>
+      <div><b>{productInfo.slogan}</b></div>
+      <p>{productInfo.description}</p>
       {
         productInfo.features.map(({ feature, value }) => (
           <div>

@@ -47,11 +47,8 @@ const App = () => {
   const [QAs, setQAs] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
-<<<<<<< HEAD
-=======
   const [avgReview, setAvgReview] = useState(0);
 
->>>>>>> main
   // ------------------------------------------------------------------------------------
   // ------------------            HTTP Requests             ----------------------------
   // ------------------------------------------------------------------------------------

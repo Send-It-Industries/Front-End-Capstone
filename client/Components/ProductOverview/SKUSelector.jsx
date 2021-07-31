@@ -15,7 +15,6 @@ const SKUSelector = () => {
 
   const handleSizeSelect = (e) => {
     let maxQ;
-    let wantedQ;
     setSelectedSku(e.target.value);
     setSizeSelected(true);
     if (selectedStyle.skus[e.target.value].quantity < 15) {
@@ -32,7 +31,6 @@ const SKUSelector = () => {
   };
 
   const handleQuantitySelect = (e) => {
-    debugger;
     setWantedQuantity(e.target.value);
   };
 
@@ -71,48 +69,55 @@ const SKUSelector = () => {
     <div>
       <h5>{name}</h5>
       {/* Size Select */}
-      <select
-        value={selectedSku}
-        id="sizes"
-        onChange={(e) => (handleSizeSelect(e, selectedSku))}
-        disabled={!inStock}
-      >
-        {
-          inStock ? (
-            <>
-              <option disabled value="sizeSelect">Select Size</option>
-              {
-              Object.entries(selectedStyle.skus)
-                .filter(([, { quantity }]) => (quantity))
-                .map(([sku, { size }]) => (
-                  <option value={sku} key={sku}>{size}</option>
-                ))
-              }
-            </>
-          ) : (
-            <option value="outOfStock">Out Of Stock</option>
-          )
-        }
-      </select>
-      {/* Quantity select */}
-      <select
-        value={wantedQuantity}
-        id="quantity"
-        disabled={!sizeSelected}
-        onChange={handleQuantitySelect}
-      >
-        {
-          sizeSelected ? (
-            range(1, maxQuantity + 1).map((possibleQuantity) => (
-              <option value={possibleQuantity} key={possibleQuantity}>{possibleQuantity}</option>
-            ))
-          ) : (
-            <option value>{wantedQuantity}</option>
-          )
-        }
-      </select>
-      <button type="button">Add to Bag</button>
-      <button type="button">Social Media? outfit?</button>
+      <form>
+
+        <select
+          value={selectedSku}
+          id="sizes"
+          onChange={(e) => (handleSizeSelect(e, selectedSku))}
+          disabled={!inStock}
+        >
+          {
+            inStock ? (
+              <>
+                <option disabled value="sizeSelect">Select Size</option>
+                {
+                Object.entries(selectedStyle.skus)
+                  .filter(([, { quantity }]) => (quantity))
+                  .map(([sku, { size }]) => (
+                    <option value={sku} key={sku}>{size}</option>
+                  ))
+                }
+              </>
+            ) : (
+              <option value="outOfStock">Out Of Stock</option>
+            )
+          }
+        </select>
+        {/* Quantity select */}
+        <select
+          value={wantedQuantity}
+          id="quantity"
+          disabled={!sizeSelected}
+          onChange={handleQuantitySelect}
+        >
+          {
+            sizeSelected ? (
+              range(1, maxQuantity + 1).map((possibleQuantity) => (
+                <option value={possibleQuantity} key={possibleQuantity}>{possibleQuantity}</option>
+              ))
+            ) : (
+              <option value>{wantedQuantity}</option>
+            )
+          }
+        </select>
+        {wantedQuantity !== '-' ? (
+          <button type="submit">Add to Bag</button>
+        ) : (
+          null
+        )}
+        <button type="button">Social Media? outfit?</button>
+      </form>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Helpful from "../Helpers/Helpful";
 const Questions = ({ Q }) => {
   const [answers, setAnswers] = useState("");
   const [answerCount, setAnswerCount] = useState(2);
+  const [totalAnswers, setTotalAnswers] = useState(2);
 
   const moreAnswers = () => {
     setAnswerCount(answerCount + 2);
@@ -15,10 +16,11 @@ const Questions = ({ Q }) => {
   useEffect(() => {
     setAnswers(Q.answers);
     setAnswerCount(answerCount);
-    console.log(answerCount);
+    setTotalAnswers(Object.values(answers).length);
+    console.log(`count:${answerCount}   total:${totalAnswers}`);
   });
 
-  // console.log(Q)
+  console.log('length: ' + Object.values(answers).length);
 
   return (
     <div>
@@ -52,7 +54,7 @@ const Questions = ({ Q }) => {
           ))}
         <span
           onClick={moreAnswers}
-          style={{ fontWeight: "bold", cursor: "pointer" }}
+          style={{ visibility: answerCount >= totalAnswers ? 'hidden' : 'visible', fontWeight: "bold", cursor: "pointer" }}
         >
           Load More Answers
         </span>

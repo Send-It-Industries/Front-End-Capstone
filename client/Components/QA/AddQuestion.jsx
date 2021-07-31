@@ -2,47 +2,45 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../Helpers/Modal';
 
-const AddAnswer = ({ question_id }) => {
+const AddQuestion = ({ PId }) => {
   const [isOpen, setOpen] = useState(false);
-  const [answer, setAnswer] = useState({
-    question_id: '',
+  const [question, setQuestion] = useState({
+    product_id: '',
     name: '',
     email: '',
     body: '',
   });
 
   useEffect(() => {
-    setAnswer({ ...answer, question_id: { question_id } });
+    setQuestion({ ...question, product_id: { PId } });
   }, []);
 
-  // console.log(question_id);
+  // console.log(PId);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setAnswer({ ...answer, [name]: value });
+    setQuestion({ ...question, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(answer.question_id.question_id);
+    console.log(question.product_id);
   };
 
   return (
     <div>
-      <div 
-      style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
-      onClick={() => setOpen(true)}>
-        Add Answer
-      </div>
+      <button type="button" onClick={() => setOpen(true)}>
+        Add question
+      </button>
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
-        <h2>Add Answer</h2>
+        <h2>Add Question</h2>
         <label>Name:</label>
         <input
           name="name"
           type="text"
           style={{ width: '35%' }}
           onChange={handleInputChange}
-          value={answer.name}
+          value={question.name}
         />
         <label>Email:</label>
         <input
@@ -50,15 +48,15 @@ const AddAnswer = ({ question_id }) => {
           type="text"
           style={{ width: '35%' }}
           onChange={handleInputChange}
-          value={answer.email}
+          value={question.email}
         />
-        <label>Answer:</label>
+        <label>Question:</label>
         <input
           name="body"
           type="text"
           style={{ width: '35%', height: '300px' }}
           onChange={handleInputChange}
-          value={answer.body}
+          value={question.body}
         />
         <button onClick={handleSubmit} type="button" style={{ width: '35%' }}>
           Submit
@@ -68,4 +66,4 @@ const AddAnswer = ({ question_id }) => {
   );
 };
 
-export default AddAnswer;
+export default AddQuestion;

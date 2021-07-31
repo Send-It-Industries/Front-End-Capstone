@@ -1,5 +1,7 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
+import Helpful from '../Helpers/Helpful';
+import Report from '../Helpers/Report';
 
 const Answers = ({ answer }) => (
   <div>
@@ -7,13 +9,15 @@ const Answers = ({ answer }) => (
     {answer.body}
     <br />
     <div style={{ display: 'flex', flexDirection: 'row' }}>
-      by (
+      by
+      {' '}
       {answer.answerer_name}
-      ) | DATE | Helpful?
-      <button type="button">Yes(99)</button>
-      <button type="button">Report</button>
+      , date |
+      <Helpful value={answer.helpfulness} />
+      |
+    <Report />
+
     </div>
   </div>
 );
-
 export default Answers;

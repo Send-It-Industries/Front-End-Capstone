@@ -13,26 +13,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18080');
-  const [productInfo, setProductInfo] = useState({
-    name: '',
-    slogan: '',
-    description: '',
-    category: '',
-    features: [],
-    styles: [{
-      style_id: '',
-      name: '',
-      original_price: '',
-      sale_price: '',
-      'default?': false,
-      photos: [{
-        url: '',
-        thumbnail_url: '',
-      }],
-      skus: [],
-    }],
-  });
+  const [productId, setProductId] = useState('18078');
   const [selectedStyle, setSelectedStyle] = useState({
     style_id: '',
     name: '',
@@ -43,9 +24,26 @@ const App = () => {
       url: '',
       thumbnail_url: '',
     }],
-    skus: [],
+    skus: {
+      null: {
+        quantity: null,
+        size: '',
+      },
+    },
   });
+  const [productInfo, setProductInfo] = useState({
+    name: '',
+    slogan: '',
+    description: '',
+    category: '',
+    features: [],
+    styles: [
+      selectedStyle,
+    ],
+  });
+  const [cart, setCart] = useState([]);
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
+
   const [QAs, setQAs] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
@@ -66,7 +64,9 @@ const App = () => {
       .then(([infoRes, styleRes]) => ([infoRes.data, styleRes.data]))
       .then(([productInfo, productStyles]) => {
         setProductInfo({ ...productInfo, styles: productStyles.results });
-        setSelectedStyle(productStyles.results.filter((style) => (style['default?']))[0]);
+        setSelectedStyle(() => (
+          (productStyles.results.filter((style) => (style['default?']))[0]) || (productStyles.results[0])
+        ));
         setDisplayImageIndex(0);
       })
   );
@@ -127,6 +127,8 @@ const App = () => {
     setSelectedStyle,
     displayImageIndex,
     setDisplayImageIndex,
+    cart,
+    setCart,
   };
 
   return (

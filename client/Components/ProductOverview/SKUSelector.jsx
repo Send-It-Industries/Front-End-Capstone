@@ -1,22 +1,28 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { range } from 'underscore';
 
 import AppContext from '../Contexts/AppContext';
 
 const SKUSelector = () => {
   const name = 'Sku Selector';
-  const { selectedStyle } = useContext(AppContext);
+  const { selectedStyle, setCart } = useContext(AppContext);
 
   const [inStock, setInStock] = useState(true);
   const [selectedSku, setSelectedSku] = useState('sizeSelect');
-  const [sizeSelected, setSizeSelected] = useState(false);
+  // boolean for if a sku is selected
+  const [skuSelected, setSkuSelected] = useState(false);
   const [wantedQuantity, setWantedQuantity] = useState('-');
   const [maxQuantity, setMaxQuantity] = useState(15);
+  // boolean for if a add to cart was attempted without a sku
+  const [skuNeeded, setSkuNeeded] = useState(false);
 
-  const handleSizeSelect = (e) => {
+  const quantitySelector = useRef(null); // I dont think I need this
+
+  const handleSkuSelect = (e) => {
     let maxQ;
     setSelectedSku(e.target.value);
-    setSizeSelected(true);
+    setSkuSelected(true);
+    setSkuNeeded(false);
     if (selectedStyle.skus[e.target.value].quantity < 15) {
       maxQ = selectedStyle.skus[e.target.value].quantity;
     } else {
@@ -32,6 +38,26 @@ const SKUSelector = () => {
 
   const handleQuantitySelect = (e) => {
     setWantedQuantity(e.target.value);
+  };
+
+  const handleProductSubmit = (e) => {
+    e.preventDefault();
+    if (!skuSelected) {
+      e.target.skuSelect.focus();
+      setSkuNeeded(true);
+      // quantitySelector.current.focus();
+    } else {
+      setCart((currentCart) => (
+        currentCart.concat({
+          sku: e.target.skuSelect.value,
+          quantityWanted: e.target.quantitySelect.value,
+        })
+      ));
+    }
+
+    setSelectedSku('sizeSelect');
+    setSkuSelected(false);
+    setWantedQuantity('-');
   };
 
   const selectedStyleInStock = () => {
@@ -61,7 +87,7 @@ const SKUSelector = () => {
       setInStock(false);
       setSelectedSku('outOfStock');
     }
-    setSizeSelected(false);
+    setSkuSelected(false);
     setWantedQuantity('-');
   }, [selectedStyle]);
 
@@ -69,13 +95,16 @@ const SKUSelector = () => {
     <div>
       <h5>{name}</h5>
       {/* Size Select */}
-      <form>
-
+      <form onSubmit={handleProductSubmit}>
+        {
+          skuNeeded ? <div>Please select a size</div> : null
+        }
         <select
           value={selectedSku}
-          id="sizes"
-          onChange={(e) => (handleSizeSelect(e, selectedSku))}
+          id="skuSelect"
+          onChange={(e) => (handleSkuSelect(e, selectedSku))}
           disabled={!inStock}
+          ref={quantitySelector}
         >
           {
             inStock ? (
@@ -97,12 +126,12 @@ const SKUSelector = () => {
         {/* Quantity select */}
         <select
           value={wantedQuantity}
-          id="quantity"
-          disabled={!sizeSelected}
+          id="quantitySelect"
+          disabled={!skuSelected}
           onChange={handleQuantitySelect}
         >
           {
-            sizeSelected ? (
+            skuSelected ? (
               range(1, maxQuantity + 1).map((possibleQuantity) => (
                 <option value={possibleQuantity} key={possibleQuantity}>{possibleQuantity}</option>
               ))
@@ -111,7 +140,7 @@ const SKUSelector = () => {
             )
           }
         </select>
-        {wantedQuantity !== '-' ? (
+        {inStock ? (
           <button type="submit">Add to Bag</button>
         ) : (
           null

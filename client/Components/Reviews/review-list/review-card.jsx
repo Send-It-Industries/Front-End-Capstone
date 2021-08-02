@@ -27,7 +27,7 @@ const ReviewCard = ({ review }) => {
         justifyContent: 'space-between',
       }}
       >
-        <span><Stars /></span>
+        <span><Stars starDimension="25px" /></span>
         <span>{newDate}</span>
       </div>
       <h4>{review.summary}</h4>

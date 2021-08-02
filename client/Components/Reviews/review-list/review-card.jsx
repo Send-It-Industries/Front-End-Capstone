@@ -14,6 +14,8 @@ const ReviewCard = ({ review }) => {
   })();
   // console.log(review);
 
+  const starRating = review.rating || 0;
+
   return (
     <div style={{
       borderBottom: '1px solid',
@@ -27,7 +29,12 @@ const ReviewCard = ({ review }) => {
         justifyContent: 'space-between',
       }}
       >
-        <span><Stars starDimension="25px" /></span>
+        <span>
+          <Stars
+            starDimension="25px"
+            starRating={starRating}
+          />
+        </span>
         <span>{newDate}</span>
       </div>
       <h4>{review.summary}</h4>

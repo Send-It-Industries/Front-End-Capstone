@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Characteristic from './characteristic';
+import AppContext from '../../Contexts/AppContext';
 
-const CharacteristicBreakdown = function () {
+const CharacteristicBreakdown = () => {
+  const { reviewMeta } = useContext(AppContext);
+  const { characteristics } = reviewMeta;
+  const characteristicsArr = characteristics ? Object.entries(characteristics) : [];
   return (
-    <div>
-      Characteristic Breakdown!
-    </div>
+    <>
+      {characteristicsArr.map(
+        (characteristic) => (
+          <Characteristic
+            characteristic={characteristic}
+            key={characteristic[1].id}
+          />
+        ),
+      )}
+    </>
   );
 };
 

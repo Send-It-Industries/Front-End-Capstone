@@ -4,7 +4,8 @@ import Recommended from './recommended-breakdown';
 import StarBreakdown from './star-breakdown';
 import CharacteristicBreakdown from './characteristics-breakdown';
 
-const Breakdown = function () {
+const Breakdown = () => {
+  console.log(' ');
   return (
     <div
       style={{

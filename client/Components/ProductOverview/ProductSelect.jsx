@@ -8,14 +8,14 @@ import AppContext from '../Contexts/AppContext';
 
 const ProductSelect = () => {
   const name = 'Product Select';
-  const { productInfo } = useContext(AppContext);
+  const { productInfo, selectedStyle } = useContext(AppContext);
   return (
     <div>
       <h4>{name}</h4>
       <Stars />
       <div>{productInfo.category}</div>
       <div>{productInfo.name}</div>
-      <Price />
+      <Price actualPrice={selectedStyle.original_price} salePrice={selectedStyle.sale_price} />
       <StyleSelector />
       <SKUSelector />
     </div>

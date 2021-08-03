@@ -11,7 +11,7 @@ import axios from 'axios';
 // yes
 // action
 
-const Helpful = ({ value }) => {
+const Helpful = ({ value, component, componentId }) => {
   const handleUpdate = (component, componentId) => {
     if (component === 'qa') {
       axios.put(`/api/qa/questions/${componentId}/helpful`).then(() => {
@@ -22,13 +22,15 @@ const Helpful = ({ value }) => {
         console.log('updated');
       });
     }
+    // console.log(component)
   };
   return (
     <div>
       Helpful?
       {' '}
       <span
-        onClick={handleUpdate}
+        onClick={() => { handleUpdate(component, componentId); }}
+        // onClick={() => { console.log(component, componentId) }}
         style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       >
         Yes

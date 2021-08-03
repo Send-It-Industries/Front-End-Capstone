@@ -39,7 +39,7 @@ const Questions = ({ Q }) => {
           {Q.question_body}
         </span>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <Helpful value={Q.question_helpfulness} />
+          <Helpful value={Q.question_helpfulness} component={'qa'} componentId={Q.question_id} />
           |
           <AddAnswer question_id={Q.question_id} />
         </div>

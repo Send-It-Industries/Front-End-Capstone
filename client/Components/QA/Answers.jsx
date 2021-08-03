@@ -27,6 +27,8 @@ const Answers = ({ answer }) => {
     return result;
   })();
 
+  console.log(answer)
+
   return (
     <div>
       <span style={{ fontWeight: 'bold' }}>A: </span>
@@ -43,7 +45,7 @@ const Answers = ({ answer }) => {
         |
         <Helpful value={answer.helpfulness} />
         |
-        <Report />
+        <Report component={'qa'} componentId={answer.id} />
       </div>
     </div>
   );

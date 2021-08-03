@@ -4,7 +4,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const Report = ({ value }) => {
+const Report = ({ value, component, componentId }) => {
   const handleReport = (component, componentId) => {
     if (component === 'qa') {
       axios.put(`/api/qa/questions/${componentId}/report`).then(() => {
@@ -19,7 +19,7 @@ const Report = ({ value }) => {
   return (
     <div>
       <span
-        onClick={handleReport}
+        onClick={() => { handleReport(component, componentId); }}
         style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       >
         Report

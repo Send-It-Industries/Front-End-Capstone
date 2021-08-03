@@ -2,29 +2,60 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../Helpers/Modal';
 
-const AddQuestion = ({ PId }) => {
+const AddQuestion = (props) => {
   const [isOpen, setOpen] = useState(false);
+  const [errors, setErrors] = useState(' ');
   const [question, setQuestion] = useState({
-    product_id: '',
+    product_id: props.PId,
     name: '',
     email: '',
     body: '',
   });
-
-  useEffect(() => {
-    setQuestion({ ...question, product_id: { PId } });
-  }, []);
-
-  // console.log(PId);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setQuestion({ ...question, [name]: value });
   };
 
+  const validateEmail = (email) => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(question.product_id);
+    if (validateForm()) {
+      setQuestion({
+        ...question,
+        name: question.name,
+        email: question.email,
+        body: question.body,
+      });
+      console.log(question);
+      setQuestion({
+        ...question,
+        name: '',
+        email: '',
+        body: '',
+      });
+      setErrors(' ');
+    }
+  };
+
+  const validateForm = () => {
+    // returns boolean
+    let errors = '';
+    if (!question.name) {
+      errors += 'Nickname required \n';
+    }
+    if (!question.email || validateEmail(question.email) === false) {
+      errors += 'Valid email required \n';
+    }
+    if (!question.body) {
+      errors += 'Answer required \n';
+    }
+    // console.log(errors);
+    setErrors(errors);
+    return !errors;
   };
 
   return (
@@ -33,23 +64,37 @@ const AddQuestion = ({ PId }) => {
         Add question
       </button>
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
-        <h2>Add Question</h2>
-        <label>Name:</label>
+        {/* Header     */}
+        <h2>Ask Your Question</h2>
+        <div>“About the [Product Name Here]” SUBTITLE</div>
+        <br />
+        {/* Name     */}
+        <label>What is your nickname:</label>
         <input
           name="name"
           type="text"
           style={{ width: '35%' }}
           onChange={handleInputChange}
           value={question.name}
+          maxLength={60}
+          placeholder="Example: jackson11!"
         />
-        <label>Email:</label>
+        <div>For privacy reasons, do not use your full name or email address</div>
+        <br />
+        {/* Email     */}
+        <label>Your Email:</label>
         <input
           name="email"
           type="text"
           style={{ width: '35%' }}
           onChange={handleInputChange}
           value={question.email}
+          maxLength={60}
+          placeholder="Why did you like the product or not?"
         />
+        <div>For authentication reasons, you will not be emailed</div>
+        <br />
+        {/* Answer     */}
         <label>Question:</label>
         <input
           name="body"
@@ -61,6 +106,12 @@ const AddQuestion = ({ PId }) => {
         <button onClick={handleSubmit} type="button" style={{ width: '35%' }}>
           Submit
         </button>
+
+        <div style={{ visibility: errors === ' ' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
+          Please enter the following:
+          <br />
+          { errors }
+        </div>
       </Modal>
     </div>
   );

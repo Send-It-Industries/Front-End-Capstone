@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable linebreak-style */
 import React, { useEffect, useState } from 'react';
 import AddAnswer from './AddAnswer';
 import Answers from './Answers';

@@ -3,11 +3,13 @@ import React, { useContext } from 'react';
 import AppContext from '../Contexts/AppContext';
 
 const ProductFeatures = () => {
-  const name = 'Product Features';
   const { productInfo } = useContext(AppContext);
+  const productFeaturesStyle = {
+    gridColumn: '1 / 3',
+    gridRow: '2 / 3',
+  };
   return (
-    <div>
-      <h4>{name}</h4>
+    <div id="ProductFeatures" style={productFeaturesStyle}>
       <div><b>{productInfo.slogan}</b></div>
       <p>{productInfo.description}</p>
       {

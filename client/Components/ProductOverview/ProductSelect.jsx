@@ -7,11 +7,15 @@ import SKUSelector from './SKUSelector';
 import AppContext from '../Contexts/AppContext';
 
 const ProductSelect = () => {
-  const name = 'Product Select';
   const { productInfo, selectedStyle } = useContext(AppContext);
+
+  const productSelectStyle = {
+    gridColumn: '2 / 3',
+    gridRow: '1 / 2',
+    overflow: 'auto', /* can remove once finish carousel */
+  };
   return (
-    <div>
-      <h4>{name}</h4>
+    <div id="ProductSelect" style={productSelectStyle}>
       <Stars />
       <div>{productInfo.category}</div>
       <div>{productInfo.name}</div>

@@ -6,7 +6,7 @@ const ReviewSummary = function () {
   return (
     <div
       style={{
-        maxWidth: '85%',
+        maxWidth: '100%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',

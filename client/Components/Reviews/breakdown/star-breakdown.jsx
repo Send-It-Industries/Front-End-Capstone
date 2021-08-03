@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-// import Stars from '../../Helpers/Stars';
+import ProgressBar from 'react-percent-bar';
 import AppContext from '../../Contexts/AppContext';
 
 const StarBreakdown = () => {
@@ -21,13 +21,34 @@ const StarBreakdown = () => {
     return [0, 0, 0, 0, 0];
   })();
 
+  const percentFiveStar = Math.round((starData[4] / count) * 100);
+  const percentFourStar = Math.round((starData[3] / count) * 100);
+  const percentThreeStar = Math.round((starData[2] / count) * 100);
+  const percentTwoStar = Math.round((starData[1] / count) * 100);
+  const percentOneStar = Math.round((starData[0] / count) * 100);
+
   return (
     <div>
-      <div>{`5 stars: ${Math.round((starData[4] / count) * 100)}%`}</div>
-      <div>{`4 stars: ${Math.round((starData[3] / count) * 100)}%`}</div>
-      <div>{`3 stars: ${Math.round((starData[2] / count) * 100)}%`}</div>
-      <div>{`2 stars: ${Math.round((starData[1] / count) * 100)}%`}</div>
-      <div>{`1 stars: ${Math.round((starData[0] / count) * 100)}%`}</div>
+      <div>
+        5 stars:
+        <ProgressBar percent={percentFiveStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+      </div>
+      <div>
+        4 stars:
+        <ProgressBar percent={percentFourStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+      </div>
+      <div>
+        3 stars:
+        <ProgressBar percent={percentThreeStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+      </div>
+      <div>
+        2 stars:
+        <ProgressBar percent={percentTwoStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+      </div>
+      <div>
+        1 stars:
+        <ProgressBar percent={percentOneStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+      </div>
     </div>
   );
 };

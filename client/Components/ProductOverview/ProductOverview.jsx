@@ -4,13 +4,20 @@ import ProductSelect from './ProductSelect';
 import ProductFeatures from './ProductFeatures';
 
 const ProductOverview = () => {
-  const name = 'Product Overview';
+  const productOverviewStyle = {
+    display: 'grid',
+    gridTemplateRows: '55vh 20vh',
+    gridTemplateColumns: '65% 35%',
+    width: '100vmin',
+    maxWidth: '1250px',
+    /* height: '100%', */
+  };
+
   return (
-    <div>
-      <h2>{name}</h2>
+    <div id="productOverview" style={productOverviewStyle}>
       <ImageDisplay />
-      <ProductSelect />
-      <ProductFeatures />
+      <ProductSelect style={{ 'grid-area': 'productSelect' }} />
+      <ProductFeatures style={{ 'grid-area': 'productFeatures' }} />
     </div>
   );
 };

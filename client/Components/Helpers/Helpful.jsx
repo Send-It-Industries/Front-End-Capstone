@@ -1,15 +1,8 @@
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import axios from 'axios';
-
-// takes in review/report/question...?
-
-// handlers
-// yes
-// action
 
 const Helpful = ({ value, component, componentId }) => {
   const [helpfulCount, setHelpfulCount] = useState(value);

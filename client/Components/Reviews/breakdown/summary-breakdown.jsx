@@ -4,21 +4,18 @@ import Recommended from './recommended-breakdown';
 import StarBreakdown from './star-breakdown';
 import CharacteristicBreakdown from './characteristics-breakdown';
 
-const Breakdown = () => {
-  console.log(' ');
-  return (
-    <div
-      style={{
-        maxWidth: '25%',
-      }}
-    >
-      Ratings & Reviews
-      <AverageRating />
-      <Recommended />
-      <StarBreakdown />
-      <CharacteristicBreakdown />
-    </div>
-  );
-};
+const Breakdown = () => (
+  <div
+    style={{
+      maxWidth: '25%',
+    }}
+  >
+    Ratings & Reviews
+    <AverageRating />
+    <Recommended />
+    <StarBreakdown />
+    <CharacteristicBreakdown />
+  </div>
+);
 
 export default Breakdown;

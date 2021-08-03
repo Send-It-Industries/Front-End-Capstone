@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable linebreak-style */
 import React, { useState, useEffect } from 'react';
 import Modal from '../Helpers/Modal';
@@ -29,9 +32,10 @@ const AddAnswer = ({ question_id }) => {
 
   return (
     <div>
-      <div 
-      style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
-      onClick={() => setOpen(true)}>
+      <div
+        style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
+        onClick={() => setOpen(true)}
+      >
         Add Answer
       </div>
       <Modal isOpen={isOpen} close={() => setOpen(false)}>

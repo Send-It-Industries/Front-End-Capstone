@@ -17,7 +17,7 @@ const QA = () => {
   // console.log(count);
 
   return (
-    <div style={{ width: '100vh' }}>
+    <div style={{ width: '80vh' }}>
       <h2>QA Section</h2>
       <SearchBar />
       <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>

@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { reduce } from 'lodash';
 import React, { useState, useEffect, useContext } from 'react';
 import Modal from '../Helpers/Modal';
 import AppContext from '../Contexts/AppContext';
@@ -23,7 +22,9 @@ const AddAnswer = (props) => {
     const { name, value } = e.target;
     setAnswer({ ...answer, [name]: value });
   };
-// console.log(answer.question_id);
+
+  // console.log(answer.question_id);
+
   const handleSubmit = (e) => {
     if (validateForm()) {
       setAnswer({

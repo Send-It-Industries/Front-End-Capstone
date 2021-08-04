@@ -21,21 +21,21 @@ const QA = () => {
   };
 
   const handleOnChange = (e) => {
-    setSeachTerm(e.value);
+    setSeachTerm(e.target.value);
   };
 
   const handleSearch = () => {
-    console.log(searchTerm);
-    // const searchList = QAs.data.filter((Q) => {
-    //   if (!searchTerm) {
-    //     return Q;
-    //   }
-    //   return Q.question_body
-    //     .toLowerCase()
-    //     .inclues(searchTerm.toLocaleLowerCase());
-    // });
+    // console.log(searchTerm);
+    const searchList = QAs.data.filter((Q) => {
+      if (!searchTerm) {
+        return Q;
+      }
+      return Q.question_body
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+    });
 
-    // setQuestionList(searchList);
+    setQuestionList(searchList);
   };
 
   // console.log(questionList);
@@ -53,14 +53,6 @@ const QA = () => {
       <button onClick={handleSearch} type="button">Search</button>
       {/* Q Feed   */}
       <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-        {/* {setQuestionList(QAs.data.filter((Q) => {
-          if (!searchTerm) {
-            return Q;
-          }
-          return Q.body
-            .toLowerCase()
-            .inclues(searchTerm.toLocaleLowerCase());
-        }))} */}
 
         {questionList.slice(0, questionCount).map((Q) => (
           <Questions Q={Q} key={Q.question_id} />

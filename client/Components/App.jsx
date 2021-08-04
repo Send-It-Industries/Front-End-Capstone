@@ -63,7 +63,7 @@ const App = () => {
   };
 
   const createAnswer = (answer, id) => {
-    axios.post(`/api/qa/questions?question_id=${id}/answers`, answer)
+    axios.post(`/api/qa/questions/${id}/answers`, answer)
       .then(() => {
         console.log('do something.... I just posted an ANSWER');
       });

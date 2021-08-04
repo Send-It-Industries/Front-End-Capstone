@@ -1,26 +1,18 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable linebreak-style */
 import React, { useEffect, useState } from 'react';
 import AddAnswer from './AddAnswer';
 import Answers from './Answers';
 import Helpful from '../Helpers/Helpful';
 
 const Questions = ({ Q }) => {
-  const [answers, setAnswers] = useState('');
+  const [answers, setAnswers] = useState(Q.answers);
   const [answerCount, setAnswerCount] = useState(2);
-  const [totalAnswers, setTotalAnswers] = useState(2);
+  const [totalAnswers, setTotalAnswers] = useState(Object.values(answers).length);
 
   const moreAnswers = () => {
     setAnswerCount(answerCount + 2);
   };
-
-  useEffect(() => {
-    setAnswers(Q.answers);
-    setAnswerCount(answerCount);
-    setTotalAnswers(Object.values(answers).length);
-    // console.log(`count:${answerCount}   total:${totalAnswers}`);
-  });
 
   // console.log(Q.answers);
 
@@ -65,7 +57,6 @@ const Questions = ({ Q }) => {
           >
             Load More Answers
           </span>
-          {/* Add Collapse Answers Btn here */}
           <span
             style={{
               visibility: (answerCount >= totalAnswers && answerCount > 2) ? 'visible' : 'hidden',

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable linebreak-style */
 const express = require('express');
 
@@ -14,6 +15,7 @@ app.all('/api*', (req, res) => {
     method,
     params,
     query,
+    body,
   } = req;
 
   let {
@@ -23,19 +25,22 @@ app.all('/api*', (req, res) => {
 
   console.log('url: ', url);
   console.log('query: ', query);
-  console.log('params: ', params);
+  // console.log('params: ', params);
+  // console.log('body: ', body);
 
   axios({
     method,
     url,
     baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/',
+    data: body,
     headers: {
       'User-Agent': 'request',
       Authorization: `${token.TOKEN}`,
+      'Content-Type': 'application/json',
     },
   })
     .then(({ data }) => {
-      console.log('result data', data);
+      // console.log('result data', data);
       res.send(data);
     })
     .catch((err) => {

@@ -7,7 +7,7 @@
     "test": "jest tests",
     "build": "webpack",
     "react-dev": "webpack --watch",
-    "start": "npx nodemon server/server.js",
+    "start": "npx nodemon --delay 1000ms server/server.js",
     "bundle": "npm run react-dev & npm start"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "nodemon": "^2.0.12",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
+    "react-discrete-slider": "^1.0.4",
     "react-dom": "^17.0.2",
     "react-percent-bar": "^0.0.2",
     "react-star-ratings": "^2.3.0",

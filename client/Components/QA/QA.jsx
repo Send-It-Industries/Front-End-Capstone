@@ -55,10 +55,10 @@ const QA = () => {
       />
       <button onClick={handleSearch} type="button">Search</button>
       {/* <div style={{ visibility: !questionList ? 'visible' : 'hidden' }}> */}
-      <AddQuestion PId={productId} />
+      {/* <AddQuestion PId={productId} /> */}
       {/* </div> */}
       {/* Q Feed   */}
-      <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+      <div style={{ maxHeight: '75vh', overflowY: 'auto' }}>
 
         {questionList.slice(0, questionCount).map((Q) => (
           <Questions Q={Q} key={Q.question_id} />

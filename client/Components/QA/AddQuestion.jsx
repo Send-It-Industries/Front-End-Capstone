@@ -5,7 +5,7 @@ import Modal from '../Helpers/Modal';
 import AppContext from '../Contexts/AppContext';
 
 const AddQuestion = (props) => {
-  const { QAs } = useContext(AppContext);
+  const { QAs, productInfo } = useContext(AppContext);
   const [isOpen, setOpen] = useState(false);
   const [errors, setErrors] = useState(' ');
   const [question, setQuestion] = useState({
@@ -72,7 +72,11 @@ const AddQuestion = (props) => {
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
         {/* Header     */}
         <h2>Ask Your Question</h2>
-        <div>“About the [Product Name Here]” SUBTITLE</div>
+        <div>
+          About the
+          <span> </span>
+          {productInfo.name}
+        </div>
         <br />
         {/* Name     */}
         <label>What is your nickname:</label>

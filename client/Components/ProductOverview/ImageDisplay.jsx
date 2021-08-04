@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import ThumbnailDisplay from './ThumbnailDisplay';
+import ImageCarousel from './ImageCarousel';
 
 import AppContext from '../Contexts/AppContext';
 
@@ -20,11 +21,12 @@ const ImageDisplay = () => {
   };
 
   const imageDisplayStyle = {
+    objectFit: 'contain',
     position: 'relative',
     gridColumn: '1 / 2',
     gridRow: '1 / 2',
     boxSizing: 'border-box',
-    height: '100%',
+    // height: '100%',
     overflow: 'hidden',
     /* alignSelf: 'center'; */
     display: 'grid',
@@ -57,7 +59,7 @@ const ImageDisplay = () => {
       <button type="button" onClick={decrementDisplayImageIndex} style={{ ...btnStyle, left: '25%' }}>decrement</button>
       <img src={selectedStyle.photos[displayImageIndex].url} alt="Product Display" style={imageStyle} />
       <button type="button" onClick={incrementDisplayImageIndex} style={{ ...btnStyle, left: '90%' }}>increment</button>
-      <ThumbnailDisplay />
+      <ImageCarousel displayCount={7} />
     </div>
   );
 };

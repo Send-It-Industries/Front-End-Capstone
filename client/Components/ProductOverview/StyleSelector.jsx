@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../Contexts/AppContext';
-import useElementSizeById from './Hooks/useElementSizeById';
+import useElementSizeById from '../Helpers/Hooks/useElementSizeById';
 
 const StyleSelector = () => {
   const {
@@ -9,6 +9,7 @@ const StyleSelector = () => {
     displayImageIndex,
     setSelectedStyle,
   } = useContext(AppContext);
+  const [prodectSelectWidth, productSelectHeight] = useElementSizeById('ProductSelect');
 
   const styleSelectStyle = {
     overflow: 'hidden',
@@ -36,7 +37,7 @@ const StyleSelector = () => {
     borderRadius: '50%',
     boxSizing: 'border-box',
     width: '23%', // based off of 4 images update with margins
-    height: `${0.25 * useElementSizeById('ProductSelect')[0]}%`,
+    height: 0.23 * prodectSelectWidth,
     minWidth: '25px',
     minHeight: '25px',
     maxWidth: '70px',
@@ -70,7 +71,6 @@ const StyleSelector = () => {
       <div>
         STYLE &gt;
         {selectedStyle.name}
-        {useElementSizeById('ProductSelect')[0]}
       </div>
       <div style={stylesImagesStyle}>
         {productInfo.styles.map((style, i) => (

@@ -50,6 +50,7 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
   const [filteredReviews, setFilteredReviews] = useState([]);
+
   // ------------------------------------------------------------------------------------
   // ------------------            HTTP Requests             ----------------------------
   // ------------------------------------------------------------------------------------

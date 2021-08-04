@@ -41,23 +41,35 @@ const App = () => {
     //   selectedStyle,
     // ],
   });
+
   const [cart, setCart] = useState([]);
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
 
-  const [QAs, setQAs] = useState([]);
+  const [QAs, setQAs] = useState({ createQuestion, createAnswer, data: [] });
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
+  const [filteredReviews, setFilteredReviews] = useState([]);
 
   // ------------------------------------------------------------------------------------
   // ------------------            HTTP Requests             ----------------------------
   // ------------------------------------------------------------------------------------
   // ------------------                Create                ----------------------------
-  const createQuestion = (e) => {
-    // e.preventDefault;
+
+  const createQuestion = (question) => {
+    axios.post('/api/qa/questions', question)
+      .then(() => {
+        console.log('do something.... I just posted a QUESTION');
+      });
   };
 
-  const createAnswer = () => { };
+  const createAnswer = (answer, id) => {
+    axios.post(`/api/qa/questions/${id}/answers`, answer)
+      .then(() => {
+        console.log('do something.... I just posted an ANSWER');
+      });
+  };
+
   // ------------------                 Read                 ----------------------------
   const fetchProduct = (id) => (
     Promise.all([axios.get(`/api/products/${id}`), axios.get(`/api/products/${id}/styles`)])
@@ -74,12 +86,13 @@ const App = () => {
   // const fetchProductStyles = (id) => axios.get(`/api/products/${id}/styles`);
   const fetchQA = (id) => (
     axios.get(`/api/qa/questions?count=1000&product_id=${id}`)
-      .then(({ data }) => setQAs(data.results))
+      .then(({ data }) => setQAs({ ...QAs, data: data.results, createQuestion, createAnswer }))
   );
 
   const fetchReviews = (id, sort = 'relevant') => (
     axios.get(`/api/reviews?count=1000&product_id=${id}&sort=${sort}`)
       .then(({ data }) => setReviews(data.results))
+      // .then(setFilteredReviews(reviews))
   );
 
   const fetchMetaReview = (id) => (
@@ -118,6 +131,8 @@ const App = () => {
     QAs,
     fetchQA,
     reviews,
+    filteredReviews,
+    setFilteredReviews,
     reviewMeta,
     fetchReviews,
     avgReview,

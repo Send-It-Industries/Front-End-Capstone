@@ -1,42 +1,39 @@
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable linebreak-style */
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-// takes in review/report/question...?
-
-// handlers
-// yes
-// action
-
 const Helpful = ({ value, component, componentId }) => {
+  const [helpfulCount, setHelpfulCount] = useState(value);
+  const [clicked, setClicked] = useState(false);
+
   const handleUpdate = (component, componentId) => {
     if (component === 'qa') {
       axios.put(`/api/qa/questions/${componentId}/helpful`).then(() => {
-        console.log('updated');
+      });
+    } else if (component === 'answers') {
+      axios.put(`/api/qa/answers/${componentId}/helpful`).then(() => {
       });
     } else if (component === 'reviews') {
       axios.put(`/api/reviews/${componentId}/helpful`).then(() => {
-        console.log('updated');
       });
     }
-    // console.log(component)
+    setHelpfulCount(helpfulCount + 1);
+    setClicked(true);
   };
   return (
     <div>
       Helpful?
       {' '}
       <span
-        onClick={() => { handleUpdate(component, componentId); }}
-        // onClick={() => { console.log(component, componentId) }}
+        onClick={!clicked ? () => { handleUpdate(component, componentId); } : null}
         style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       >
         Yes
       </span>
       (
-      {value}
+      {helpfulCount}
       )
     </div>
   );

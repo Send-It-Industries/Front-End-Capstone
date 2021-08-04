@@ -49,7 +49,7 @@ const App = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
-
+  const [filteredReviews, setFilteredReviews] = useState([]);
   // ------------------------------------------------------------------------------------
   // ------------------            HTTP Requests             ----------------------------
   // ------------------------------------------------------------------------------------
@@ -131,6 +131,7 @@ const App = () => {
     reviews,
     reviewMeta,
     fetchReviews,
+    setFilteredReviews,
     avgReview,
     updateHelpful,
     updateReport,

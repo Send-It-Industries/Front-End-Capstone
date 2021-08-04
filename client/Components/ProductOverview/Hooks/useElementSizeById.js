@@ -5,10 +5,10 @@ const useElementSizeById = (elementId) => {
   const [size, setSize] = useState([null, null]);
   const target = document.getElementById(elementId);
   useLayoutEffect(() => {
-    const updateSize = () => (setSize([target.clientWidth, target.clientHeight]));
+    const updateSize = () => (setSize([document.getElementById(elementId).clientWidth, document.getElementById(elementId).clientHeight]));
     window.addEventListener('resize', updateSize);
     updateSize();
-    return window.removeEventListener('resize', updateSize);
+    return () => (window.removeEventListener('resize', updateSize));
   }, []);
   return size;
 };

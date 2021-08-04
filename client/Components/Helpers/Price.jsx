@@ -17,8 +17,11 @@ const Price = ({ actualPrice, salePrice }) => (
 );
 
 Price.propTypes = {
-  actualPrice: PropTypes.number.isRequired,
-  salePrice: PropTypes.number.isRequired,
+  actualPrice: PropTypes.string.isRequired,
+  salePrice: PropTypes.string,
+};
+Price.defaultProps = {
+  salePrice: null,
 };
 
 export default Price;

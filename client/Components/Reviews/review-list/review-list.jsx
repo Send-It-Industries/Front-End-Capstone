@@ -8,7 +8,7 @@ import AppContext from '../../Contexts/AppContext';
 const ReviewList = () => {
   const [reviewCount, setReviewCount] = useState(2);
   const { reviews, filteredReviews } = useContext(AppContext);
-  console.log(filteredReviews);
+  // console.log(filteredReviews);
 
   const displayReviews = filteredReviews || reviews;
 

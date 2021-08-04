@@ -25,7 +25,7 @@ const StarBreakdown = () => {
   })();
 
   const starClickHandler = () => {
-    console.log(reviews);
+    // console.log(reviews);
   };
 
   const percentFiveStar = Math.round((starData[4] / count) * 100);

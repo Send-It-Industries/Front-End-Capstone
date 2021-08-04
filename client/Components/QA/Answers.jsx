@@ -27,7 +27,7 @@ const Answers = ({ answer }) => {
     return result;
   })();
 
-  console.log(answer)
+  // console.log(answer)
 
   return (
     <div>
@@ -43,7 +43,7 @@ const Answers = ({ answer }) => {
         {newDate}
         {' '}
         |
-        <Helpful value={answer.helpfulness} />
+        <Helpful value={answer.helpfulness} component={'answers'} componentId={answer.id} />
         |
         <Report component={'qa'} componentId={answer.id} />
       </div>

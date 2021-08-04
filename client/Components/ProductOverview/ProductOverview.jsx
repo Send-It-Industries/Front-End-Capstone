@@ -6,9 +6,9 @@ import ProductFeatures from './ProductFeatures';
 const ProductOverview = () => {
   const productOverviewStyle = {
     display: 'grid',
-    gridTemplateRows: '55vh 20vh',
+    gridTemplateRows: 'minmax(550px, 55vh) minmax(200px, 20vh)',
     gridTemplateColumns: '65% 35%',
-    width: '100vmin',
+    width: '90vw',
     maxWidth: '1250px',
     /* height: '100%', */
   };
@@ -16,8 +16,8 @@ const ProductOverview = () => {
   return (
     <div id="productOverview" style={productOverviewStyle}>
       <ImageDisplay />
-      <ProductSelect style={{ 'grid-area': 'productSelect' }} />
-      <ProductFeatures style={{ 'grid-area': 'productFeatures' }} />
+      <ProductSelect />
+      <ProductFeatures />
     </div>
   );
 };

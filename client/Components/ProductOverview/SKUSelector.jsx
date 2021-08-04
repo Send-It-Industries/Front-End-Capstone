@@ -9,7 +9,6 @@ import { range } from 'underscore';
 import AppContext from '../Contexts/AppContext';
 
 const SKUSelector = () => {
-  const name = 'Sku Selector';
   const { selectedStyle, setCart } = useContext(AppContext);
 
   const [inStock, setInStock] = useState(true);
@@ -97,8 +96,7 @@ const SKUSelector = () => {
   }, [selectedStyle]);
 
   return (
-    <div>
-      <h5>{name}</h5>
+    <div id="skuSelector">
       {/* Size Select */}
       <form onSubmit={handleProductSubmit}>
         {

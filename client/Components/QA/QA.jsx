@@ -10,11 +10,17 @@ const QA = () => {
   const { QAs, productId } = useContext(AppContext);
   const [questionCount, setQuestionCount] = useState(4);
   const [searchTerm, setSeachTerm] = useState('');
-  const [questionList, setQuestionList] = useState([]);
+  const [searchList, setSearchList] = useState('');
+  const [questionList, setQuestionList] = useState(QAs.data);
 
   useEffect(() => {
     setQuestionList(QAs.data);
+    const newData = searchList === '' ? QAs.data : searchList;
+    setQuestionList(newData);
+    // console.log(newData);
   });
+
+  // console.log(questionList);
 
   const moreQuestions = () => {
     setQuestionCount(questionCount + 2);
@@ -25,32 +31,32 @@ const QA = () => {
   };
 
   const handleSearch = () => {
-    // console.log(searchTerm);
-    const searchList = QAs.data.filter((Q) => {
-      if (!searchTerm) {
-        return Q;
-      }
-      return Q.question_body
+    console.log(searchTerm);
+    // console.log(QAs.data);
+    const searchRender = QAs.data.filter((Q) => (
+      !searchTerm ? Q : Q.question_body
         .toLowerCase()
-        .includes(searchTerm.toLowerCase());
-    });
-
-    setQuestionList(searchList);
+        .includes(searchTerm.toLowerCase())));
+    setSearchList(searchRender);
   };
 
   // console.log(questionList);
 
   return (
-    <div style={{ width: '80vh' }}>
+    <div style={{ width: '90vh' }}>
       <h2>QA Section</h2>
       {/* <SearchBar /> */}
       <input
-        placeholder="search"
+        style={{ width: '90vh' }}
+        placeholder="Have a question? Search for answers…"
         name="search"
         value={searchTerm}
         onChange={handleOnChange}
       />
       <button onClick={handleSearch} type="button">Search</button>
+      {/* <div style={{ visibility: !questionList ? 'visible' : 'hidden' }}> */}
+      <AddQuestion PId={productId} />
+      {/* </div> */}
       {/* Q Feed   */}
       <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
 
@@ -63,7 +69,9 @@ const QA = () => {
       <button type="button" onClick={moreQuestions}>
         More Answered Questions
       </button>
+      {/* <div style={{ visibility: !questionList ? 'hidden' : 'visible' }}> */}
       <AddQuestion PId={productId} />
+      {/* </div> */}
     </div>
   );
 };

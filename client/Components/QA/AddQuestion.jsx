@@ -108,6 +108,7 @@ const AddQuestion = (props) => {
           style={{ width: '35%', height: '300px' }}
           onChange={handleInputChange}
           value={question.body}
+          maxLength={1000}
         />
         <button onClick={handleSubmit} type="button" style={{ width: '35%' }}>
           Submit

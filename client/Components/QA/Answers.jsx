@@ -35,9 +35,8 @@ const Answers = ({ answer }) => {
       {answer.body}
       <br />
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        by
-        {' '}
-        {answer.answerer_name}
+        by 
+        <span style={{ fontWeight: answer.answerer_name.toLowerCase() === 'seller' ? 'bold' : null }}>{answer.answerer_name}</span>
         ,
         {' '}
         {newDate}

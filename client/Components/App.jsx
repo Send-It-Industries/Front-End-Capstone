@@ -13,7 +13,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18092');
+  const [productId, setProductId] = useState('18082');
   const [selectedStyle, setSelectedStyle] = useState({
     style_id: '',
     name: '',
@@ -49,7 +49,6 @@ const App = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
-  const [filteredReviews, setFilteredReviews] = useState([]);
 
   // ------------------------------------------------------------------------------------
   // ------------------            HTTP Requests             ----------------------------
@@ -92,7 +91,6 @@ const App = () => {
   const fetchReviews = (id, sort = 'relevant') => (
     axios.get(`/api/reviews?count=1000&product_id=${id}&sort=${sort}`)
       .then(({ data }) => setReviews(data.results))
-      // .then(setFilteredReviews(reviews))
   );
 
   const fetchMetaReview = (id) => (
@@ -131,8 +129,6 @@ const App = () => {
     QAs,
     fetchQA,
     reviews,
-    filteredReviews,
-    setFilteredReviews,
     reviewMeta,
     fetchReviews,
     avgReview,

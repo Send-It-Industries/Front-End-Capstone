@@ -14,7 +14,7 @@ const Questions = ({ Q }) => {
     setAnswerCount(answerCount + 2);
   };
 
-  // console.log(Q.answers);
+  // console.log(Object.entries(Q.answers)[1][1]);
 
   return (
     <div>
@@ -31,7 +31,7 @@ const Questions = ({ Q }) => {
           {Q.question_body}
         </span>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <Helpful value={Q.question_helpfulness} component={'qa'} componentId={Q.question_id} />
+          <Helpful value={Q.question_helpfulness} component="qa" componentId={Q.question_id} />
           |
           <AddAnswer question_id={Q.question_id} />
         </div>
@@ -42,6 +42,13 @@ const Questions = ({ Q }) => {
         }}
       >
         {Object.entries(Q.answers)
+          .sort((a, b) => b[1].helpfulness - a[1].helpfulness)
+          .reduce((acc, element) => {
+            if (element[1].answerer_name.toLowerCase() === 'seller') {
+              return [element, ...acc];
+            }
+            return [...acc, element];
+          }, [])
           .slice(0, answerCount)
           .map((answer) => (
             <Answers answer={answer[1]} key={answer[0]} />

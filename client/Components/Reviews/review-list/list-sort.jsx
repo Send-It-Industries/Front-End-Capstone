@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import AppContext from '../../Contexts/AppContext';
 
 const Sort = () => {
-  const [currentSort, setCurrentSort] = useState('relevance');
+  const [currentSort, setCurrentSort] = useState('relevant');
   const { productId, reviews, fetchReviews } = useContext(AppContext);
   const reviewCount = reviews.length;
   const selectHandler = (e) => {
@@ -11,7 +11,7 @@ const Sort = () => {
     fetchReviews(productId, e.target.value);
   };
   useEffect(() => {
-    console.log('sorted', currentSort, productId, reviews);
+    // console.log('sorted', currentSort, productId, reviews);
   }, [reviews]);
 
   return (
@@ -23,7 +23,7 @@ const Sort = () => {
     >
       {`${reviewCount} reviews, sorted by: `}
       <select name="sortType" defaultValue={currentSort} onChange={selectHandler}>
-        <option value="relevance"> relevance</option>
+        <option value="relevant"> relevant</option>
         <option value="newest"> newest </option>
         <option value="helpful"> helpful</option>
       </select>

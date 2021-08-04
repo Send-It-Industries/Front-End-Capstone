@@ -13,33 +13,33 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18092');
+  const [productId, setProductId] = useState('18083');
   const [selectedStyle, setSelectedStyle] = useState({
-    style_id: '',
-    name: '',
-    original_price: '',
-    sale_price: '',
-    'default?': false,
-    photos: [{
-      url: '',
-      thumbnail_url: '',
-    }],
-    skus: {
-      null: {
-        quantity: null,
-        size: '',
-      },
-    },
+    // style_id: '',
+    // name: '',
+    // original_price: '',
+    // sale_price: '',
+    // 'default?': false,
+    // photos: [{
+    //   url: '',
+    //   thumbnail_url: '',
+    // }],
+    // skus: {
+    //   null: {
+    //     quantity: null,
+    //     size: '',
+    //   },
+    // },
   });
   const [productInfo, setProductInfo] = useState({
-    name: '',
-    slogan: '',
-    description: '',
-    category: '',
-    features: [],
-    styles: [
-      selectedStyle,
-    ],
+    // name: '',
+    // slogan: '',
+    // description: '',
+    // category: '',
+    // features: [],
+    // styles: [
+    //   selectedStyle,
+    // ],
   });
   const [cart, setCart] = useState([]);
   const [displayImageIndex, setDisplayImageIndex] = useState(0);

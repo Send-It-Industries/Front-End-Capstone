@@ -13,7 +13,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18082');
+  const [productId, setProductId] = useState('18092');
   const [selectedStyle, setSelectedStyle] = useState({
     style_id: '',
     name: '',
@@ -91,6 +91,7 @@ const App = () => {
   const fetchReviews = (id, sort = 'relevant') => (
     axios.get(`/api/reviews?count=1000&product_id=${id}&sort=${sort}`)
       .then(({ data }) => setReviews(data.results))
+      // .then(setFilteredReviews(reviews))
   );
 
   const fetchMetaReview = (id) => (

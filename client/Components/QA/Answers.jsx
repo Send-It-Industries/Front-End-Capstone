@@ -27,7 +27,7 @@ const Answers = ({ answer }) => {
     return result;
   })();
 
-  console.log(answer)
+  // console.log(answer)
 
   return (
     <div>

@@ -29,7 +29,11 @@ const StarBreakdown = () => {
 
   return (
     <div>
-      <div>
+      <div
+        style={{
+          width: '20%',
+        }}
+      >
         5 stars:
         <ProgressBar percent={percentFiveStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
       </div>

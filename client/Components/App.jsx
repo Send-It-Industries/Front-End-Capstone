@@ -80,6 +80,7 @@ const App = () => {
   const fetchReviews = (id, sort = 'relevant') => (
     axios.get(`/api/reviews?count=1000&product_id=${id}&sort=${sort}`)
       .then(({ data }) => setReviews(data.results))
+      .then(console.log(sort, reviews))
   );
 
   const fetchMetaReview = (id) => (

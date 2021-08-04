@@ -5,6 +5,7 @@ import AppContext from '../../Contexts/AppContext';
 const CharacteristicBreakdown = () => {
   const { reviewMeta } = useContext(AppContext);
   const { characteristics } = reviewMeta;
+  // console.log(characteristics);
   const characteristicsArr = characteristics ? Object.entries(characteristics) : [];
   return (
     <>

@@ -8,6 +8,7 @@ import AppContext from '../../Contexts/AppContext';
 const ReviewList = () => {
   const [reviewCount, setReviewCount] = useState(2);
   const { reviews } = useContext(AppContext);
+  // console.log(reviewCount);
 
   return (
     <div
@@ -15,6 +16,8 @@ const ReviewList = () => {
         width: '50%',
         padding: '5px',
         margin: '5px',
+        maxHeight: '550px',
+        overflowY: 'auto',
       }}
     >
       <Sort />
@@ -23,12 +26,14 @@ const ReviewList = () => {
           <ReviewCard
             review={review}
             key={review.review_id}
-            reviewCount={reviewCount}
-            setReviewCount={setReviewCount}
+
           />
         ),
       )}
-      <MoreReviews />
+      <MoreReviews
+        reviewCount={reviewCount}
+        setReviewCount={setReviewCount}
+      />
       <AddReview />
     </div>
   );

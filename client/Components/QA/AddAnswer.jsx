@@ -3,24 +3,27 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { reduce } from 'lodash';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Modal from '../Helpers/Modal';
+import AppContext from '../Contexts/AppContext';
 
 const AddAnswer = (props) => {
+  const { QAs } = useContext(AppContext);
   const [isOpen, setOpen] = useState(false);
+  const [id, setID] = useState(Number(props.question_id));
   const [errors, setErrors] = useState(' ');
   const [answer, setAnswer] = useState({
-    question_id: props.question_id,
     name: '',
     email: '',
     body: '',
+    photos: [],
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setAnswer({ ...answer, [name]: value });
   };
-
+// console.log(answer.question_id);
   const handleSubmit = (e) => {
     if (validateForm()) {
       setAnswer({
@@ -29,7 +32,7 @@ const AddAnswer = (props) => {
         email: answer.email,
         body: answer.body,
       });
-      console.log(answer);
+      QAs.createAnswer(answer, id);
       setAnswer({
         ...answer,
         name: '',

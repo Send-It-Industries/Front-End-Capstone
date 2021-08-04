@@ -13,7 +13,7 @@ const QA = () => {
   const [questionList, setQuestionList] = useState([]);
 
   useEffect(() => {
-    setQuestionList(QAs);
+    setQuestionList(QAs.data);
   });
 
   const moreQuestions = () => {
@@ -26,7 +26,7 @@ const QA = () => {
 
   const handleSearch = () => {
     console.log(searchTerm);
-    // const searchList = QAs.filter((Q) => {
+    // const searchList = QAs.data.filter((Q) => {
     //   if (!searchTerm) {
     //     return Q;
     //   }
@@ -38,7 +38,7 @@ const QA = () => {
     // setQuestionList(searchList);
   };
 
-  console.log(questionList);
+  // console.log(questionList);
 
   return (
     <div style={{ width: '80vh' }}>
@@ -53,7 +53,7 @@ const QA = () => {
       <button onClick={handleSearch} type="button">Search</button>
       {/* Q Feed   */}
       <div style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-        {/* {setQuestionList(QAs.filter((Q) => {
+        {/* {setQuestionList(QAs.data.filter((Q) => {
           if (!searchTerm) {
             return Q;
           }

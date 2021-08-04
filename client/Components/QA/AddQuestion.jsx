@@ -1,12 +1,15 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Modal from '../Helpers/Modal';
+import AppContext from '../Contexts/AppContext';
 
 const AddQuestion = (props) => {
+  const { QAs } = useContext(AppContext);
   const [isOpen, setOpen] = useState(false);
   const [errors, setErrors] = useState(' ');
   const [question, setQuestion] = useState({
-    product_id: props.PId,
+    product_id: Number(props.PId),
     name: '',
     email: '',
     body: '',
@@ -16,6 +19,8 @@ const AddQuestion = (props) => {
     const { name, value } = e.target;
     setQuestion({ ...question, [name]: value });
   };
+
+  // console.log(question);
 
   const validateEmail = (email) => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -31,6 +36,7 @@ const AddQuestion = (props) => {
         body: question.body,
       });
       console.log(question);
+      QAs.createQuestion(question);
       setQuestion({
         ...question,
         name: '',

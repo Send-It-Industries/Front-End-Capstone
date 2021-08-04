@@ -38,8 +38,7 @@ const Questions = ({ Q }) => {
       </div>
       <div
         style={{
-          border: '1px solid black',
-        }}
+          border: '1px solid black', maxHeight: '200px', overflowY: 'auto' }}
       >
         {Object.entries(Q.answers)
           .sort((a, b) => b[1].helpfulness - a[1].helpfulness)

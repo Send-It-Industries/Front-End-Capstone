@@ -24,7 +24,7 @@ const Sort = () => {
       {`${reviewCount} reviews, sorted by: `}
       <select name="sortType" defaultValue={currentSort} onChange={selectHandler}>
         <option value="relevant"> relevant</option>
-        <option value="newest"> newest </option>
+        <option value="recent"> newest </option>
         <option value="helpful"> helpful</option>
       </select>
     </div>

@@ -7,8 +7,10 @@ import AppContext from '../../Contexts/AppContext';
 
 const ReviewList = () => {
   const [reviewCount, setReviewCount] = useState(2);
-  const { reviews } = useContext(AppContext);
-  // console.log(reviewCount);
+  const { reviews, filteredReviews } = useContext(AppContext);
+  console.log(filteredReviews);
+
+  const displayReviews = filteredReviews || reviews;
 
   return (
     <div
@@ -21,7 +23,7 @@ const ReviewList = () => {
       }}
     >
       <Sort />
-      {reviews.slice(0, reviewCount).map(
+      {displayReviews.slice(0, reviewCount).map(
         (review) => (
           <ReviewCard
             review={review}

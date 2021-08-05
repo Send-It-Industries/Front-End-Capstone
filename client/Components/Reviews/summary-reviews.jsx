@@ -2,8 +2,8 @@ import React from 'react';
 import ReviewList from './review-list/review-list';
 import Breakdown from './breakdown/summary-breakdown';
 
-const ReviewSummary = function () {
-  return (
+const ReviewSummary = () => (
+  (
     <div
       style={{
         width: '90vw',
@@ -17,7 +17,7 @@ const ReviewSummary = function () {
       <Breakdown />
       <ReviewList />
     </div>
-  );
-};
+  )
+);
 
 export default ReviewSummary;

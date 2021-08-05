@@ -48,7 +48,7 @@ const ReviewCard = ({ review }) => {
       </p>
       {review.recommend ? <div> I recommend this product </div> : null }
       <div>{review.response}</div>
-      <HelpfulButtons helpfulness={review.helpfulness} />
+      <HelpfulButtons helpfulness={review.helpfulness} reviewId={review.review_id} />
     </div>
   );
 };

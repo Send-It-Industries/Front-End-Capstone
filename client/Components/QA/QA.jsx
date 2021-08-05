@@ -11,28 +11,27 @@ const QA = () => {
   const [searchTerm, setSeachTerm] = useState('');
   const [searchList, setSearchList] = useState([]);
   const [questionList, setQuestionList] = useState([]);
-  // default questionList to live filter
 
   useEffect(() => {
     setQuestionList(QAs.data);
   }, []);
 
   useEffect(() => {
-    const newData = searchList === [] ? QAs.data : searchList;
+    const newData = searchTerm.length >= 3 ? searchList : QAs.data;
     setQuestionList(newData);
-    // console.log(newData);
-    // console.log(questionList)
-  }, [searchList, questionList]);
+  }, [searchList, questionList, searchTerm]);
 
   useEffect(() => {
-    // debugger;
-    if (QAs.data) {
-      const searchRender = QAs.data.filter((Q) => (
-        !searchTerm ? Q : Q.question_body
+    if (QAs.data.length && searchTerm.length >= 3) {
+      const searchRender = QAs.data.filter((question) => {
+        const doesQuestionMatch = question.question_body
           .toLowerCase()
-          .includes(searchTerm.toLowerCase())));
+          .includes(searchTerm.toLowerCase());
+        const doesAnswersMatch = Object.values(question.answers)
+          .some(answer => answer.body.toLowerCase().includes(searchTerm.toLowerCase()));
+        return doesQuestionMatch || doesAnswersMatch;
+      });
       setSearchList(searchRender);
-      // console.log(searchRender);
     }
   }, [searchTerm]);
 
@@ -44,10 +43,8 @@ const QA = () => {
     setSeachTerm(e.target.value);
   };
 
-  // console.log(questionList);
-
   return (
-    Object.keys(QAs).length && Object.keys(productId).length ? (
+    QAs && productId ? (
       <div style={{ width: '90vh' }}>
         <h2>QA Section</h2>
         {/* <SearchBar /> */}
@@ -57,8 +54,8 @@ const QA = () => {
           name="search"
           value={searchTerm}
           onChange={handleOnChange}
+          autoComplete="off"
         />
-        <button type="button">Search</button>
         {/* <div style={{ visibility: !questionList ? 'visible' : 'hidden' }}> */}
         {/* <AddQuestion PId={productId} /> */}
         {/* </div> */}

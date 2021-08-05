@@ -21,7 +21,7 @@ const QA = () => {
     const newData = searchList === [] ? QAs.data : searchList;
     setQuestionList(newData);
     // console.log(newData);
-    // console.log(questionList);
+    // console.log(questionList)
   }, [searchList, questionList]);
 
   useEffect(() => {

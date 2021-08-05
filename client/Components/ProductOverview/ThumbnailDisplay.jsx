@@ -49,7 +49,7 @@ const ThumbnailDisplay = () => {
           style={{ objectFit: 'contain', maxHeight: '100%', maxWidth: '100%' }}
             src={thumbnail_url}
             key={i}
-            alt={`Thumbnail ${i} for style id: ${selectedStyle.style_id}`}
+            alt={`${selectedStyle.style_id}`}
             onClick={(e) => (handleThumbnailClick(e, i))}
           />
         </div>

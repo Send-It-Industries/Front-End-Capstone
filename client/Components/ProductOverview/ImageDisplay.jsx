@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import ThumbnailDisplay from './ThumbnailDisplay';
+import React, { useState, useContext } from 'react';
+// import ThumbnailDisplay from './ThumbnailDisplay';
 import ImageCarousel from './ImageCarousel';
 
 import AppContext from '../Contexts/AppContext';
@@ -10,14 +10,20 @@ const ImageDisplay = () => {
     maxHeight: '100%',
     /* minHeight: '80%', */
     alignSelf: 'center',
-    gridColumn: '1 / 2',
-    gridRow: '1 / 2',
+    // gridColumn: '1 / 2',
+    // gridRow: '1 / 2',
   };
 
   const btnStyle = {
-    gridColumn: '1 / 2',
-    gridRow: '1 / 2',
+    // gridColumn: '1 / 2',
+    // gridRow: '1 / 2',
     position: 'absolute',
+    top: '50%',
+  };
+
+  const enhanceBtnStyle = {
+    top: '5%',
+    left: '90%',
   };
 
   const imageDisplayStyle = {
@@ -36,11 +42,18 @@ const ImageDisplay = () => {
     justifyItems: 'center',
   };
 
+  // const [expanded, setExpanded] = useState(false);
+
   const {
     selectedStyle,
     displayImageIndex,
     setDisplayImageIndex,
+    toggleExpandedView,
   } = useContext(AppContext);
+
+  // const toggleExpandedView = () => (
+  //   setExpanded((isExpanded) => (!isExpanded))
+  // );
 
   const incrementDisplayImageIndex = () => (
     setDisplayImageIndex((prevIndex) => (
@@ -56,10 +69,17 @@ const ImageDisplay = () => {
 
   return (
     <div id="imageDisplay" style={imageDisplayStyle}>
+
       <button type="button" onClick={decrementDisplayImageIndex} style={{ ...btnStyle, left: '25%' }}>decrement</button>
+
       <img src={selectedStyle.photos[displayImageIndex].url} alt="Product Display" style={imageStyle} />
+
+      <button type="button" onClick={toggleExpandedView} style={{ ...btnStyle, ...enhanceBtnStyle }}>enhance</button>
+
       <button type="button" onClick={incrementDisplayImageIndex} style={{ ...btnStyle, left: '90%' }}>increment</button>
+
       <ImageCarousel displayCount={7} />
+
     </div>
   );
 };

@@ -13,43 +13,23 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18078');
-  const [selectedStyle, setSelectedStyle] = useState({
-    style_id: '',
-    name: '',
-    original_price: '',
-    sale_price: '',
-    'default?': false,
-    photos: [{
-      url: '',
-      thumbnail_url: '',
-    }],
-    skus: {
-      null: {
-        quantity: null,
-        size: '',
-      },
-    },
-  });
-  const [productInfo, setProductInfo] = useState({
-    name: '',
-    slogan: '',
-    description: '',
-    category: '',
-    features: [],
-    styles: [
-      selectedStyle,
-    ],
-  });
+  const [productId, setProductId] = useState('18083');
+  const [selectedStyle, setSelectedStyle] = useState({});
+  const [productInfo, setProductInfo] = useState({});
 
   const [cart, setCart] = useState([]);
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
 
-  const [QAs, setQAs] = useState({ createQuestion, createAnswer, data: [] });
+  const [QAs, setQAs] = useState({ /* createQuestion, createAnswer, data: [] */ });
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
   const [filteredReviews, setFilteredReviews] = useState([]);
+
+  const [expanded, setExpanded] = useState(false);
+  const toggleExpandedView = () => (
+    setExpanded((isExpanded) => (!isExpanded))
+  );
 
   // ------------------------------------------------------------------------------------
   // ------------------            HTTP Requests             ----------------------------
@@ -146,6 +126,8 @@ const App = () => {
     setDisplayImageIndex,
     cart,
     setCart,
+    expanded,
+    toggleExpandedView,
   };
 
   return (
@@ -153,7 +135,9 @@ const App = () => {
       <ProductOverview />
       {/* <ProductFeed />
       <ProductFeed /> */}
-      <QA />
+      {Object.keys(QAs).length && Object.keys(productId).length ? (
+        <QA />
+      ) : (<div>Loading...</div>)}
       <ReviewSummary />
     </AppContext.Provider>
   );

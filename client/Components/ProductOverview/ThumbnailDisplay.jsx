@@ -1,28 +1,37 @@
 import React, { useContext } from 'react';
-
 import AppContext from '../Contexts/AppContext';
+import useElementSizeById from '../Helpers/Hooks/useElementSizeById';
 
 const ThumbnailDisplay = () => {
   const { selectedStyle, displayImageIndex, setDisplayImageIndex } = useContext(AppContext);
-  const selected = { border: '5px solid red' };
+  const [carouselWidth, carouselHeight] = useElementSizeById('thumbnailCarousel');
 
-  const thumbnailImageStyle = {
-    width: '95%',
-    height: '95%',
+  const selected = { borderBottom: '5px solid red' };
+
+  const thumbnailImageContainerStyle = {
+    // width: '100px',
+    minHeight: `50px`,
+    flex: '1 1 15%',
+    objectFit: 'contain',
   };
   const thumbnailCarouselStyle = {
+
     position: 'absolute',
     left: '0',
-    display: 'grid',
-    width: '15%',
-    gridTemplateRows: 'repeat(4, 20%)',
-    maxHeight: '100%',
-    rowGap: '10px',
+    display: 'flex',
+    flexDirection: 'column',
+    // justifyContent: 'space-evenly',
     alignItems: 'center',
-    justifyItems: 'center',
-    justifyContent: 'space-evenly',
-    overflow: 'scroll',
-    overflowX: 'hidden', /* can remove once i finish carousel */
+    width: '15%',
+    minWidth: '50px',
+    height: '75%',
+    // gridTemplateRows: 'repeat(4, 20%)',
+    // rowGap: '10px',
+    // alignItems: 'center',
+    // justifyItems: 'center',
+    // justifyContent: 'space-evenly',
+    overflowY: 'hidden',
+    // overflowX: 'hidden', /* can remove once i finish carousel */
   };
 
   const handleThumbnailClick = (e, newIndex) => (
@@ -32,14 +41,18 @@ const ThumbnailDisplay = () => {
   return (
     <div id="thumbnailCarousel" style={thumbnailCarouselStyle}>
       {
-      selectedStyle.photos.map(({thumbnail_url}, i) => (
-        <img
-          style={displayImageIndex === i ? {...selected, ...thumbnailImageStyle } : thumbnailImageStyle}
-          src={thumbnail_url}
-          key={i}
-          alt={`Thumbnail ${i} for style id: ${selectedStyle.style_id}`}
-          onClick={(e) => (handleThumbnailClick(e, i))}
-        />
+      selectedStyle.photos.map(({ thumbnail_url }, i) => (
+        <div style={displayImageIndex === i ? (
+          { ...selected, ...thumbnailImageContainerStyle }) : thumbnailImageContainerStyle}
+        >
+          <img
+          style={{ objectFit: 'contain', maxHeight: '100%', maxWidth: '100%' }}
+            src={thumbnail_url}
+            key={i}
+            alt={`${selectedStyle.style_id}`}
+            onClick={(e) => (handleThumbnailClick(e, i))}
+          />
+        </div>
       ))
     }
     </div>

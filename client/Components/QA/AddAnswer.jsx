@@ -7,7 +7,7 @@ import Modal from '../Helpers/Modal';
 import AppContext from '../Contexts/AppContext';
 
 const AddAnswer = (props) => {
-  const { QAs } = useContext(AppContext);
+  const { QAs, productInfo } = useContext(AppContext);
   const [isOpen, setOpen] = useState(false);
   const [id, setID] = useState(Number(props.question_id));
   const [errors, setErrors] = useState(' ');
@@ -77,7 +77,7 @@ const AddAnswer = (props) => {
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
         {/* Header     */}
         <h2>Submit Your Answer</h2>
-        <div>“[Product Name]: [Question Body]” AS A SUBTITLE</div>
+        <div>{productInfo.name}: {props.question}</div>
         <br />
         {/* Name     */}
         <label>What is your nickname:</label>

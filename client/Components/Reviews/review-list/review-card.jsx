@@ -12,7 +12,7 @@ const ReviewCard = ({ review }) => {
     const result = `${monthsArr[month]} ${dateArr[2]}, ${dateArr[0]}`;
     return result;
   })();
-  console.log(review);
+  // console.log(review);
 
   const starRating = review.rating || 0;
 

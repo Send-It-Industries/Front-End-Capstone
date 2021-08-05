@@ -45,7 +45,7 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
 
-  const [QAs, setQAs] = useState({ createQuestion, createAnswer, data: [] });
+  const [QAs, setQAs] = useState({ /*createQuestion, createAnswer, data: []*/ });
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
@@ -121,6 +121,7 @@ const App = () => {
       setAvgReview(avg);
     }
   }, [reviewMeta]);
+
   // ------------------------------------------------------------------------------------
   // ------------------                Render                ----------------------------
   // ------------------------------------------------------------------------------------

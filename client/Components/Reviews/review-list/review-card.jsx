@@ -12,7 +12,7 @@ const ReviewCard = ({ review }) => {
     const result = `${monthsArr[month]} ${dateArr[2]}, ${dateArr[0]}`;
     return result;
   })();
-  // console.log(review);
+  console.log(review);
 
   const starRating = review.rating || 0;
 
@@ -46,7 +46,7 @@ const ReviewCard = ({ review }) => {
       </p>
       {review.recommend ? <div> I recommend this product </div> : null }
       <div>{review.response}</div>
-      <HelpfulButtons helpfulness={review.helpfulness} />
+      <HelpfulButtons helpfulness={review.helpfulness} reviewId={review.review_id} />
     </div>
   );
 };

@@ -13,7 +13,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18092');
+  const [productId, setProductId] = useState('18078');
   const [selectedStyle, setSelectedStyle] = useState({
     style_id: '',
     name: '',
@@ -86,7 +86,9 @@ const App = () => {
   // const fetchProductStyles = (id) => axios.get(`/api/products/${id}/styles`);
   const fetchQA = (id) => (
     axios.get(`/api/qa/questions?count=1000&product_id=${id}`)
-      .then(({ data }) => setQAs({ ...QAs, data: data.results, createQuestion, createAnswer }))
+      .then(({ data }) => setQAs({
+        ...QAs, data: data.results, createQuestion, createAnswer,
+      }))
   );
 
   const fetchReviews = (id, sort = 'relevant') => (

@@ -17,11 +17,13 @@ const ReviewCard = ({ review }) => {
   const starRating = review.rating || 0;
 
   return (
-    <div style={{
-      borderBottom: '1px solid',
-      margin: '10px',
-      padding: '5px',
-    }}
+    <div
+      style={{
+        borderBottom: '1px solid',
+        margin: '10px',
+        padding: '5px',
+      }}
+      data-testid="reviewCard"
     >
       <div style={{
         display: 'flex',

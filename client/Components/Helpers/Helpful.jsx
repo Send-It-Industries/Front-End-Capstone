@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -24,12 +25,13 @@ const Helpful = ({ value, component, componentId }) => {
   };
   return (
     <div>
-      Helpful?&nbsp;
+      Helpful?
+      {' '}
       <span
         onClick={!clicked ? () => { handleUpdate(component, componentId); } : null}
         style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       >
-        Yes&nbsp;
+        Yes
       </span>
       (
       {helpfulCount}

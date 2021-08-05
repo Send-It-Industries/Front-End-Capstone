@@ -35,17 +35,14 @@ const Answers = ({ answer }) => {
       {answer.body}
       <br />
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        by
-        {' '}
-        {answer.answerer_name}
-        ,
-        {' '}
+        by&nbsp;
+        <span style={{ fontWeight: answer.answerer_name.toLowerCase() === 'seller' ? 'bold' : null }}>{answer.answerer_name}</span>
+        ,&nbsp;
         {newDate}
-        {' '}
-        |
-        <Helpful value={answer.helpfulness} component={'answers'} componentId={answer.id} />
-        |
-        <Report component={'qa'} componentId={answer.id} />
+        &nbsp;|&nbsp;
+        <Helpful value={answer.helpfulness} component="answers" componentId={answer.id} />
+        &nbsp;|&nbsp;
+        <Report component="qa" componentId={answer.id} />
       </div>
     </div>
   );

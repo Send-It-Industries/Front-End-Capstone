@@ -24,13 +24,12 @@ const Helpful = ({ value, component, componentId }) => {
   };
   return (
     <div>
-      Helpful?
-      {' '}
+      Helpful?&nbsp;
       <span
         onClick={!clicked ? () => { handleUpdate(component, componentId); } : null}
         style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       >
-        Yes
+        Yes&nbsp;
       </span>
       (
       {helpfulCount}

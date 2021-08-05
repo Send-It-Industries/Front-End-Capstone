@@ -20,7 +20,7 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
 
-  const [QAs, setQAs] = useState({ createQuestion, createAnswer, data: [] });
+  const [QAs, setQAs] = useState({ /* createQuestion, createAnswer, data: [] */ });
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
@@ -66,7 +66,9 @@ const App = () => {
   // const fetchProductStyles = (id) => axios.get(`/api/products/${id}/styles`);
   const fetchQA = (id) => (
     axios.get(`/api/qa/questions?count=1000&product_id=${id}`)
-      .then(({ data }) => setQAs({ ...QAs, data: data.results, createQuestion, createAnswer }))
+      .then(({ data }) => setQAs({
+        ...QAs, data: data.results, createQuestion, createAnswer,
+      }))
   );
 
   const fetchReviews = (id, sort = 'relevant') => (
@@ -101,6 +103,7 @@ const App = () => {
       setAvgReview(avg);
     }
   }, [reviewMeta]);
+
   // ------------------------------------------------------------------------------------
   // ------------------                Render                ----------------------------
   // ------------------------------------------------------------------------------------
@@ -133,7 +136,9 @@ const App = () => {
       <ProductOverview />
       {/* <ProductFeed />
       <ProductFeed /> */}
-      <QA />
+      {Object.keys(QAs).length && Object.keys(productId).length ? (
+        <QA />
+      ) : (<div>Loading...</div>)}
       <ReviewSummary />
     </AppContext.Provider>
   );

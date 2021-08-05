@@ -58,7 +58,7 @@ const QA = () => {
           value={searchTerm}
           onChange={handleOnChange}
         />
-        <button onClick={handleSearch} type="button">Search</button>
+        <button type="button">Search</button>
         {/* <div style={{ visibility: !questionList ? 'visible' : 'hidden' }}> */}
         {/* <AddQuestion PId={productId} /> */}
         {/* </div> */}

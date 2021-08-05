@@ -44,21 +44,6 @@ const QA = () => {
     setSeachTerm(e.target.value);
   };
 
-  // as opposed to filtering IN PLACE....
-  // consider function that creates new array of resulting search
-  // if condition passes (x>3)
-  // setQuestionList
-
-  const handleSearch = () => {
-    // console.log(searchTerm);
-    // // console.log(QAs.data);
-    // const searchRender = QAs.data.filter((Q) => (
-    //   !searchTerm ? Q : Q.question_body
-    //     .toLowerCase()
-    //     .includes(searchTerm.toLowerCase())));
-    // setSearchList(searchRender);
-  };
-
   console.log(questionList);
 
   return (

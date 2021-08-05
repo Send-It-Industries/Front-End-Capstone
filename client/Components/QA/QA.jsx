@@ -21,7 +21,7 @@ const QA = () => {
     const newData = searchList === [] ? QAs.data : searchList;
     setQuestionList(newData);
     // console.log(newData);
-    console.log(questionList);
+    // console.log(questionList);
   }, [searchList, questionList]);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const QA = () => {
           .toLowerCase()
           .includes(searchTerm.toLowerCase())));
       setSearchList(searchRender);
-      console.log(searchRender);
+      // console.log(searchRender);
     }
   }, [searchTerm]);
 
@@ -44,7 +44,7 @@ const QA = () => {
     setSeachTerm(e.target.value);
   };
 
-  console.log(questionList);
+  // console.log(questionList);
 
   return (
     Object.keys(QAs).length && Object.keys(productId).length ? (

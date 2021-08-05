@@ -15,7 +15,7 @@ const ProductSelect = () => {
     overflow: 'auto', /* can remove once finish carousel */
   };
   return (
-    <div id="ProductSelect" style={productSelectStyle}>
+    <div id="ProductSelect" style={productSelectStyle} data-testid="productSelect">
       <Stars />
       <div>{productInfo.category}</div>
       <div>{productInfo.name}</div>

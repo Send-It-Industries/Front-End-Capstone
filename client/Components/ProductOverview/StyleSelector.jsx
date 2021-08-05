@@ -77,7 +77,7 @@ const StyleSelector = () => {
           <img
             style={(style.style_id === selectedStyle.style_id) ? ({ ...styleThumbnailStyle, ...selected }) : (styleThumbnailStyle)}
             src={style.photos[displayImageIndex].thumbnail_url}
-            alt={`Style Thumbnail for style ID: ${style.style_id}`}
+            alt={`${style.style_id}`}
             key={i}
             onClick={() => (handleStyleChange(style))} />
         ))}

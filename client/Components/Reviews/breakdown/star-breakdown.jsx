@@ -69,24 +69,24 @@ const StarBreakdown = () => {
 
   return (
     <div>
-      {filteredReviews.length ? <btn onClick={clearFilters}> Clear Filters </btn> : null}
-      <div onClick={() => (starClickHandler(5))} role="button" tabIndex={0}>
+      {filteredReviews.length ? <button type="button" tabIndex={0} onClick={clearFilters}> Clear Filters </button> : null}
+      <div onClick={() => (starClickHandler(5))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
         5 stars:
         <ProgressBar percent={percentFiveStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
       </div>
-      <div onClick={() => (starClickHandler(4))} role="button" tabIndex={0}>
+      <div onClick={() => (starClickHandler(4))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
         4 stars:
         <ProgressBar percent={percentFourStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
       </div>
-      <div onClick={() => (starClickHandler(3))} role="button" tabIndex={0}>
+      <div onClick={() => (starClickHandler(3))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
         3 stars:
         <ProgressBar percent={percentThreeStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
       </div>
-      <div onClick={() => (starClickHandler(2))} role="button" tabIndex={0}>
+      <div onClick={() => (starClickHandler(2))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
         2 stars:
         <ProgressBar percent={percentTwoStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
       </div>
-      <div onClick={() => (starClickHandler(1))} role="button" tabIndex={0}>
+      <div onClick={() => (starClickHandler(1))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
         1 stars:
         <ProgressBar percent={percentOneStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
       </div>

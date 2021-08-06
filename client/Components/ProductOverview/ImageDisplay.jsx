@@ -32,6 +32,7 @@ const ImageDisplay = () => {
     gridTemplateColumns: '100%',
     alignItems: 'center',
     justifyItems: 'center',
+    border: '2px solid red',
   };
 
   // const [expanded, setExpanded] = useState(false);

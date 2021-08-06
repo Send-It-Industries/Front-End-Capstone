@@ -40,9 +40,6 @@ const MagnifyingGlass = ({ imageId, imageUrl, zoom }) => {
       image.addEventListener('touchmove', moveGlass);
     }
 
-    // Probably bad practice but made it less laggy when I wasnt removing the event lestener on unmount.
-    // Is there a way to memoize this mount and unmount functionality?
-
     return (() => {
       image.removeEventListener('mousemove', moveGlass);
       image.removeEventListener('touchmove', moveGlass);

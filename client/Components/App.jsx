@@ -13,11 +13,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-<<<<<<< HEAD
-  const [productId, setProductId] = useState('18089');
-=======
   const [productId, setProductId] = useState('18080');
->>>>>>> main
   const [selectedStyle, setSelectedStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 

@@ -46,15 +46,6 @@ const MagnifyingGlass = ({ imageId, imageUrl, zoom }) => {
     });
   }, []);
 
-  // useCallback(() => {
-  //   const sizeChange = {
-  //     width: 0.1 * imageWidth,
-  //     height: 0.1 * imageWidth,
-  //     backgroundSize: `${imageWidth * zoom}px ${imageHeight * zoom}px`,
-  //   };
-  //   setMagnifyingGlassStyle((prevStyle) => ({ ...prevStyle, ...sizeChange }));
-  // }, [imageWidth, imageHeight]);
-
   return (
     <div id="magnifyingGlass" style={magnifyingGlassStyle} />
   );

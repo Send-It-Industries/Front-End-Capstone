@@ -46,7 +46,7 @@ const ImageCarousel = ({ displayCount }) => {
     setSelectedImageIndex(displayImageIndex - displayEdges.start);
   }, [displayEdges]);
 
-  const selected = { borderBottom: '5px solid red' };
+  const selected = { boxShadow: '3px 3px 2px red' };
 
   const carouselStyle = {
     position: 'absolute',
@@ -63,6 +63,7 @@ const ImageCarousel = ({ displayCount }) => {
     justifyItems: 'center',
     backgroundColor: 'white',
     justifyContent: 'space-evenly',
+    border:'1px solid red',
   };
 
   const carouselImagesStyle = {
@@ -100,6 +101,7 @@ const ImageCarousel = ({ displayCount }) => {
     marginBottom: '2%',
     borderBottom: '5px',
     boxSizing: 'border-box',
+    border: '1px solid black',
   };
 
   const upArrowBtnStyle = {

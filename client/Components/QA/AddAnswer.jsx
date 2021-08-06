@@ -3,14 +3,15 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import Modal from '../Helpers/Modal';
 import AppContext from '../Contexts/AppContext';
 
 const AddAnswer = (props) => {
-  const { QAs, productInfo } = useContext(AppContext);
+  const { QAs, productInfo, setQAs, productId } = useContext(AppContext);
   const [isOpen, setOpen] = useState(false);
   const [id, setID] = useState(Number(props.question_id));
-  const [errors, setErrors] = useState(' ');
+  const [errors, setErrors] = useState('');
   const [answer, setAnswer] = useState({
     name: '',
     email: '',
@@ -31,15 +32,25 @@ const AddAnswer = (props) => {
         email: answer.email,
         body: answer.body,
       });
-      QAs.createAnswer(answer, id);
-      setAnswer({
-        ...answer,
-        name: '',
-        email: '',
-        body: '',
+      QAs.createAnswer(answer, id, () => {
+        setAnswer({
+          ...answer,
+          name: '',
+          email: '',
+          body: '',
+        });
+        setErrors(' ');
+        setOpen(false);
+        // console.lol(question);
+        axios.get(`/api/qa/questions?count=1000&product_id=${productId}`)
+          .then(({ data }) => {
+            const updatedQuestions = data.results;
+            setQAs({
+              ...QAs, data: updatedQuestions,
+            });
+            console.log(updatedQuestions);
+          });
       });
-      setErrors(' ');
-      setOpen(false);
     }
   };
 
@@ -49,7 +60,6 @@ const AddAnswer = (props) => {
   };
 
   const validateForm = () => {
-    // returns boolean
     let errors = '';
     if (!answer.name) {
       errors += 'Nickname required \n';
@@ -60,7 +70,6 @@ const AddAnswer = (props) => {
     if (!answer.body) {
       errors += 'Answer required \n';
     }
-    // console.log(errors);
     setErrors(errors);
     return !errors;
   };
@@ -76,7 +85,12 @@ const AddAnswer = (props) => {
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
         {/* Header     */}
         <h2>Submit Your Answer</h2>
-        <div>{productInfo.name}: {props.question}</div>
+        <div>
+          {productInfo.name}
+          :
+          {' '}
+          {props.question}
+        </div>
         <br />
         {/* Name     */}
         <label>What is your nickname:</label>
@@ -118,7 +132,7 @@ const AddAnswer = (props) => {
           Submit
         </button>
 
-        <div style={{ visibility: errors === ' ' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
+        <div style={{ visibility: errors === '' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
           Please enter the following:
           <br />
           { errors }

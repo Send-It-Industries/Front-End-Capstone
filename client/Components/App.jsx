@@ -39,15 +39,14 @@ const App = () => {
   const createQuestion = (question, cb) => {
     axios.post('/api/qa/questions', question)
       .then(() => {
-        console.log('do something.... I just posted a QUESTION');
         cb();
       });
   };
 
-  const createAnswer = (answer, id) => {
+  const createAnswer = (answer, id, cb) => {
     axios.post(`/api/qa/questions/${id}/answers`, answer)
       .then(() => {
-        console.log('do something.... I just posted an ANSWER');
+        cb();
       });
   };
 

@@ -8,7 +8,7 @@ import AppContext from '../Contexts/AppContext';
 const AddQuestion = (props) => {
   const { QAs, productInfo, setQAs } = useContext(AppContext);
   const [isOpen, setOpen] = useState(false);
-  const [errors, setErrors] = useState(' ');
+  const [errors, setErrors] = useState('');
   const [question, setQuestion] = useState({
     product_id: Number(props.PId),
     name: '',
@@ -36,7 +36,7 @@ const AddQuestion = (props) => {
         email: question.email,
         body: question.body,
       });
-      console.log(question);
+      // console.log(question);
       QAs.createQuestion(question, () => {
         setQuestion({
           ...question,
@@ -60,7 +60,6 @@ const AddQuestion = (props) => {
   };
 
   const validateForm = () => {
-    // returns boolean
     let errors = '';
     if (!question.name) {
       errors += 'Nickname required \n';
@@ -71,7 +70,6 @@ const AddQuestion = (props) => {
     if (!question.body) {
       errors += 'Answer required \n';
     }
-    // console.log(errors);
     setErrors(errors);
     return !errors;
   };
@@ -130,7 +128,7 @@ const AddQuestion = (props) => {
           Submit
         </button>
 
-        <div style={{ visibility: errors === ' ' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
+        <div style={{ visibility: errors === '' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
           Please enter the following:
           <br />
           { errors }

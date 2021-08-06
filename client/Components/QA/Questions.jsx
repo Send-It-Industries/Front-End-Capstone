@@ -6,15 +6,21 @@ import Answers from './Answers';
 import Helpful from '../Helpers/Helpful';
 
 const Questions = ({ Q }) => {
-  const [answers, setAnswers] = useState(Q.answers);
+  const [answers, setAnswers] = useState([]);
   const [answerCount, setAnswerCount] = useState(2);
-  const [totalAnswers, setTotalAnswers] = useState(Object.values(answers).length);
+  const [totalAnswers, setTotalAnswers] = useState('');
+
+  useEffect(() => {
+    setAnswers(Q.answers);
+    setTotalAnswers(Object.values(answers).length);
+  }, [Q, answers]);
 
   const moreAnswers = () => {
     setAnswerCount(answerCount + 2);
   };
 
   // console.log(Object.entries(Q.answers)[1][1]);
+  // console.log(Object.entries(answers));
 
   return (
     <div>
@@ -39,7 +45,7 @@ const Questions = ({ Q }) => {
       <div
         style={{ border: '1px solid black', maxHeight: '200px', overflowY: 'auto' }}
       >
-        {Object.entries(Q.answers)
+        {Object.entries(answers)
           .sort((a, b) => b[1].helpfulness - a[1].helpfulness)
           .reduce((acc, element) => {
             if (element[1].answerer_name.toLowerCase() === 'seller') {

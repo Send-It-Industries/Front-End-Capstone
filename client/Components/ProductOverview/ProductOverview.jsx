@@ -4,12 +4,14 @@ import ProductSelect from './ProductSelect';
 import ProductFeatures from './ProductFeatures';
 import AppContext from '../Contexts/AppContext';
 
+// import useMousePos from '../Helpers/Hooks/useMousePos';
+
 const ProductOverview = () => {
   const { productInfo, selectedStyle, expanded } = useContext(AppContext);
   const productOverviewStyle = {
     display: 'grid',
     gridTemplateRows: 'minmax(550px, 55vmin) minmax(125px, 10vmin)',
-    gridTemplateColumns: '65% 35%',
+    gridTemplateColumns: '72% 25%',
     columnGap: '3%',
     rowGap: '7%',
     width: '90vw',
@@ -17,6 +19,8 @@ const ProductOverview = () => {
     maxWidth: '1250px',
     /* height: '100%', */
   };
+
+  // const [x, y] = useMousePos('productImage');
 
   const expandedStyle = {
     gridTemplateColumns: '100%',

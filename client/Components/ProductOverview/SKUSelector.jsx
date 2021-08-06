@@ -95,14 +95,48 @@ const SKUSelector = () => {
     setWantedQuantity('-');
   }, [selectedStyle]);
 
+  const skuSelectorStyle = {
+    overflow: 'hidden',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    // gridTemplateColumns: '50% 50%',
+    // gridTemplateRows: '70% 20%',
+    // columnGap: '.5vw',
+    // rowGap: '.5vw',
+  };
+
+  const sizeSelectStyle = {
+    width: '63%',
+    height: '3em',
+    margin: '5% 0',
+  };
+  const quantitySelectStyle = {
+    width: '30%',
+    height: '3em',
+    margin: '5% 0',
+  };
+  const addToCartStyle = {
+    width: '78%',
+    height: '3em',
+    margin: '5% 0',
+  };
+  const starBtnStyle = {
+    width: '15%',
+    height: '3em',
+    margin: '5% 0',
+  };
+
   return (
     <div id="skuSelector">
       {/* Size Select */}
-      <form onSubmit={handleProductSubmit}>
+      <form style={skuSelectorStyle} onSubmit={handleProductSubmit}>
         {
           skuNeeded ? <div>Please select a size</div> : null
         }
         <select
+          style={sizeSelectStyle}
           value={selectedSku}
           id="skuSelect"
           onChange={(e) => (handleSkuSelect(e, selectedSku))}
@@ -128,6 +162,7 @@ const SKUSelector = () => {
         </select>
         {/* Quantity select */}
         <select
+          style={quantitySelectStyle}
           value={wantedQuantity}
           id="quantitySelect"
           disabled={!skuSelected}
@@ -144,11 +179,11 @@ const SKUSelector = () => {
           }
         </select>
         {inStock ? (
-          <button type="submit">Add to Bag</button>
+          <button style={addToCartStyle} type="submit">Add to Bag</button>
         ) : (
           null
         )}
-        <button type="button">Social Media? outfit?</button>
+        <button style={starBtnStyle} type="button">Social Media? outfit?</button>
       </form>
     </div>
   );

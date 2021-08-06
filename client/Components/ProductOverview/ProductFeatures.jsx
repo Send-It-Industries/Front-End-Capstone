@@ -6,13 +6,13 @@ const ProductFeatures = () => {
   const { productInfo } = useContext(AppContext);
   const [featuresWidth] = useElementSizeById('productFeatures');
   const productFeaturesStyle = {
-    width: '80%',
+    width: '90%',
     gridColumn: '1 / 3',
     gridRow: '2 / 3',
     justifySelf: 'center',
     display: 'grid',
     gridTemplateRows: '20% 80%',
-    gridTemplateColumns: '70% 30%',
+    gridTemplateColumns: '75% 25%',
   };
   const sloganStyle = {
     gridColumn: '1 / 2',

@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-    "name": "Front-End-Capstone",
-    "version": "1.0.0",
-    "description": "Front end web development capstone project. Hackreactor 2021",
-    "main": "index.js",
-    "scripts": {
-        "test": "jest tests",
-        "build": "webpack",
-        "react-dev": "webpack --watch",
-        "start": "npx nodemon --delay 1000ms server/server.js",
-        "bundle": "npm run react-dev & npm start"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Send-It-Industries/Front-End-Capstone.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Send-It-Industries/Front-End-Capstone/issues"
-    },
-    "homepage": "https://github.com/Send-It-Industries/Front-End-Capstone#readme",
-    "dependencies": {
-        "axios": "^0.21.1",
-        "cors": "^2.8.5",
-        "express": "^4.17.1",
-        "jest": "^27.0.6",
-        "live-server": "^1.2.1",
-        "lodash": "^4.17.21",
-        "nodemon": "^2.0.12",
-        "prop-types": "^15.7.2",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-percent-bar": "^0.0.2",
-        "react-star-ratings": "^2.3.0",
-        "styled-components": "^5.3.0",
-        "underscore": "^1.13.1"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.14.8",
-        "@babel/preset-env": "^7.14.8",
-        "@babel/preset-react": "^7.14.5",
-        "@testing-library/react": "^12.0.0",
-        "babel-loader": "^8.2.2",
-        "css-loader": "^6.2.0",
-        "eslint": "^7.31.0",
-        "eslint-config-airbnb": "^18.2.1",
-        "eslint-plugin-import": "^2.23.4",
-        "eslint-plugin-jsx-a11y": "^6.4.1",
-        "eslint-plugin-react": "^7.24.0",
-        "eslint-plugin-react-hooks": "^4.2.0",
-        "style-loader": "^3.2.1",
-        "webpack": "^5.45.1",
-        "webpack-cli": "^4.7.2"
-    }
-=======
   "name": "Front-End-Capstone",
   "version": "1.0.0",
   "description": "Front end web development capstone project. Hackreactor 2021",
@@ -90,7 +33,6 @@
     "nodemon": "^2.0.12",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
-    "react-discrete-slider": "^1.0.4",
     "react-dom": "^17.0.2",
     "react-percent-bar": "^0.0.2",
     "react-star-ratings": "^2.3.0",
@@ -114,5 +56,4 @@
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2"
   }
->>>>>>> origin
 }

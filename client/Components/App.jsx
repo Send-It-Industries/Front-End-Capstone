@@ -50,6 +50,10 @@ const App = () => {
       });
   };
 
+  const createReview = (review) => {
+    console.log('Submit Button Pressed!', review);
+  };
+
   // ------------------                 Read                 ----------------------------
   const fetchProduct = (id) => (
     Promise.all([axios.get(`/api/products/${id}`), axios.get(`/api/products/${id}/styles`)])
@@ -117,6 +121,7 @@ const App = () => {
     setFilteredReviews,
     reviewMeta,
     fetchReviews,
+    createReview,
     avgReview,
     updateHelpful,
     updateReport,

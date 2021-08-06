@@ -20,7 +20,7 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
 
-  const [QAs, setQAs] = useState({ /* createQuestion, createAnswer, data: [] */ });
+  const [QAs, setQAs] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
@@ -36,17 +36,17 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                Create                ----------------------------
 
-  const createQuestion = (question) => {
+  const createQuestion = (question, cb) => {
     axios.post('/api/qa/questions', question)
       .then(() => {
-        console.log('do something.... I just posted a QUESTION');
+        cb();
       });
   };
 
-  const createAnswer = (answer, id) => {
+  const createAnswer = (answer, id, cb) => {
     axios.post(`/api/qa/questions/${id}/answers`, answer)
       .then(() => {
-        console.log('do something.... I just posted an ANSWER');
+        cb();
       });
   };
 
@@ -85,11 +85,6 @@ const App = () => {
     axios.get(`/api/reviews/meta?product_id=${id}`)
       .then(({ data }) => setReviewMeta(data))
   );
-  // ------------------                Update                ----------------------------
-  const updateHelpful = () => { };
-
-  const updateReport = () => { };
-  // ------------------                Delete                ----------------------------
 
   // ------------------------------------------------------------------------------------
   // ------------------              Initialize              ----------------------------
@@ -115,6 +110,7 @@ const App = () => {
     setProductId,
     productInfo,
     QAs,
+    setQAs,
     fetchQA,
     reviews,
     filteredReviews,
@@ -123,8 +119,6 @@ const App = () => {
     fetchReviews,
     createReview,
     avgReview,
-    updateHelpful,
-    updateReport,
     selectedStyle,
     setSelectedStyle,
     displayImageIndex,

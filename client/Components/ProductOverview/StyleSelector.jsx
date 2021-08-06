@@ -20,6 +20,7 @@ const StyleSelector = () => {
     /* gridAutoRows: 'repeat(4, 25%'), */
     alignItems: 'center',
     justifyItems: 'left',
+    rowGap: '2%',
   };
 
   // const styleNameStyle = {
@@ -55,7 +56,8 @@ const StyleSelector = () => {
     display: 'flex',
     flexWrap: 'wrap',
     // justifyContent: 'space-around',
-    alignContent: 'space-around',
+    // alignContent: 'space-between',
+    alignSelf: 'flex-start',
     // gridTemplateColumns: 'repeat(4, 20%)',
     height: '60%',
   };

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-// import ThumbnailDisplay from './ThumbnailDisplay';
 import ImageCarousel from './ImageCarousel';
+import MagnifyingGlass from './MagnifyingGlass';
 
 import AppContext from '../Contexts/AppContext';
 
@@ -48,8 +48,15 @@ const ImageDisplay = () => {
     selectedStyle,
     displayImageIndex,
     setDisplayImageIndex,
+    expanded,
     toggleExpandedView,
   } = useContext(AppContext);
+
+  const [hovering, setHovering] = useState(false);
+
+  const toggleHover = () => (
+    setHovering((isHovering) => (!isHovering))
+  );
 
   // const toggleExpandedView = () => (
   //   setExpanded((isExpanded) => (!isExpanded))
@@ -68,17 +75,18 @@ const ImageDisplay = () => {
   );
 
   return (
-    <div id="imageDisplay" style={imageDisplayStyle}>
+    <div id="imageDisplay" style={imageDisplayStyle} onMouseOut={() => (setHovering(false))}>
 
       <button type="button" onClick={decrementDisplayImageIndex} style={{ ...btnStyle, left: '25%' }}>decrement</button>
 
-      <img src={selectedStyle.photos[displayImageIndex].url} alt="Product Display" style={imageStyle} />
+      <img id="productImage" src={selectedStyle.photos[displayImageIndex].url} alt="Product Display" style={imageStyle} onMouseEnter={() => (setHovering(true))} onMouseOut={()=> (setHovering(false))}/>
 
       <button type="button" onClick={toggleExpandedView} style={{ ...btnStyle, ...enhanceBtnStyle }}>enhance</button>
 
       <button type="button" onClick={incrementDisplayImageIndex} style={{ ...btnStyle, left: '90%' }}>increment</button>
 
       <ImageCarousel displayCount={7} />
+      {expanded && hovering ? <div onMouseEnter={() => (setHovering(true))}><MagnifyingGlass imageId="productImage" imageUrl={selectedStyle.photos[displayImageIndex].url} zoom={2.5} /></div> : null}
 
     </div>
   );

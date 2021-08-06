@@ -12,7 +12,8 @@ const AddAnswer = (props) => {
   const {
     QAs, productInfo, setQAs, productId,
   } = useContext(AppContext);
-  const [imageSrc, setImageSrc] = useState('');
+  const [imageSrc, setImageSrc] = useState([]);
+  const [imageCount, setImageCount] = useState(0);
   const [isOpen, setOpen] = useState(false);
   const [id, setID] = useState(Number(props.question_id));
   const [errors, setErrors] = useState('');
@@ -79,7 +80,10 @@ const AddAnswer = (props) => {
   };
 
   const handleChange = (event) => {
-    setImageSrc(URL.createObjectURL(event.target.files[0]));
+    console.log(imageCount);
+    setImageSrc([...imageSrc, URL.createObjectURL(event.target.files[0])]);
+    setImageCount(imageCount + 1);
+    console.log(imageSrc);
   };
 
   return (
@@ -138,9 +142,20 @@ const AddAnswer = (props) => {
         />
         <br />
         {/* Photos */}
-        <input type="file" onChange={handleChange} />
+
+        <input type="file" onChange={handleChange} multiple />
+        {/* <input stle={{ visibility: imageCount > 0 ? 'visible' : 'hidden' }} type="file" onChange={handleChange} /> */}
+        {/* <input stle={{ visibility: imageCount > 1 ? 'visible' : 'hidden' }} type="file" onChange={handleChange} />
+        <input stle={{ visibility: imageCount > 2 ? 'visible' : 'hidden' }} type="file" onChange={handleChange} />
+        <input stle={{ visibility: imageCount > 3 ? 'visible' : 'hidden' }} type="file" onChange={handleChange} /> */}
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
         <br />
-        <img src={imageSrc} style={{ height: "100px", width: '100px' }} alt="Image preview..." />
+        <img src={imageSrc} style={{ visibility: imageSrc[0] ? 'visible' : 'hidden', height: "100px", width: '100px' }} alt="Image preview..." />
+        <img src={imageSrc[1]} style={{ visibility: imageSrc[1] ? 'visible' : 'hidden', height: "100px", width: '100px' }} alt="Image preview..." />
+        <img src={imageSrc[2]} style={{ visibility: imageSrc[2] ? 'visible' : 'hidden', height: "100px", width: '100px' }} alt="Image preview..." />
+        <img src={imageSrc[3]} style={{ visibility: imageSrc[3] ? 'visible' : 'hidden', height: "100px", width: '100px' }} alt="Image preview..." />
+        <img src={imageSrc[4]} style={{ visibility: imageSrc[4] ? 'visible' : 'hidden', height: "100px", width: '100px' }} alt="Image preview..." />
+        </div>
 
         <button onClick={handleSubmit} type="button" style={{ width: '35%' }}>
           Submit

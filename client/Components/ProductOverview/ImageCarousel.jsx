@@ -50,19 +50,28 @@ const ImageCarousel = ({ displayCount }) => {
 
   const carouselStyle = {
     position: 'absolute',
-    left: '0',
+    left: '2%',
+    padding: '1.5% 0',
     display: 'grid',
-    height: '100%',
-    width: '12%',
+    height: `${10 * selectedStyle.photos.length + (selectedStyle.photos.length > displayCount ? 10 : 0)}%`,
+    maxHeight: '80%',
+    width: 0.16 * imageCarouselHeight,
+    minWidth: '7%',
     // gridTemplateColumns: '12%',
-    gridTemplateRows: '10% 80% 10%',
+    gridTemplateRows: selectedStyle.photos.length > displayCount ? '3% 89% 3%' : '100%',
+    rowGap: '1%',
     justifyItems: 'center',
+    backgroundColor: 'white',
+    justifyContent: 'space-evenly',
   };
 
   const carouselImagesStyle = {
+    // margin: '5% 0',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
+    gridRow: selectedStyle.photos.length > displayCount ? '2 / 3' : '1 / 2',
+    width: '100%',
     // alignItems: 'center',
     // gridTemplateRows: `repeat(${displayEdges.end}, auto)`,
     // height: '100%',
@@ -82,8 +91,8 @@ const ImageCarousel = ({ displayCount }) => {
   const imageStyle = {
     flex: '0 1 12%',
     objectFit: 'cover',
-    height: '12%',
-    width: 0.12 * imageCarouselHeight,
+    height: 0.13 * imageCarouselHeight, // instead of 13% make a fractional based off
+    width: 0.13 * imageCarouselHeight, // of length of array if < displayCount
     // width: '100%',
     // height: '50px', // imageCarouselHeight,
     // maxHeight: '100px',
@@ -93,6 +102,13 @@ const ImageCarousel = ({ displayCount }) => {
     boxSizing: 'border-box',
   };
 
+  const upArrowBtnStyle = {
+    gridRow: '1 / 2',
+  };
+
+  const downArrowBtnStyle = {
+    gridRow: '3 / 4',
+  };
   const incrementView = () => {
     setDisplayEdges((prevEdges) => (
       {
@@ -116,27 +132,29 @@ const ImageCarousel = ({ displayCount }) => {
   // };
 
   return (
-    <div id="thumbnailCarousel" style={carouselStyle}>
-      {displayEdges.start ? <button type="button" onClick={decrementView}>up</button> : <div> </div>}
-      <div id="thumbnailCarouselImages" style={carouselImagesStyle}>
-        {selectedStyle.photos.slice(displayEdges.start, displayEdges.end)
-          .map(({ thumbnail_url }, i) => (
-            // <div style={displayImageIndex === i ? (
-            //   { ...imagesContainerStyle, ...selected }) : imagesContainerStyle}
-            // >
-            <img
-              style={selectedImageIndex === i ? (
-                { ...imageStyle, ...selected }) : imageStyle}
-              src={thumbnail_url}
-              key={i}
-              alt={`${selectedStyle.style_id}`}
-              onClick={(e) => (setDisplayImageIndex(i + displayEdges.start))}
-            />
-            // </div>
-          ))}
+    selectedStyle.photos.length > 1 ? (
+      <div id="thumbnailCarousel" style={carouselStyle}>
+        {displayEdges.start ? <button type="button" style={upArrowBtnStyle} onClick={decrementView}>up</button> : null}
+        <div id="thumbnailCarouselImages" style={carouselImagesStyle}>
+          {selectedStyle.photos.slice(displayEdges.start, displayEdges.end)
+            .map(({ thumbnail_url }, i) => (
+              // <div style={displayImageIndex === i ? (
+              //   { ...imagesContainerStyle, ...selected }) : imagesContainerStyle}
+              // >
+              <img
+                style={selectedImageIndex === i ? (
+                  { ...imageStyle, ...selected }) : imageStyle}
+                src={thumbnail_url}
+                key={i}
+                alt={`${selectedStyle.style_id}`}
+                onClick={(e) => (setDisplayImageIndex(i + displayEdges.start))}
+              />
+              // </div>
+            ))}
+        </div>
+        {displayEdges.end !== (selectedStyle.photos.length) ? <button type="button" style={downArrowBtnStyle} onClick={incrementView}>down</button> : null}
       </div>
-      {displayEdges.end !== (selectedStyle.photos.length) ? <button type="button" onClick={incrementView}>down</button> : <div> </div>}
-    </div>
+    ) : (null)
   );
 };
 

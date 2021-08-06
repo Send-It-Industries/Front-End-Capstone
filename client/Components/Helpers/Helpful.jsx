@@ -31,7 +31,7 @@ const Helpful = ({ value, component, componentId }) => {
         onClick={!clicked ? () => { handleUpdate(component, componentId); } : null}
         style={{ textDecorationLine: 'underline', cursor: 'pointer' }}
       >
-        Yes
+        Yes&nbsp;
       </span>
       (
       {helpfulCount}

@@ -116,8 +116,6 @@ const App = () => {
     reviewMeta,
     fetchReviews,
     avgReview,
-    updateHelpful,
-    updateReport,
     selectedStyle,
     setSelectedStyle,
     displayImageIndex,

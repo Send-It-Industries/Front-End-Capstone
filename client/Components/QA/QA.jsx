@@ -15,8 +15,8 @@ const QA = () => {
 
   useEffect(() => {
     setQuestionList(QAs.data);
-  }, []);
-// console.log(QAs)
+  }, [QAs.data]);
+
   useEffect(() => {
     const newData = searchTerm.length >= 3 ? searchList : QAs.data;
     setQuestionList(newData);
@@ -82,7 +82,7 @@ const QA = () => {
           More Answered Questions
         </button>
         {/* <div style={{ visibility: !questionList ? 'hidden' : 'visible' }}> */}
-        <AddQuestion PId={productId} />
+        <AddQuestion PId={productId} setQuestionList={setQuestionList}/>
         {/* </div> */}
       </div>
     ) : (<div>Loading...</div>)

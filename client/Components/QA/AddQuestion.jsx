@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
 import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import Modal from '../Helpers/Modal';
 import AppContext from '../Contexts/AppContext';
 
 const AddQuestion = (props) => {
-  const { QAs, productInfo } = useContext(AppContext);
+  const { QAs, productInfo, setQAs } = useContext(AppContext);
   const [isOpen, setOpen] = useState(false);
   const [errors, setErrors] = useState(' ');
   const [question, setQuestion] = useState({
@@ -36,15 +37,25 @@ const AddQuestion = (props) => {
         body: question.body,
       });
       console.log(question);
-      QAs.createQuestion(question);
-      setQuestion({
-        ...question,
-        name: '',
-        email: '',
-        body: '',
+      QAs.createQuestion(question, () => {
+        setQuestion({
+          ...question,
+          name: '',
+          email: '',
+          body: '',
+        });
+        setErrors(' ');
+        setOpen(false);
+        // console.lol(question);
+        axios.get(`/api/qa/questions?count=1000&product_id=${question.product_id}`)
+          .then(({ data }) => {
+            const updatedQuestions = data.results;
+            setQAs({
+              ...QAs, data: updatedQuestions,
+            });
+            console.log(updatedQuestions);
+          });
       });
-      setErrors(' ');
-      setOpen(false);
     }
   };
 

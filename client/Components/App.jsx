@@ -36,13 +36,11 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                Create                ----------------------------
 
-  const createQuestion = (question) => {
+  const createQuestion = (question, cb) => {
     axios.post('/api/qa/questions', question)
       .then(() => {
-        const data = QAs.data.push(question);
-        console.log(QAs.data);
-        setQAs({ ...QAs, data });
         console.log('do something.... I just posted a QUESTION');
+        cb();
       });
   };
 
@@ -109,6 +107,7 @@ const App = () => {
     setProductId,
     productInfo,
     QAs,
+    setQAs,
     fetchQA,
     reviews,
     filteredReviews,

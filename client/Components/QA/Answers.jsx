@@ -1,9 +1,17 @@
 /* eslint-disable linebreak-style */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Helpful from '../Helpers/Helpful';
 import Report from '../Helpers/Report';
 
 const Answers = ({ answer }) => {
+  const [answerToRender, setAnswer] = useState(answer);
+
+  useEffect(() => {
+    setAnswer(answer);
+  }, [answer]);
+
+// console.log(answer);
+
   const date = answer.date.slice(0, 10);
   const newDate = (() => {
     const monthsArr = [
@@ -27,22 +35,23 @@ const Answers = ({ answer }) => {
     return result;
   })();
 
-  // console.log(answer)
+  // console.log(answer);
 
   return (
     <div>
       <span style={{ fontWeight: 'bold' }}>A: </span>
-      {answer.body}
-      <br />
+      <span id="text">
+        {answerToRender.body}
+      </span>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         by&nbsp;
-        <span style={{ fontWeight: answer.answerer_name.toLowerCase() === 'seller' ? 'bold' : null }}>{answer.answerer_name}</span>
+        <span style={{ fontWeight: answerToRender.answerer_name.toLowerCase() === 'seller' ? 'bold' : null }}>{answerToRender.answerer_name}</span>
         ,&nbsp;
         {newDate}
         &nbsp;|&nbsp;
-        <Helpful value={answer.helpfulness} component="answers" componentId={answer.id} />
+        <Helpful value={answerToRender.helpfulness} component="answers" componentId={answerToRender.id} />
         &nbsp;|&nbsp;
-        <Report component="qa" componentId={answer.id} />
+        <Report component="qa" componentId={answerToRender.id} />
       </div>
     </div>
   );

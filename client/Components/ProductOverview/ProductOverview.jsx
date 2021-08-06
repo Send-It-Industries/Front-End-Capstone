@@ -15,6 +15,7 @@ const ProductOverview = () => {
     columnGap: '3%',
     rowGap: '7%',
     width: '90vw',
+    height: '100%',
     maxHeight: '1250px',
     maxWidth: '1250px',
     /* height: '100%', */
@@ -24,7 +25,8 @@ const ProductOverview = () => {
 
   const expandedStyle = {
     gridTemplateColumns: '100%',
-    gridTemplateRows: '75vh',
+    gridTemplateRows: '95vh minmax(125px, 10vmin)',
+    maxHeight: '1500px',
   };
 
   return (

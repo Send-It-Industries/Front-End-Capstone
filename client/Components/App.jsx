@@ -13,7 +13,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18083');
+  const [productId, setProductId] = useState('18080');
   const [selectedStyle, setSelectedStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
@@ -48,6 +48,10 @@ const App = () => {
       .then(() => {
         console.log('do something.... I just posted an ANSWER');
       });
+  };
+
+  const createReview = (review) => {
+    console.log('Submit Button Pressed!', review);
   };
 
   // ------------------                 Read                 ----------------------------
@@ -117,6 +121,7 @@ const App = () => {
     setFilteredReviews,
     reviewMeta,
     fetchReviews,
+    createReview,
     avgReview,
     updateHelpful,
     updateReport,

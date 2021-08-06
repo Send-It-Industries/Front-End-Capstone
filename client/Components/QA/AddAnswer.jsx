@@ -6,9 +6,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Modal from '../Helpers/Modal';
 import AppContext from '../Contexts/AppContext';
+import e from 'cors';
 
 const AddAnswer = (props) => {
-  const { QAs, productInfo, setQAs, productId } = useContext(AppContext);
+  const {
+    QAs, productInfo, setQAs, productId,
+  } = useContext(AppContext);
+  const [imageSrc, setImageSrc] = useState('');
   const [isOpen, setOpen] = useState(false);
   const [id, setID] = useState(Number(props.question_id));
   const [errors, setErrors] = useState('');
@@ -74,6 +78,10 @@ const AddAnswer = (props) => {
     return !errors;
   };
 
+  const handleChange = (event) => {
+    setImageSrc(URL.createObjectURL(event.target.files[0]));
+  };
+
   return (
     <div>
       <div
@@ -128,6 +136,12 @@ const AddAnswer = (props) => {
           value={answer.body}
           maxLength={1000}
         />
+        <br />
+        {/* Photos */}
+        <input type="file" onChange={handleChange} />
+        <br />
+        <img src={imageSrc} style={{ height: "100px", width: '100px' }} alt="Image preview..." />
+
         <button onClick={handleSubmit} type="button" style={{ width: '35%' }}>
           Submit
         </button>

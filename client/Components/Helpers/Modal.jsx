@@ -1,10 +1,10 @@
 /* eslint-disable linebreak-style */
-import React, { useEffect, useRef } from "react";
-import ReactDOM from "react-dom";
+import React, { useEffect, useRef } from 'react';
+import ReactDOM from 'react-dom';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const portalRoot = document.getElementById("portal-root");
+const portalRoot = document.getElementById('portal-root');
 
 const Background = styled.div`
     width: 100vw;
@@ -43,44 +43,44 @@ const HeaderRow = styled.div`
 // `;
 
 const Modal = ({ isOpen, close, children }) => {
-    const contentRef = useRef();
-  
-    useEffect(() => {
-      if (!isOpen) return;
-  
-      function listener(evt) {
-        if (contentRef.current?.contains(evt.target)) return;
-        close();
-      }
-  
-      window.addEventListener("click", listener);
-  
-      return () => {
-        window.removeEventListener("click", listener);
-      };
-    }, [isOpen]);
-  
-    if (!isOpen) return null;
-    return ReactDOM.createPortal(
-      <>
-        <Background>
-          <Content ref={contentRef}>
-            <HeaderRow>
-              {/* <img
+  const contentRef = useRef();
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function listener(evt) {
+      if (contentRef.current.contains(evt.target)) return;
+      close();
+    }
+
+    window.addEventListener('click', listener);
+
+    return () => {
+      window.removeEventListener('click', listener);
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+  return ReactDOM.createPortal(
+    <>
+      <Background>
+        <Content ref={contentRef}>
+          <HeaderRow>
+            {/* <img
                 src={closeIcon}
                 alt=""
                 width="30px"
                 style={{ cursor: "pointer" }}
                 onClick={close}
               /> */}
-            </HeaderRow>
-            {children}
-          </Content>
-        </Background>
-        {/* <ScrollDisabler /> */}
-      </>,
-      portalRoot
-    );
-  };
-  
-  export default Modal;
+          </HeaderRow>
+          {children}
+        </Content>
+      </Background>
+      {/* <ScrollDisabler /> */}
+    </>,
+    portalRoot,
+  );
+};
+
+export default Modal;

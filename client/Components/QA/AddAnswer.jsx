@@ -23,8 +23,6 @@ const AddAnswer = (props) => {
     setAnswer({ ...answer, [name]: value });
   };
 
-  // console.log(answer.question_id);
-
   const handleSubmit = (e) => {
     if (validateForm()) {
       setAnswer({
@@ -41,6 +39,7 @@ const AddAnswer = (props) => {
         body: '',
       });
       setErrors(' ');
+      setOpen(false);
     }
   };
 

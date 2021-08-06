@@ -44,6 +44,7 @@ const AddQuestion = (props) => {
         body: '',
       });
       setErrors(' ');
+      setOpen(false);
     }
   };
 

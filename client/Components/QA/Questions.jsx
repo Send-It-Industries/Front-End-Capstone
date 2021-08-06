@@ -26,7 +26,7 @@ const Questions = ({ Q }) => {
           border: '1px solid black',
         }}
       >
-        <span style={{ fontWeight: 'bold' }}>
+        <span id="text" style={{ fontWeight: 'bold' }}>
           Q:
           {Q.question_body}
         </span>

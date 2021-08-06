@@ -11,11 +11,12 @@ const QA = () => {
   const [searchTerm, setSeachTerm] = useState('');
   const [searchList, setSearchList] = useState([]);
   const [questionList, setQuestionList] = useState([]);
+  const [highlight, setHighlight] = useState('');
 
   useEffect(() => {
     setQuestionList(QAs.data);
   }, []);
-
+// console.log(QAs)
   useEffect(() => {
     const newData = searchTerm.length >= 3 ? searchList : QAs.data;
     setQuestionList(newData);
@@ -28,7 +29,7 @@ const QA = () => {
           .toLowerCase()
           .includes(searchTerm.toLowerCase());
         const doesAnswersMatch = Object.values(question.answers)
-          .some(answer => answer.body.toLowerCase().includes(searchTerm.toLowerCase()));
+          .some((answer) => answer.body.toLowerCase().includes(searchTerm.toLowerCase()));
         return doesQuestionMatch || doesAnswersMatch;
       });
       setSearchList(searchRender);
@@ -41,6 +42,13 @@ const QA = () => {
 
   const handleOnChange = (e) => {
     setSeachTerm(e.target.value);
+    const searched = searchTerm;
+    if (searched !== '') {
+      const text = document.getElementById('text').innerHTML;
+      const re = new RegExp(searched, 'g'); // search for all instances
+      const newText = text.replace(re, `<mark>${searched}</mark>`);
+      document.getElementById('text').innerHTML = newText;
+    }
   };
 
   return (
@@ -55,6 +63,8 @@ const QA = () => {
           value={searchTerm}
           onChange={handleOnChange}
           autoComplete="off"
+          id="search"
+          type="text"
         />
         {/* <div style={{ visibility: !questionList ? 'visible' : 'hidden' }}> */}
         {/* <AddQuestion PId={productId} /> */}

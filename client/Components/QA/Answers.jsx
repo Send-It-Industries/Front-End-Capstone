@@ -32,8 +32,9 @@ const Answers = ({ answer }) => {
   return (
     <div>
       <span style={{ fontWeight: 'bold' }}>A: </span>
-      {answer.body}
-      <br />
+      <span id="text">
+        {answer.body}
+      </span>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         by&nbsp;
         <span style={{ fontWeight: answer.answerer_name.toLowerCase() === 'seller' ? 'bold' : null }}>{answer.answerer_name}</span>

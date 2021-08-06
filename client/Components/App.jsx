@@ -13,14 +13,14 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18083');
+  const [productId, setProductId] = useState('18089');
   const [selectedStyle, setSelectedStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
   const [cart, setCart] = useState([]);
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
 
-  const [QAs, setQAs] = useState({ /* createQuestion, createAnswer, data: [] */ });
+  const [QAs, setQAs] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
@@ -39,6 +39,9 @@ const App = () => {
   const createQuestion = (question) => {
     axios.post('/api/qa/questions', question)
       .then(() => {
+        const data = QAs.data.push(question);
+        console.log(QAs.data);
+        setQAs({ ...QAs, data });
         console.log('do something.... I just posted a QUESTION');
       });
   };
@@ -81,11 +84,6 @@ const App = () => {
     axios.get(`/api/reviews/meta?product_id=${id}`)
       .then(({ data }) => setReviewMeta(data))
   );
-  // ------------------                Update                ----------------------------
-  const updateHelpful = () => { };
-
-  const updateReport = () => { };
-  // ------------------                Delete                ----------------------------
 
   // ------------------------------------------------------------------------------------
   // ------------------              Initialize              ----------------------------

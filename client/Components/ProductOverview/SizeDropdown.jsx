@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const SizeDropdown = ({ open, skus, disabled, selectedSku, onSelect, style, showDefault }) => {
-  const [displayMessage, setDisplayMessage] = useState('Select Size');
+  const [displayMessage, setDisplayMessage] = useState('SELECT A SIZE');
   const [openFromClick, setOpenFromClick] = useState(open);
 
   const selectorStyle = {
@@ -32,9 +32,9 @@ const SizeDropdown = ({ open, skus, disabled, selectedSku, onSelect, style, show
 
   useEffect(() => {
     if (disabled) {
-      setDisplayMessage('Out Of Stock');
+      setDisplayMessage('OUT OF STOCK');
     } else {
-      setDisplayMessage('Select Size');
+      setDisplayMessage('SELECT A SIZE');
     }
   }, [disabled]);
 
@@ -58,9 +58,9 @@ const SizeDropdown = ({ open, skus, disabled, selectedSku, onSelect, style, show
   useEffect(() => {
     if (showDefault) {
       if (disabled) {
-        setDisplayMessage('Out Of Stock');
+        setDisplayMessage('OUT OF STOCK');
       } else {
-        setDisplayMessage('Select Size');
+        setDisplayMessage('SELECT A SIZE');
       }
     }
   }, [showDefault]);

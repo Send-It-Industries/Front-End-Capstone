@@ -21,6 +21,7 @@ const StyleSelector = () => {
     alignItems: 'center',
     justifyItems: 'left',
     rowGap: '2%',
+
   };
 
   // const styleNameStyle = {
@@ -45,6 +46,7 @@ const StyleSelector = () => {
     maxHeight: '70px',
     objectFit: 'cover',
     margin: '1%',
+    border: '1px solid black',
   };
 
   const stylesImagesStyle = {
@@ -71,8 +73,10 @@ const StyleSelector = () => {
   return (
     <div id="StyleSelect" style={styleSelectStyle}>
       <div>
-        STYLE &gt;
-        {selectedStyle.name}
+        <b>
+          STYLE &gt;
+        </b>
+        {` ${selectedStyle.name}`}
       </div>
       <div style={stylesImagesStyle}>
         {productInfo.styles.map((style, i) => (

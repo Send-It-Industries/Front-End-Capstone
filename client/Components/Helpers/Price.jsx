@@ -5,9 +5,9 @@ const Price = ({ actualPrice, salePrice }) => (
   <div>
     {
       salePrice ? (
-        <div>
+        <div style={{ color: 'red' }}>
           {`${salePrice} `}
-          <s>{actualPrice}</s>
+          <s style={{ color: 'black' }}>{actualPrice}</s>
         </div>
       ) : (
         <div>{actualPrice}</div>

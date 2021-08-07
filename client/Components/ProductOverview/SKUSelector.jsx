@@ -5,6 +5,10 @@ import React, {
   useRef,
 } from 'react';
 import { range } from 'underscore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
+
+
 import SizeDropdown from './SizeDropdown';
 
 import AppContext from '../Contexts/AppContext';
@@ -129,16 +133,20 @@ const SKUSelector = () => {
     width: '30%',
     height: '3rem',
     margin: '5% 0',
+    background: 'white',
   };
   const addToCartStyle = {
     width: '78%',
     height: '3rem',
     margin: '5% 0',
+    background: 'white',
   };
   const starBtnStyle = {
     width: '15%',
     height: '3rem',
     margin: '5% 0',
+    background: 'white',
+    color: 'dark-grey',
   };
 
   return (
@@ -203,11 +211,11 @@ const SKUSelector = () => {
           }
         </select>
         {inStock ? (
-          <button style={addToCartStyle} type="submit">Add to Bag</button>
+          <button style={addToCartStyle} type="submit">ADD TO BAG</button>
         ) : (
           null
         )}
-        <button style={starBtnStyle} type="button">Social Media? outfit?</button>
+        <button style={starBtnStyle} type="button"><FontAwesomeIcon icon={faShareAlt} /></button>
       </form>
     </div>
   );

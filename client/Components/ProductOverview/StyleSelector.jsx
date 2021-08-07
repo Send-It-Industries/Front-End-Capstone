@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faCircle } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '../Contexts/AppContext';
 import useElementSizeById from '../Helpers/Hooks/useElementSizeById';
 
@@ -82,12 +84,26 @@ const StyleSelector = () => {
       </div>
       <div style={stylesImagesStyle}>
         {productInfo.styles.map((style, i) => (
-          <img
-            style={(style.style_id === selectedStyle.style_id) ? ({ ...styleThumbnailStyle, ...selected }) : (styleThumbnailStyle)}
-            src={style.photos[displayImageIndex].thumbnail_url}
-            alt={`${style.style_id}`}
-            key={i}
-            onClick={() => (handleStyleChange(style))} />
+          <div style={{ margin: '0 2%', position: 'relative'}}>
+            {
+              (style.style_id === selectedStyle.style_id) ? (
+                <div className="fa-layers fa-fw" style={{ position: 'absolute', right: '0', borderRadius: '50%', boxSizing: 'border-box', objectFit: 'contain', color: 'rgb(117, 129, 107)' }}>
+                  <span style={{ color: 'white' }}>
+                    <FontAwesomeIcon icon={faCircle} />
+                  </span>
+                    <FontAwesomeIcon icon={faCheckCircle} />
+                </div>
+              ) : (null)
+            }
+            <img
+              style={styleThumbnailStyle}
+              src={style.photos[displayImageIndex].thumbnail_url}
+              alt={`${style.style_id}`}
+              key={i}
+              onClick={() => (handleStyleChange(style))}
+            />
+
+          </div>
         ))}
       </div>
     </div>

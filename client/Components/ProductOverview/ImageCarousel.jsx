@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '../Contexts/AppContext';
 import useElementSizeById from '../Helpers/Hooks/useElementSizeById';
 
@@ -46,7 +48,10 @@ const ImageCarousel = ({ displayCount }) => {
     setSelectedImageIndex(displayImageIndex - displayEdges.start);
   }, [displayEdges]);
 
-  const selected = { boxShadow: '3px 3px 2px red' };
+  const selected = {
+    boxShadow: '0px 3px black',
+    opacity: '1',
+  };
 
   const carouselStyle = {
     position: 'absolute',
@@ -61,9 +66,11 @@ const ImageCarousel = ({ displayCount }) => {
     gridTemplateRows: selectedStyle.photos.length > displayCount ? '3% 89% 3%' : '100%',
     rowGap: '1%',
     justifyItems: 'center',
-    backgroundColor: 'white',
+    // backgroundColor: 'grey',
+    // backgroundColor: 'rgba(128,128,128, .0)',
     justifyContent: 'space-evenly',
-    border: '1px solid red',
+    // border: '1px solid black',
+    border: 'none',
   };
 
   const carouselImagesStyle = {
@@ -102,14 +109,17 @@ const ImageCarousel = ({ displayCount }) => {
     borderBottom: '5px',
     boxSizing: 'border-box',
     border: '1px solid black',
+    opacity: '.5',
   };
 
   const upArrowBtnStyle = {
     gridRow: '1 / 2',
+    opacity: '.7',
   };
 
   const downArrowBtnStyle = {
     gridRow: '3 / 4',
+    opacity: '.7',
   };
   const incrementView = () => {
     setDisplayEdges((prevEdges) => (
@@ -136,7 +146,13 @@ const ImageCarousel = ({ displayCount }) => {
   return (
     selectedStyle.photos.length > 1 ? (
       <div id="thumbnailCarousel" style={carouselStyle}>
-        {displayEdges.start ? <button type="button" style={upArrowBtnStyle} onClick={decrementView}>up</button> : null}
+        {displayEdges.start ? (
+          <div
+            role="button"
+            style={upArrowBtnStyle}
+            onClick={decrementView}>
+            <FontAwesomeIcon icon={faAngleUp} />
+          </div>) : null}
         <div id="thumbnailCarouselImages" style={carouselImagesStyle}>
           {selectedStyle.photos.slice(displayEdges.start, displayEdges.end)
             .map(({ thumbnail_url }, i) => (
@@ -154,7 +170,14 @@ const ImageCarousel = ({ displayCount }) => {
               // </div>
             ))}
         </div>
-        {displayEdges.end !== (selectedStyle.photos.length) ? <button type="button" style={downArrowBtnStyle} onClick={incrementView}>down</button> : null}
+        {displayEdges.end !== (selectedStyle.photos.length) ? (
+          <div
+            role="button"
+            style={downArrowBtnStyle}
+            onClick={incrementView}>
+            <FontAwesomeIcon icon={faAngleDown} />
+
+          </div>) : null}
       </div>
     ) : (null)
   );

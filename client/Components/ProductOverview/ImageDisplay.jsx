@@ -1,4 +1,6 @@
 import React, { useState, useContext } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight, faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
 import ImageCarousel from './ImageCarousel';
 import MagnifyingGlass from './MagnifyingGlass';
 
@@ -10,11 +12,15 @@ const ImageDisplay = () => {
     // gridRow: '1 / 2',
     position: 'absolute',
     top: '50%',
+    fontSize: '3rem',
+    opacity: '.6',
+    color: 'black',
   };
 
   const enhanceBtnStyle = {
     top: '5%',
     left: '90%',
+    fontSize: '2rem',
   };
 
   const imageDisplayStyle = {
@@ -23,7 +29,7 @@ const ImageDisplay = () => {
     gridColumn: '1 / 2',
     gridRow: '1 / 2',
     boxSizing: 'border-box',
-    backgroundColor: 'black',
+    backgroundColor: 'rgba(117, 129, 107, .8)',
     // height: '100%',
     overflow: 'hidden',
     /* alignSelf: 'center'; */
@@ -32,7 +38,7 @@ const ImageDisplay = () => {
     gridTemplateColumns: '100%',
     alignItems: 'center',
     justifyItems: 'center',
-    border: '2px solid red',
+    border: 'none',
     padding: '0 2%',
   };
 
@@ -95,14 +101,36 @@ const ImageDisplay = () => {
   return (
     <div id="imageDisplay" style={imageDisplayStyle} onMouseOut={() => (setHovering(false))}>
 
-      <button type="button" onClick={decrementDisplayImageIndex} style={{ ...btnStyle, left: '25%' }}>decrement</button>
+      <div
+        role="button"
+        onClick={decrementDisplayImageIndex}
+        style={{ ...btnStyle, left: '25%' }}>
+        <FontAwesomeIcon icon={faAngleLeft} />
+      </div>
 
-      <div id="productImage" style={imageStyle} onMouseEnter={() => (setHovering(true))} onMouseOut={()=> (setHovering(false))} />
+      <div
+        id="productImage"
+        style={imageStyle}
+        onMouseEnter={() => (setHovering(true))}
+        onMouseOut={() => (setHovering(false))} />
+
       {/* <img id="productImage" src={selectedStyle.photos[displayImageIndex].url} alt="Product Display" style={imageStyle} onMouseEnter={() => (setHovering(true))} onMouseOut={()=> (setHovering(false))}/> */}
 
-      <button type="button" onClick={toggleExpandedView} style={{ ...btnStyle, ...enhanceBtnStyle }}>enhance</button>
+      <div
+        role="button"
+        onClick={toggleExpandedView}
+        style={{ ...btnStyle, ...enhanceBtnStyle }}>
+        {
+          expanded ? (<FontAwesomeIcon icon={faCompress} />) : (<FontAwesomeIcon icon={faExpand} />)
+        }
+      </div>
 
-      <button type="button" onClick={incrementDisplayImageIndex} style={{ ...btnStyle, left: '90%' }}>increment</button>
+      <div
+        role="button"
+        onClick={incrementDisplayImageIndex}
+        style={{ ...btnStyle, left: '90%' }}>
+        <FontAwesomeIcon icon={faAngleRight} />
+      </div>
 
       <ImageCarousel displayCount={7} />
 

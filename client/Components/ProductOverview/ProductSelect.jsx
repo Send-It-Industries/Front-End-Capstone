@@ -18,11 +18,16 @@ const ProductSelect = () => {
     gridTemplateRows: 'repeat(6, auto)',
     padding: '15% 0',
   };
+
+  const nameStyle = {
+    fontSize: '2.5rem',
+  }
+
   return (
     <div id="ProductSelect" style={productSelectStyle} data-testid="productSelect">
       <Stars />
-      <div>{productInfo.category}</div>
-      <div>{productInfo.name}</div>
+      <div>{productInfo.category.toUpperCase()}</div>
+      <div style={nameStyle}>{productInfo.name}</div>
       <Price actualPrice={selectedStyle.original_price} salePrice={selectedStyle.sale_price} />
       <StyleSelector />
       <SKUSelector />

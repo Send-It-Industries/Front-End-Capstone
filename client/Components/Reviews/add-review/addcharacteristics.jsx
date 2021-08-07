@@ -1,6 +1,6 @@
 import React from 'react';
 
-const characteristic = ({ characteristic }) => {
+const characteristic = ({ characteristic, id, changeHandler }) => {
   const adjectives = {
     Size: ['A size too small', '1/2 size too small', 'Perfect', '1/2 size too big', 'A size too wide'],
     Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly Wide', 'Too wide'],
@@ -9,11 +9,11 @@ const characteristic = ({ characteristic }) => {
     Length: ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
     Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly loose', 'Runs loose'],
   };
-
+  // console.log(characteristic, id);
   return (
     <>
       <br margin="5px 0" />
-      <div fontSize="25px">
+      <div fontSize="25px" style={{ alignSelf: 'flex-start' }}>
         {`${characteristic}:`}
       </div>
       {/* <br /> */}
@@ -22,23 +22,23 @@ const characteristic = ({ characteristic }) => {
       }}
       >
         <div>
-          <input type="radio" />
-          <label style={{ display: 'block', fontSize: '12px'}}>{adjectives[characteristic][0]}</label>
+          <input type="radio" name={id} value="1" onChange={changeHandler} />
+          <label style={{ display: 'block', fontSize: '12px' }}>{adjectives[characteristic][0]}</label>
         </div>
         <div>
-          <input type="radio" />
-          <label style={{ display: 'block', fontSize: '12px'}}>{adjectives[characteristic][1]}</label>
+          <input type="radio" name={id} value="2" onChange={changeHandler} />
+          <label style={{ display: 'block', fontSize: '12px' }}>{adjectives[characteristic][1]}</label>
         </div>
         <div>
-          <input type="radio" />
+          <input type="radio" name={id} value="3" onChange={changeHandler} />
           <label style={{ display: 'block', fontSize: '12px' }}>{adjectives[characteristic][2]}</label>
         </div>
         <div>
-          <input type="radio" />
+          <input type="radio" name={id} value="4" onChange={changeHandler} />
           <label style={{ display: 'block', fontSize: '12px' }}>{adjectives[characteristic][3]}</label>
         </div>
         <div>
-          <input type="radio" />
+          <input type="radio" name={id} value="5" onChange={changeHandler} />
           <label style={{ display: 'block', fontSize: '12px' }}>{adjectives[characteristic][4]}</label>
         </div>
 

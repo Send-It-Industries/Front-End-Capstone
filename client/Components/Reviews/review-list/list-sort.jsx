@@ -1,11 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../../Contexts/AppContext';
 
 const Sort = () => {
-  const [currentSort, setCurrentSort] = useState('relevant');
-  const { productId, reviews, fetchReviews } = useContext(AppContext);
+  const {
+    productId, reviews, fetchReviews, currentSort, setCurrentSort,
+  } = useContext(AppContext);
   const reviewCount = reviews.length;
   const selectHandler = (e) => {
+    e.preventDefault();
     // console.log(e.target.value);
     setCurrentSort(e.target.value);
     fetchReviews(productId, e.target.value);
@@ -19,7 +21,7 @@ const Sort = () => {
       }}
     >
       {`${reviewCount} reviews, sorted by: `}
-      <select name="sortType" defaultValue={currentSort} onChange={selectHandler}>
+      <select name="sortType" value={currentSort} onChange={selectHandler}>
         <option value="relevant"> relevant</option>
         <option value="newest"> recent </option>
         <option value="helpful"> helpful</option>

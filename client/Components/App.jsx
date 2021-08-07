@@ -25,6 +25,7 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
   const [filteredReviews, setFilteredReviews] = useState([]);
+  const [currentSort, setCurrentSort] = useState('relevant');
 
   const [expanded, setExpanded] = useState(false);
   const toggleExpandedView = () => (
@@ -48,10 +49,6 @@ const App = () => {
       .then(() => {
         console.log('do something.... I just posted an ANSWER');
       });
-  };
-
-  const createReview = (review) => {
-    console.log('Submit Button Pressed!', review);
   };
 
   // ------------------                 Read                 ----------------------------
@@ -85,6 +82,19 @@ const App = () => {
     axios.get(`/api/reviews/meta?product_id=${id}`)
       .then(({ data }) => setReviewMeta(data))
   );
+  // ------------------                Create/Read Combo                ----------------------------
+  const createReview = (review) => {
+    console.log('Submit Button Pressed!', review);
+    axios.post('api/reviews', review)
+      .then((res) => {
+        console.log('post likely successful. See for yourself: ', res);
+        fetchReviews(productId, currentSort);
+        console.log(currentSort);
+      })
+      .then((res) => {console.log ('Tried to make fetch happen', res); })
+      .catch((err) => { console.log(err); });
+  };
+
   // ------------------                Update                ----------------------------
   const updateHelpful = () => { };
 
@@ -123,6 +133,8 @@ const App = () => {
     fetchReviews,
     createReview,
     avgReview,
+    currentSort,
+    setCurrentSort,
     updateHelpful,
     updateReport,
     selectedStyle,

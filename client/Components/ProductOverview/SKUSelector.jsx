@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { range } from 'underscore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faShareAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 
 import SizeDropdown from './SizeDropdown';
@@ -127,24 +127,27 @@ const SKUSelector = () => {
   const sizeSelectStyle = {
     width: '63%',
     height: '3rem',
-    margin: '5% 0',
+    margin: '2% 0',
   };
   const quantitySelectStyle = {
     width: '30%',
     height: '3rem',
-    margin: '5% 0',
+    margin: '2% 0',
     background: 'white',
   };
   const addToCartStyle = {
     width: '78%',
     height: '3rem',
-    margin: '5% 0',
+    margin: '2% 0',
     background: 'white',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   };
   const starBtnStyle = {
     width: '15%',
     height: '3rem',
-    margin: '5% 0',
+    margin: '2% 0',
     background: 'white',
     color: 'dark-grey',
   };
@@ -153,7 +156,7 @@ const SKUSelector = () => {
     <div id="skuSelector" style={{ overflow: 'visible' }}>
       {/* Size Select */}
       {
-        skuNeeded ? <div>Please select a size</div> : null
+        skuNeeded ? <div style={{ height: '.8rem', color: 'red' }}>Please select a size</div> : <div style={{ height: '.8rem', color: 'red' }}></div>
       }
       <form style={skuSelectorStyle} onSubmit={handleProductSubmit}>
         {selectedStyle.skus ? (
@@ -203,7 +206,13 @@ const SKUSelector = () => {
           {
             skuSelected ? (
               range(1, maxQuantity + 1).map((possibleQuantity) => (
-                <option style={{fontSize: '1rem', boxShadow: '0px 10px 10px grey'}} value={possibleQuantity} key={possibleQuantity}>{possibleQuantity}</option>
+                <option
+                  style={{ fontSize: '1rem', boxShadow: '0px 10px 10px grey' }}
+                  value={possibleQuantity}
+                  key={possibleQuantity}
+                >
+                  {possibleQuantity}
+                </option>
               ))
             ) : (
               <option value>{wantedQuantity}</option>
@@ -211,11 +220,22 @@ const SKUSelector = () => {
           }
         </select>
         {inStock ? (
-          <button style={addToCartStyle} type="submit">ADD TO BAG</button>
+          <button
+            style={addToCartStyle}
+            type="submit"
+          >
+            ADD TO BAG
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
         ) : (
-          null
+          <div style={addToCartStyle}></div>
         )}
-        <button style={starBtnStyle} type="button"><FontAwesomeIcon icon={faShareAlt} /></button>
+        <button
+          style={starBtnStyle}
+          type="button"
+        >
+          <FontAwesomeIcon icon={faShareAlt} />
+        </button>
       </form>
     </div>
   );

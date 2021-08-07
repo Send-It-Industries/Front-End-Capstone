@@ -63,7 +63,7 @@ const ImageCarousel = ({ displayCount }) => {
     justifyItems: 'center',
     backgroundColor: 'white',
     justifyContent: 'space-evenly',
-    border:'1px solid red',
+    border: '1px solid red',
   };
 
   const carouselImagesStyle = {

@@ -12,7 +12,7 @@ const ProductSelect = () => {
   const productSelectStyle = {
     gridColumn: '2 / 3',
     gridRow: '1 / 2',
-    overflow: 'auto', /* can remove once finish carousel */
+    overflow: 'visible', /* can remove once finish carousel */
     display: 'grid',
     gridTemplateColumns: '100%',
     gridTemplateRows: 'repeat(6, auto)',

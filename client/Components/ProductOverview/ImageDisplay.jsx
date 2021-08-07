@@ -33,6 +33,7 @@ const ImageDisplay = () => {
     alignItems: 'center',
     justifyItems: 'center',
     border: '2px solid red',
+    padding: '0 2%',
   };
 
   // const [expanded, setExpanded] = useState(false);

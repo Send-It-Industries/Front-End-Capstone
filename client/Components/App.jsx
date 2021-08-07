@@ -3,6 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import AppContext from './Contexts/AppContext';
 
+import SendItHeader from './Header/SendItHeader';
 import ReviewSummary from './Reviews/summary-reviews';
 // import ProductFeed from './RelatedProducts/ProductFeed';
 import QA from './QA/QA';
@@ -128,6 +129,14 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                Render                ----------------------------
   // ------------------------------------------------------------------------------------
+  const appStyle = {
+    display: 'grid',
+    gridTemplateColumns: '100%',
+    gridTemplateRows: '3% 1.5% 80vh auto auto',
+    rowGap: '.5%',
+    justifyItems: 'center',
+  };
+
   const contextVal = {
     productId,
     setProductId,
@@ -159,13 +168,17 @@ const App = () => {
 
   return (
     <AppContext.Provider value={contextVal}>
-      <ProductOverview />
-      {/* <ProductFeed />
-      <ProductFeed /> */}
-      {Object.keys(QAs).length && Object.keys(productId).length ? (
-        <QA />
-      ) : (<div>Loading...</div>)}
-      <ReviewSummary />
+      <div style={appStyle}>
+        <SendItHeader />
+        <div>add Banner</div>
+        <ProductOverview />
+        {/* <ProductFeed />
+        <ProductFeed /> */}
+        {Object.keys(QAs).length && Object.keys(productId).length ? (
+          <QA />
+        ) : (<div>Loading...</div>)}
+        <ReviewSummary />
+      </div>
     </AppContext.Provider>
   );
 };

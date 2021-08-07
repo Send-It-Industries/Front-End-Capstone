@@ -82,7 +82,6 @@ const App = () => {
     axios.get(`/api/reviews/meta?product_id=${id}`)
       .then(({ data }) => setReviewMeta(data))
   );
-<<<<<<< HEAD
   // ------------------                Create/Read Combo                ----------------------------
   const createReview = (review) => {
     console.log('Submit Button Pressed!', review);
@@ -101,8 +100,6 @@ const App = () => {
 
   const updateReport = () => { };
   // ------------------                Delete                ----------------------------
-=======
->>>>>>> origin
 
   // ------------------------------------------------------------------------------------
   // ------------------              Initialize              ----------------------------
@@ -137,13 +134,10 @@ const App = () => {
     fetchReviews,
     createReview,
     avgReview,
-<<<<<<< HEAD
     currentSort,
     setCurrentSort,
     updateHelpful,
     updateReport,
-=======
->>>>>>> origin
     selectedStyle,
     setSelectedStyle,
     displayImageIndex,

@@ -5,6 +5,7 @@ import React, {
   useRef,
 } from 'react';
 import { range } from 'underscore';
+import SizeDropdown from './SizeDropdown';
 
 import AppContext from '../Contexts/AppContext';
 
@@ -17,18 +18,18 @@ const SKUSelector = () => {
   const [skuSelected, setSkuSelected] = useState(false);
   const [wantedQuantity, setWantedQuantity] = useState('-');
   const [maxQuantity, setMaxQuantity] = useState(15);
-  // boolean for if a add to cart was attempted without a sku
+  // boolean for if a add to cart was attempted without a skuquantitySelectored this
   const [skuNeeded, setSkuNeeded] = useState(false);
 
-  const quantitySelector = useRef(null); // I dont think I need this
+  const quantitySelector = useRef(null); //I dontThink I need this
 
   const handleSkuSelect = (e) => {
     let maxQ;
-    setSelectedSku(e.target.value);
+    setSelectedSku(e.target.id); // change value to name
     setSkuSelected(true);
     setSkuNeeded(false);
-    if (selectedStyle.skus[e.target.value].quantity < 15) {
-      maxQ = selectedStyle.skus[e.target.value].quantity;
+    if (selectedStyle.skus[e.target.id].quantity < 15) {
+      maxQ = selectedStyle.skus[e.target.id].quantity;
     } else {
       maxQ = 15;
     }
@@ -75,12 +76,23 @@ const SKUSelector = () => {
     // Check the current style has skus available by checking if the skus object has keys
     // then if the skus are available sum the number of available items per style.
     // convert truthy/falsy to boolean with !!
-    const skusAvailable = !!(Object.keys(selectedStyle.skus).length);
-    return (skusAvailable ? !!(
-      Object.values(selectedStyle.skus).reduce((sum, { quantity }) => (
-        sum + quantity
-      ), 0)
-    ) : false);
+
+    // debugger;
+    const stockAvail = Object.entries(selectedStyle.skus)
+      .filter(([sku, { quantity }]) => {
+        // debugger;
+        return sku && quantity;
+      })
+      .length;
+    return !!stockAvail;
+
+
+    // const skusAvailable = !!(Object.keys(selectedStyle.skus).length);
+    // return (skusAvailable ? !!(
+    //   Object.values(selectedStyle.skus).reduce((sum, { quantity }) => (
+    //     sum + quantity
+    //   ), 0)
+    // ) : false);
   };
 
   useEffect(() => {
@@ -96,7 +108,8 @@ const SKUSelector = () => {
   }, [selectedStyle]);
 
   const skuSelectorStyle = {
-    overflow: 'hidden',
+    overflow: 'visible',
+    // position: 'relative',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
@@ -109,39 +122,50 @@ const SKUSelector = () => {
 
   const sizeSelectStyle = {
     width: '63%',
-    height: '3em',
+    height: '3rem',
     margin: '5% 0',
   };
   const quantitySelectStyle = {
     width: '30%',
-    height: '3em',
+    height: '3rem',
     margin: '5% 0',
   };
   const addToCartStyle = {
     width: '78%',
-    height: '3em',
+    height: '3rem',
     margin: '5% 0',
   };
   const starBtnStyle = {
     width: '15%',
-    height: '3em',
+    height: '3rem',
     margin: '5% 0',
   };
 
   return (
-    <div id="skuSelector">
+    <div id="skuSelector" style={{ overflow: 'visible' }}>
       {/* Size Select */}
+      {
+        skuNeeded ? <div>Please select a size</div> : null
+      }
       <form style={skuSelectorStyle} onSubmit={handleProductSubmit}>
-        {
-          skuNeeded ? <div>Please select a size</div> : null
-        }
-        <select
+        {selectedStyle.skus ? (
+          <SizeDropdown
+            open={skuNeeded}
+            skus={selectedStyle.skus}
+            disabled={!inStock}
+            selectedSku={selectedSku}
+            onSelect={handleSkuSelect}
+            style={sizeSelectStyle}
+            showDefault={!skuSelected}
+          />
+        ) : (null)}
+
+        {/* <select
           style={sizeSelectStyle}
           value={selectedSku}
           id="skuSelect"
           onChange={(e) => (handleSkuSelect(e, selectedSku))}
           disabled={!inStock}
-          ref={quantitySelector}
         >
           {
             inStock ? (
@@ -159,7 +183,7 @@ const SKUSelector = () => {
               <option value="outOfStock">Out Of Stock</option>
             )
           }
-        </select>
+        </select> */}
         {/* Quantity select */}
         <select
           style={quantitySelectStyle}
@@ -171,7 +195,7 @@ const SKUSelector = () => {
           {
             skuSelected ? (
               range(1, maxQuantity + 1).map((possibleQuantity) => (
-                <option value={possibleQuantity} key={possibleQuantity}>{possibleQuantity}</option>
+                <option style={{fontSize: '1rem', boxShadow: '0px 10px 10px grey'}} value={possibleQuantity} key={possibleQuantity}>{possibleQuantity}</option>
               ))
             ) : (
               <option value>{wantedQuantity}</option>

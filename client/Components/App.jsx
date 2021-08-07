@@ -13,7 +13,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18078');
+  const [productId, setProductId] = useState('18080');
   const [selectedStyle, setSelectedStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
@@ -26,6 +26,7 @@ const App = () => {
   const [avgReview, setAvgReview] = useState(0);
   const [filteredReviews, setFilteredReviews] = useState([]);
   const [currentSort, setCurrentSort] = useState('relevant');
+  const [reviewCount, setReviewCount] = useState(0);
 
   const [expanded, setExpanded] = useState(false);
   const toggleExpandedView = () => (
@@ -117,6 +118,13 @@ const App = () => {
       setAvgReview(avg);
     }
   }, [reviewMeta]);
+
+  useEffect(() => {
+    if (reviews.length) {
+      setReviewCount(reviews.length);
+    }
+  }, [reviews.length]);
+
   // ------------------------------------------------------------------------------------
   // ------------------                Render                ----------------------------
   // ------------------------------------------------------------------------------------
@@ -136,6 +144,7 @@ const App = () => {
     avgReview,
     currentSort,
     setCurrentSort,
+    reviewCount,
     updateHelpful,
     updateReport,
     selectedStyle,

@@ -12,11 +12,11 @@ const StyleSelector = () => {
   const [prodectSelectWidth, productSelectHeight] = useElementSizeById('ProductSelect');
 
   const styleSelectStyle = {
-    overflow: 'hidden',
+    overflow: 'visible',
     display: 'grid',
     gridTemplateColumns: '100%',
     // gridTemplateRows: '2em',
-    gridTemplateRows: '2em auto', // 8vmin
+    gridTemplateRows: '1.5em auto', // 8vmin
     /* gridAutoRows: 'repeat(4, 25%'), */
     alignItems: 'center',
     justifyItems: 'left',
@@ -35,11 +35,11 @@ const StyleSelector = () => {
     // width: '90%',
     // height: '2em',
     // width: '2em',
-    flex: '0 1 23%',
+    flex: '0 1 20%',
     borderRadius: '50%',
     boxSizing: 'border-box',
-    width: '23%', // based off of 4 images update with margins
-    height: 0.23 * prodectSelectWidth,
+    width: 0.18 * prodectSelectWidth, // based off of 4 images update with margins
+    height: 0.18 * prodectSelectWidth,
     minWidth: '25px',
     minHeight: '25px',
     maxWidth: '70px',
@@ -72,11 +72,13 @@ const StyleSelector = () => {
 
   return (
     <div id="StyleSelect" style={styleSelectStyle}>
-      <div>
+      <div style={{ whiteSpace: 'nowrap' }}>
         <b>
           STYLE &gt;
         </b>
-        {` ${selectedStyle.name}`}
+        <span>
+          {` ${selectedStyle.name}`}
+        </span>
       </div>
       <div style={stylesImagesStyle}>
         {productInfo.styles.map((style, i) => (

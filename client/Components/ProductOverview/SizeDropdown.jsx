@@ -22,12 +22,21 @@ const SizeDropdown = ({ open, skus, disabled, selectedSku, onSelect, style, show
     top: '100%',
     backgroundColor: 'white',
     border: '1px solid grey',
-    padding: '1px 6px',
     fontSize: '1rem',
     boxShadow: '0px 10px 10px lightgrey',
   };
 
   const selectionStyle = {
+    padding: '0 6px',
+  };
+
+  const handleSelectionEnter = (e) => {
+    e.target.style.backgroundColor = '#2B90FB';
+    e.target.style.color = 'white';
+  };
+  const handleSelectionOut = (e) => {
+    e.target.style.backgroundColor = 'white';
+    e.target.style.color = 'black';
   };
 
   useEffect(() => {
@@ -104,6 +113,8 @@ const SizeDropdown = ({ open, skus, disabled, selectedSku, onSelect, style, show
               .map(([sku, { size }]) => (
                 <div
                   role="button"
+                  onMouseEnter={handleSelectionEnter}
+                  onMouseOut={handleSelectionOut}
                   onClick={(e) => (handleDropdownClick(e, sku, size))}
                   id={sku}
                   key={sku}

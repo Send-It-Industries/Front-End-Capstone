@@ -13,7 +13,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18080');
+  const [productId, setProductId] = useState('18100');
   const [selectedStyle, setSelectedStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 

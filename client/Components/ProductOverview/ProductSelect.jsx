@@ -15,13 +15,13 @@ const ProductSelect = () => {
     overflow: 'visible', /* can remove once finish carousel */
     display: 'grid',
     gridTemplateColumns: '100%',
-    gridTemplateRows: 'repeat(6, auto)',
-    padding: '15% 0',
+    gridTemplateRows: 'repeat(4, auto) 50% 25%',
+    padding: '10% 0',
   };
 
   const nameStyle = {
     fontSize: '2.5rem',
-  }
+  };
 
   return (
     <div id="ProductSelect" style={productSelectStyle} data-testid="productSelect">

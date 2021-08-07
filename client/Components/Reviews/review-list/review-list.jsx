@@ -24,22 +24,29 @@ const ReviewList = () => {
     <div
       style={{
         width: '50%',
+        height: '100vh',
         padding: '5px',
         margin: '5px',
-        maxHeight: '550px',
-        overflowY: 'auto',
+        maxHeight: '700px',
+        // overflowY: 'auto',
       }}
     >
       <Sort />
-      {displayReviews.slice(0, reviewCount).map(
-        (review) => (
-          <ReviewCard
-            review={review}
-            key={review.review_id}
-
-          />
-        ),
-      )}
+      <div style={{
+        // height: '70vh',
+        maxHeight: '60vh',
+        overflowY: 'auto',
+      }}
+      >
+        {displayReviews.slice(0, reviewCount).map(
+          (review) => (
+            <ReviewCard
+              review={review}
+              key={review.review_id}
+            />
+          ),
+        )}
+      </div>
       <MoreReviews
         reviewCount={reviewCount}
         setReviewCount={setReviewCount}

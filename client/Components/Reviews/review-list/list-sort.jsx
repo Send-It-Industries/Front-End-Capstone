@@ -3,7 +3,7 @@ import AppContext from '../../Contexts/AppContext';
 
 const Sort = () => {
   const {
-    productId, reviews, fetchReviews, currentSort, setCurrentSort, reviewCount,
+    productId, fetchReviews, currentSort, setCurrentSort, reviewCount,
   } = useContext(AppContext);
   const selectHandler = (e) => {
     e.preventDefault();

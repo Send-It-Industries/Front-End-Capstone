@@ -13,7 +13,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18100');
+  const [productId, setProductId] = useState('18080');
   const [selectedStyle, setSelectedStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
@@ -25,6 +25,8 @@ const App = () => {
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
   const [filteredReviews, setFilteredReviews] = useState([]);
+  const [currentSort, setCurrentSort] = useState('relevant');
+  const [reviewCount, setReviewCount] = useState(0);
 
   const [expanded, setExpanded] = useState(false);
   const toggleExpandedView = () => (
@@ -48,10 +50,6 @@ const App = () => {
       .then(() => {
         cb();
       });
-  };
-
-  const createReview = (review) => {
-    console.log('Submit Button Pressed!', review);
   };
 
   // ------------------                 Read                 ----------------------------
@@ -85,6 +83,24 @@ const App = () => {
     axios.get(`/api/reviews/meta?product_id=${id}`)
       .then(({ data }) => setReviewMeta(data))
   );
+  // ------------------                Create/Read Combo                ----------------------------
+  const createReview = (review) => {
+    console.log('Submit Button Pressed!', review);
+    axios.post('api/reviews', review)
+      .then((res) => {
+        console.log('post likely successful. See for yourself: ', res);
+        fetchReviews(productId, currentSort);
+        console.log(currentSort);
+      })
+      .then((res) => {console.log ('Tried to make fetch happen', res); })
+      .catch((err) => { console.log(err); });
+  };
+
+  // ------------------                Update                ----------------------------
+  const updateHelpful = () => { };
+
+  const updateReport = () => { };
+  // ------------------                Delete                ----------------------------
 
   // ------------------------------------------------------------------------------------
   // ------------------              Initialize              ----------------------------
@@ -102,6 +118,13 @@ const App = () => {
       setAvgReview(avg);
     }
   }, [reviewMeta]);
+
+  useEffect(() => {
+    if (reviews.length) {
+      setReviewCount(reviews.length);
+    }
+  }, [reviews.length]);
+
   // ------------------------------------------------------------------------------------
   // ------------------                Render                ----------------------------
   // ------------------------------------------------------------------------------------
@@ -119,6 +142,11 @@ const App = () => {
     fetchReviews,
     createReview,
     avgReview,
+    currentSort,
+    setCurrentSort,
+    reviewCount,
+    updateHelpful,
+    updateReport,
     selectedStyle,
     setSelectedStyle,
     displayImageIndex,

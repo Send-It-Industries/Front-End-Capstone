@@ -30,30 +30,36 @@ const ProductFeatures = () => {
     fontSize: '.8rem',
     color: 'dark-grey',
   };
-  const featuresStyle = {
+  const featuresContainerStyle = {
     gridColumn: '2 / 3',
     gridRow: '1 / 3',
     borderLeft: '1px solid grey',
-    paddingLeft: '10%',
+  };
+  const featuresStyle = {
+    margin: 'auto 0',
+    padding: '7% 0 7% 10%',
     fontSize: '1rem',
+
   };
   return (
     <div id="extraProductInfo" style={productFeaturesStyle}>
       <div style={sloganStyle}>{productInfo.slogan}</div>
       <p style={descriptionStyle}>{productInfo.description}</p>
-      <div id="productFeatures" style={featuresStyle}>
-        {
-          productInfo.features.map(({ feature, value }) => (
-            <div>
-              <span style={{ color: 'green' }}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span>
-                {` ${feature}${value ? ` - ${value}` : ''}`}
-              </span>
-            </div>
-          ))
-        }
+      <div id="productFeatures" style={featuresContainerStyle}>
+        <div style={featuresStyle}>
+          {
+            productInfo.features.map(({ feature, value }) => (
+              <div>
+                <span style={{ color: 'green' }}>
+                  <FontAwesomeIcon icon={faCheck} />
+                </span>
+                <span>
+                  {` ${feature}${value ? ` - ${value}` : ''}`}
+                </span>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   );

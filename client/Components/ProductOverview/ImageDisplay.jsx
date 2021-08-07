@@ -18,8 +18,8 @@ const ImageDisplay = () => {
   };
 
   const enhanceBtnStyle = {
-    top: '5%',
-    left: '90%',
+    top: '3.5%',
+    right: '3.5%',
     fontSize: '2rem',
   };
 
@@ -101,12 +101,14 @@ const ImageDisplay = () => {
   return (
     <div id="imageDisplay" style={imageDisplayStyle} onMouseOut={() => (setHovering(false))}>
 
-      <div
-        role="button"
-        onClick={decrementDisplayImageIndex}
-        style={{ ...btnStyle, left: '25%' }}>
-        <FontAwesomeIcon icon={faAngleLeft} />
-      </div>
+      {selectedStyle.photos.length > 1 ? (
+        <div
+          role="button"
+          onClick={decrementDisplayImageIndex}
+          style={{ ...btnStyle, left: '14%' }}>
+          <FontAwesomeIcon icon={faAngleLeft} />
+        </div>
+      ) : (null)}
 
       <div
         id="productImage"
@@ -116,21 +118,23 @@ const ImageDisplay = () => {
 
       {/* <img id="productImage" src={selectedStyle.photos[displayImageIndex].url} alt="Product Display" style={imageStyle} onMouseEnter={() => (setHovering(true))} onMouseOut={()=> (setHovering(false))}/> */}
 
-      <div
-        role="button"
-        onClick={toggleExpandedView}
-        style={{ ...btnStyle, ...enhanceBtnStyle }}>
-        {
-          expanded ? (<FontAwesomeIcon icon={faCompress} />) : (<FontAwesomeIcon icon={faExpand} />)
-        }
-      </div>
+        <div
+          role="button"
+          onClick={toggleExpandedView}
+          style={{ ...btnStyle, ...enhanceBtnStyle }}>
+          {
+            expanded ? (<FontAwesomeIcon icon={faCompress} />) : (<FontAwesomeIcon icon={faExpand} />)
+          }
+        </div>
 
-      <div
-        role="button"
-        onClick={incrementDisplayImageIndex}
-        style={{ ...btnStyle, left: '90%' }}>
-        <FontAwesomeIcon icon={faAngleRight} />
-      </div>
+      {selectedStyle.photos.length > 1 ? (
+        <div
+          role="button"
+          onClick={incrementDisplayImageIndex}
+          style={{ ...btnStyle, right: '5%' }}>
+          <FontAwesomeIcon icon={faAngleRight} />
+        </div>
+      ) : (null)}
 
       <ImageCarousel displayCount={7} />
 

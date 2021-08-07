@@ -4,7 +4,7 @@ import React, { useState, useContext, useEffect } from 'react';
 // eslint-disable-next-line import/no-named-as-default
 // eslint-disable-next-line import/no-named-as-default-member
 import StarRatings from 'react-star-ratings';
-import Modal from '../../Helpers/Modal';
+import Modal from '../../Helpers/ReviewModal';
 import AppContext from '../../Contexts/AppContext';
 import Characteristic from './addcharacteristics';
 
@@ -15,25 +15,40 @@ const AddReview = () => {
 
   const blankForm = {
     product_id: Number(productId),
-    rating: 0,
+    rating: '',
     name: '',
     email: '',
     summary: '',
     body: '',
+    recommend: '',
+    characteristics: {},
+    photos: [],
   };
 
   const [isOpen, setOpen] = useState(false);
-  const [errors, setErrors] = useState(' ');
+  const [formErrors, setFormErrors] = useState('');
   const [newReview, setNewReview] = useState(blankForm);
   const [characteristics, setCharacteristics] = useState([]);
   const [starRating, setStarRating] = useState(0);
+  const [addCharacteristics, setAddCharacteristics] = useState({});
+  const [photos, setPhotos] = useState([]);
+  const [starDescriber, setStarDescriber] = useState('');
+  const [bodyCount, setBodyCount] = useState(50);
 
   const characteristicArr = (() => {
-    let keys = [];
-    if (!reviewMeta.characteristics) { return keys; }
+    let twoples = [];
+    if (!reviewMeta.characteristics) { return twoples; }
     const characterObj = reviewMeta.characteristics;
-    keys = Object.keys(characterObj);
-    return keys;
+    twoples = Object.entries(characterObj);
+    const ids = (() => (
+      twoples.map((twople) => {
+        const obj = { characteristic: twople[0], id: twople[1].id };
+        // console.log(obj);
+        return obj;
+      })
+    ))();
+    // console.log ('characteristicID: ', ids);
+    return ids;
   })();
 
   useEffect(() => { setCharacteristics(characteristicArr); }, [reviewMeta]);
@@ -43,13 +58,39 @@ const AddReview = () => {
 
   const handleStarClick = (rating) => {
     // console.log(rating);
+    const adjArr = ['null', 'Poor', 'Fair', 'Average', 'Good', 'Great'];
+    setStarDescriber(adjArr[rating]);
     setStarRating(rating);
+    setNewReview({ ...newReview, rating });
+    console.log(newReview);
   };
-  // console.log(starRating);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     setNewReview({ ...newReview, [name]: value });
+    if (name === 'body') {
+      setBodyCount(50 - value.length);
+    }
+    console.log(newReview);
+  };
+
+  const handleCharacteristicChange = (e) => {
+    const { name, value } = e.target;
+    const num = parseInt(value, 10);
+    // console.log(name, value);
+    setAddCharacteristics({ ...addCharacteristics, [name]: num });
+    console.log('into set review ', addCharacteristics);
+    setNewReview({ ...newReview, characteristics: addCharacteristics });
+    // console.log(addCharacteristics, newReview);
+  };
+
+  const fileChangeHandler = (e) => {
+    const { files } = e.target;
+    console.log(files[0].name);
+    const photo = files[0].name;
+    setPhotos(files);
+    setNewReview({ ...newReview, photos: [photo] });
   };
 
   // VALIDATION
@@ -69,30 +110,43 @@ const AddReview = () => {
       errors += 'Valid email required \n';
     }
     if (!newReview.body) {
-      errors += 'Answer required \n';
+      errors += 'Review Body required \n';
+    }
+    // if (newReview.body.length < 60) {
+    //   errors += 'Minimum review length not reached \n';
+    // }
+    if (!newReview.rating) {
+      errors += 'Star Rating required \n';
+    }
+    if (!newReview.recommend) {
+      errors += 'Recommendation required \n';
     }
     // console.log(errors);
-    setErrors(errors);
-    return !errors;
+    // console.log(errors);
+    if (errors) {
+      setFormErrors(errors);
+      return errors;
+    }
+    return 'noErrors';
   };
 
   // HANDLE SUBMIT
 
-  const handleSubmit = (e) => {
-    if (validateForm()) {
-      setNewReview({
-        ...newReview,
-        rating: starRating,
-        name: newReview.name,
-        email: newReview.email,
-        body: newReview.body,
-      });
-      // console.log(newReview);
-      createReview(newReview);
-      setNewReview({
+  const handleSubmit = () => {
+    if (validateForm() === 'noErrors') {
+      const queryReady = newReview;
+      if (newReview.recommend === 'yes') {
+        queryReady.recommend = true;
+      } else { queryReady.recommend = false; }
+      queryReady.characteristics = addCharacteristics;
+      console.log('query Ready: ', queryReady);
+      createReview(queryReady);
+      setNewReview(
         blankForm,
-      });
-      setErrors(' ');
+      );
+      setOpen(false);
+      setStarRating(0);
+      setFormErrors('');
     }
   };
 
@@ -103,6 +157,11 @@ const AddReview = () => {
       </button>
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
         {/* Header     */}
+        {/* <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}> */}
         <h2>Submit a Review!</h2>
         <div>
           Review of:
@@ -110,7 +169,7 @@ const AddReview = () => {
           {productInfo.name}
         </div>
         <br />
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
           <div>
             <label>What is your nickname:</label>
             <input
@@ -141,22 +200,34 @@ const AddReview = () => {
           </div>
         </div>
         <br />
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
           <div>
             <label> Overall Rating: </label>
             <StarRatings starDimension="25px" name="stars" isSelectable="true" changeRating={handleStarClick} rating={starRating} starHoverColor="rgb(109, 122, 130)" starSpacing="0px" />
           </div>
-          <div onChange={handleInputChange}>
-            <label>Would you recommend this product?</label>
-            <input type="radio" name="recommended" value="yes" id="choice-yes" />
-            Yes
-            <input type="radio" name="recommended" value="no" id="choice-no" />
-            No
+          <div>
+            {starDescriber}
           </div>
         </div>
+        <div onChange={handleInputChange}>
+          <label>Would you recommend this product?</label>
+          <input type="radio" name="recommend" value="yes" id="choice-yes" />
+          Yes
+          <input type="radio" name="recommend" value="no" id="choice-no" />
+          No
+        </div>
+
         <br />
-        {characteristics.map((characteristic, Idx) => (
-          <Characteristic characteristic={characteristic} key={Idx} onChange={handleInputChange} />))}
+        {characteristics.map((mapCharacteristic) => (
+          <Characteristic
+            characteristic={
+            mapCharacteristic.characteristic
+            }
+            id={mapCharacteristic.id}
+            key={mapCharacteristic.id}
+            changeHandler={handleCharacteristicChange}
+          />
+        ))}
         <br />
         <label>Review Summary</label>
         <input
@@ -165,34 +236,47 @@ const AddReview = () => {
           style={{ width: '35%', height: '20px' }}
           onChange={handleInputChange}
           value={newReview.summary}
+          placeholder="Example: Best purchase Ever!"
           maxLength={60}
         />
         <br />
-        {/* Answer     */}
         <label>Review:</label>
         <textarea
           name="body"
           rows={16}
-          style={{ width: '35%', height: '300px' }}
+          style={{
+            width: '35%', height: '300px', resize: 'none', minHeight: '10vh',
+          }}
           onChange={handleInputChange}
           value={newReview.body}
+          placeholder="Why did you like this product or... not?"
           maxLength={1000}
         />
+        {bodyCount > 0
+          ? (
+            <div style={{ fontSize: '12px' }}>
+              Minimum required character left:
+              {' '}
+              {bodyCount}
+            </div>
+          ) : <div style={{ fontSize: '12px' }}> Sufficient Characters </div>}
+        <br />
         <div>
           Upload Photos
           <br />
-          <input type="file" />
+          <input type="file" onChange={fileChangeHandler} />
         </div>
         <br />
         <button onClick={handleSubmit} type="button" style={{ width: '35%' }}>
           Submit
         </button>
 
-        <div style={{ visibility: errors === ' ' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
+        <div style={{ visibility: formErrors === '' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
           Please enter the following:
           <br />
-          { errors }
+          { formErrors }
         </div>
+        {/* </div> */}
       </Modal>
     </div>
   );

@@ -70,27 +70,87 @@ const StarBreakdown = () => {
   return (
     <div>
       {filteredReviews.length ? <button type="button" tabIndex={0} onClick={clearFilters}> Clear Filters </button> : null}
-      <div onClick={() => (starClickHandler(5))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
-        5 stars:
-        <ProgressBar percent={percentFiveStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+      <div
+        style={{
+          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+        }}
+        onClick={() => (starClickHandler(5))}
+        role="button"
+        tabIndex={0}
+      >
+        <div>
+          5 stars:
+        </div>
+        <div style={{ margin: '5px' }}>
+          <ProgressBar percent={percentFiveStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        </div>
       </div>
-      <div onClick={() => (starClickHandler(4))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
-        4 stars:
-        <ProgressBar percent={percentFourStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+      <div
+        style={{
+          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+        }}
+        onClick={() => (starClickHandler(4))}
+        role="button"
+        tabIndex={0}
+      >
+        <div>
+          4 stars:
+        </div>
+        <div style={{ margin: '5px' }}>
+          <ProgressBar percent={percentFourStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        </div>
       </div>
-      <div onClick={() => (starClickHandler(3))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
-        3 stars:
-        <ProgressBar percent={percentThreeStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+
+      <div
+        style={{
+          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+        }}
+        onClick={() => (starClickHandler(3))}
+        role="button"
+        tabIndex={0}
+      >
+        <div>
+          3 stars:
+        </div>
+        <div style={{ margin: '5px' }}>
+          <ProgressBar percent={percentThreeStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        </div>
       </div>
-      <div onClick={() => (starClickHandler(2))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
-        2 stars:
-        <ProgressBar percent={percentTwoStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+
+      <div
+        style={{
+          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+        }}
+        onClick={() => (starClickHandler(2))}
+        role="button"
+        tabIndex={0}
+      >
+        <div>
+          2 stars:
+        </div>
+        <div style={{ margin: '5px' }}>
+          <ProgressBar percent={percentTwoStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        </div>
       </div>
-      <div onClick={() => (starClickHandler(1))} role="button" tabIndex={0} style={{ textDecorationLine: 'underline', cursor: 'pointer' }}>
-        1 stars:
-        <ProgressBar percent={percentOneStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" />
+
+      <div
+        style={{
+          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+        }}
+        onClick={() => (starClickHandler(1))}
+        role="button"
+        tabIndex={0}
+      >
+        <div>
+          1 stars:
+        </div>
+        <div style={{ margin: '5px' }}>
+          <ProgressBar percent={percentOneStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        </div>
       </div>
+      <br />
     </div>
+
   );
 };
 

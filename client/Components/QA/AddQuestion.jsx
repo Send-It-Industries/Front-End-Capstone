@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable linebreak-style */
 import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import Modal from '../Helpers/Modal';
 import AppContext from '../Contexts/AppContext';
 
 const AddQuestion = (props) => {
-  const { QAs, productInfo } = useContext(AppContext);
+  const { QAs, productInfo, setQAs } = useContext(AppContext);
   const [isOpen, setOpen] = useState(false);
-  const [errors, setErrors] = useState(' ');
+  const [errors, setErrors] = useState('');
   const [question, setQuestion] = useState({
     product_id: Number(props.PId),
     name: '',
@@ -35,20 +36,30 @@ const AddQuestion = (props) => {
         email: question.email,
         body: question.body,
       });
-      console.log(question);
-      QAs.createQuestion(question);
-      setQuestion({
-        ...question,
-        name: '',
-        email: '',
-        body: '',
+      // console.log(question);
+      QAs.createQuestion(question, () => {
+        setQuestion({
+          ...question,
+          name: '',
+          email: '',
+          body: '',
+        });
+        setErrors(' ');
+        setOpen(false);
+        // console.lol(question);
+        axios.get(`/api/qa/questions?count=1000&product_id=${question.product_id}`)
+          .then(({ data }) => {
+            const updatedQuestions = data.results;
+            setQAs({
+              ...QAs, data: updatedQuestions,
+            });
+            console.log(updatedQuestions);
+          });
       });
-      setErrors(' ');
     }
   };
 
   const validateForm = () => {
-    // returns boolean
     let errors = '';
     if (!question.name) {
       errors += 'Nickname required \n';
@@ -59,7 +70,6 @@ const AddQuestion = (props) => {
     if (!question.body) {
       errors += 'Answer required \n';
     }
-    // console.log(errors);
     setErrors(errors);
     return !errors;
   };
@@ -118,7 +128,7 @@ const AddQuestion = (props) => {
           Submit
         </button>
 
-        <div style={{ visibility: errors === ' ' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
+        <div style={{ visibility: errors === '' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
           Please enter the following:
           <br />
           { errors }

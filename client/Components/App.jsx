@@ -13,14 +13,14 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18080');
+  const [productId, setProductId] = useState('18078');
   const [selectedStyle, setSelectedStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
   const [cart, setCart] = useState([]);
   const [displayImageIndex, setDisplayImageIndex] = useState(0);
 
-  const [QAs, setQAs] = useState({ /* createQuestion, createAnswer, data: [] */ });
+  const [QAs, setQAs] = useState({});
   const [reviews, setReviews] = useState([]);
   const [reviewMeta, setReviewMeta] = useState({});
   const [avgReview, setAvgReview] = useState(0);
@@ -37,17 +37,17 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                Create                ----------------------------
 
-  const createQuestion = (question) => {
+  const createQuestion = (question, cb) => {
     axios.post('/api/qa/questions', question)
       .then(() => {
-        console.log('do something.... I just posted a QUESTION');
+        cb();
       });
   };
 
-  const createAnswer = (answer, id) => {
+  const createAnswer = (answer, id, cb) => {
     axios.post(`/api/qa/questions/${id}/answers`, answer)
       .then(() => {
-        console.log('do something.... I just posted an ANSWER');
+        cb();
       });
   };
 
@@ -82,6 +82,7 @@ const App = () => {
     axios.get(`/api/reviews/meta?product_id=${id}`)
       .then(({ data }) => setReviewMeta(data))
   );
+<<<<<<< HEAD
   // ------------------                Create/Read Combo                ----------------------------
   const createReview = (review) => {
     console.log('Submit Button Pressed!', review);
@@ -100,6 +101,8 @@ const App = () => {
 
   const updateReport = () => { };
   // ------------------                Delete                ----------------------------
+=======
+>>>>>>> origin
 
   // ------------------------------------------------------------------------------------
   // ------------------              Initialize              ----------------------------
@@ -125,6 +128,7 @@ const App = () => {
     setProductId,
     productInfo,
     QAs,
+    setQAs,
     fetchQA,
     reviews,
     filteredReviews,
@@ -133,10 +137,13 @@ const App = () => {
     fetchReviews,
     createReview,
     avgReview,
+<<<<<<< HEAD
     currentSort,
     setCurrentSort,
     updateHelpful,
     updateReport,
+=======
+>>>>>>> origin
     selectedStyle,
     setSelectedStyle,
     displayImageIndex,

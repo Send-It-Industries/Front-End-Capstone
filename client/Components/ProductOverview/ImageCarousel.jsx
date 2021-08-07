@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '../Contexts/AppContext';
 import useElementSizeById from '../Helpers/Hooks/useElementSizeById';
 
@@ -46,23 +48,38 @@ const ImageCarousel = ({ displayCount }) => {
     setSelectedImageIndex(displayImageIndex - displayEdges.start);
   }, [displayEdges]);
 
-  const selected = { borderBottom: '5px solid red' };
+  const selected = {
+    boxShadow: '0px 3px black',
+    opacity: '1',
+  };
 
   const carouselStyle = {
     position: 'absolute',
-    left: '0',
+    left: '2%',
+    padding: '1.5% 0',
     display: 'grid',
-    height: '100%',
-    width: '12%',
+    height: `${10 * selectedStyle.photos.length + (selectedStyle.photos.length > displayCount ? 10 : 0)}%`,
+    maxHeight: '80%',
+    width: 0.16 * imageCarouselHeight,
+    minWidth: '7%',
     // gridTemplateColumns: '12%',
-    gridTemplateRows: '10% 80% 10%',
+    gridTemplateRows: selectedStyle.photos.length > displayCount ? '3% 89% 3%' : '100%',
+    rowGap: '1%',
     justifyItems: 'center',
+    // backgroundColor: 'grey',
+    // backgroundColor: 'rgba(128,128,128, .0)',
+    justifyContent: 'space-evenly',
+    // border: '1px solid black',
+    border: 'none',
   };
 
   const carouselImagesStyle = {
+    // margin: '5% 0',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
+    gridRow: selectedStyle.photos.length > displayCount ? '2 / 3' : '1 / 2',
+    width: '100%',
     // alignItems: 'center',
     // gridTemplateRows: `repeat(${displayEdges.end}, auto)`,
     // height: '100%',
@@ -82,8 +99,8 @@ const ImageCarousel = ({ displayCount }) => {
   const imageStyle = {
     flex: '0 1 12%',
     objectFit: 'cover',
-    height: '12%',
-    width: 0.12 * imageCarouselHeight,
+    height: 0.13 * imageCarouselHeight, // instead of 13% make a fractional based off
+    width: 0.13 * imageCarouselHeight, // of length of array if < displayCount
     // width: '100%',
     // height: '50px', // imageCarouselHeight,
     // maxHeight: '100px',
@@ -91,8 +108,19 @@ const ImageCarousel = ({ displayCount }) => {
     marginBottom: '2%',
     borderBottom: '5px',
     boxSizing: 'border-box',
+    border: '1px solid black',
+    opacity: '.5',
   };
 
+  const upArrowBtnStyle = {
+    gridRow: '1 / 2',
+    opacity: '.7',
+  };
+
+  const downArrowBtnStyle = {
+    gridRow: '3 / 4',
+    opacity: '.7',
+  };
   const incrementView = () => {
     setDisplayEdges((prevEdges) => (
       {
@@ -116,27 +144,42 @@ const ImageCarousel = ({ displayCount }) => {
   // };
 
   return (
-    <div id="thumbnailCarousel" style={carouselStyle}>
-      {displayEdges.start ? <button type="button" onClick={decrementView}>up</button> : <div> </div>}
-      <div id="thumbnailCarouselImages" style={carouselImagesStyle}>
-        {selectedStyle.photos.slice(displayEdges.start, displayEdges.end)
-          .map(({ thumbnail_url }, i) => (
-            // <div style={displayImageIndex === i ? (
-            //   { ...imagesContainerStyle, ...selected }) : imagesContainerStyle}
-            // >
-            <img
-              style={selectedImageIndex === i ? (
-                { ...imageStyle, ...selected }) : imageStyle}
-              src={thumbnail_url}
-              key={i}
-              alt={`${selectedStyle.style_id}`}
-              onClick={(e) => (setDisplayImageIndex(i + displayEdges.start))}
-            />
-            // </div>
-          ))}
+    selectedStyle.photos.length > 1 ? (
+      <div id="thumbnailCarousel" style={carouselStyle}>
+        {displayEdges.start ? (
+          <div
+            role="button"
+            style={upArrowBtnStyle}
+            onClick={decrementView}>
+            <FontAwesomeIcon icon={faAngleUp} />
+          </div>) : null}
+        <div id="thumbnailCarouselImages" style={carouselImagesStyle}>
+          {selectedStyle.photos.slice(displayEdges.start, displayEdges.end)
+            .map(({ thumbnail_url }, i) => (
+              // <div style={displayImageIndex === i ? (
+              //   { ...imagesContainerStyle, ...selected }) : imagesContainerStyle}
+              // >
+              <img
+                style={selectedImageIndex === i ? (
+                  { ...imageStyle, ...selected }) : imageStyle}
+                src={thumbnail_url}
+                key={i}
+                alt={`${selectedStyle.style_id}`}
+                onClick={(e) => (setDisplayImageIndex(i + displayEdges.start))}
+              />
+              // </div>
+            ))}
+        </div>
+        {displayEdges.end !== (selectedStyle.photos.length) ? (
+          <div
+            role="button"
+            style={downArrowBtnStyle}
+            onClick={incrementView}>
+            <FontAwesomeIcon icon={faAngleDown} />
+
+          </div>) : null}
       </div>
-      {displayEdges.end !== (selectedStyle.photos.length) ? <button type="button" onClick={incrementView}>down</button> : <div> </div>}
-    </div>
+    ) : (null)
   );
 };
 

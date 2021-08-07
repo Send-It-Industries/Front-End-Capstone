@@ -37,12 +37,16 @@ const ReviewCard = ({ review }) => {
             starRating={starRating}
           />
         </span>
-        <span>
+        {/* <span style={{ justifySelf: 'flex-end' }}>
           {
         review.reviewer_name
         }
+        </span> */}
+        <span>
+          {review.reviewer_name}
+          {': '}
+          {newDate}
         </span>
-        <span>{newDate}</span>
       </div>
       <h4>{review.summary}</h4>
       <p style={{

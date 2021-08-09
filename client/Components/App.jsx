@@ -117,14 +117,24 @@ const App = () => {
   // ------------------              Initialize              ----------------------------
   // ------------------------------------------------------------------------------------
   useEffect(() => {
-    fetchProduct(productId).then(() =>
+    fetchProduct(productId).then(() => (
       Promise.all([
         fetchQA(productId),
         fetchReviews(productId),
         fetchMetaReview(productId),
       ])
-    );
+    ));
   }, []);
+
+  useEffect(() => {
+    fetchProduct(productId).then(() => (
+      Promise.all([
+        fetchQA(productId),
+        fetchReviews(productId),
+        fetchMetaReview(productId),
+      ])
+    ));
+  }, [productId]);
 
   useEffect(() => {
     if (reviewMeta.product_id) {

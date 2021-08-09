@@ -18,21 +18,28 @@ const Characteristic = ({ characteristic }) => {
     return ['', '', ''];
   })();
   const emptyBar = {
-    width: '80%',
-    height: '7px',
+    height: '0.52rem',
+    width: '100%',
+    // width: '80%',
+    // height: '7px',
     backgroundColor: 'rgb(109, 122, 130)',
+    // backgroundColor: 'rgb(203, 211, 227)',
 
   };
   const pointStyle = {
+    fontSize: '1.5rem',
     width: '8%',
-    marginLeft: `${displayPercent * 0.8}%`,
-    transform: 'translate(-5px, 7px)',
+    marginLeft: `${displayPercent}%`,
+    // marginLeft: '0%',
+    marginTop: '-1.25rem',
+    transform: 'translate(-0.5rem, 1.1rem) scaleY(1.75)',
+    // color: 'rgb(203, 211, 227)',
   };
 
   // console.log(adjectives);
   return (
-    <div>
-      <div>
+    <div style={{ width: '24.5vw' }}>
+      <div style={{ marginTop: '1rem' }}>
         {characteristic[0]}
       </div>
       <div className="ArrowPointer" style={pointStyle}>▾ </div>
@@ -42,19 +49,19 @@ const Characteristic = ({ characteristic }) => {
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
-          width: '80%',
-          height: '14px',
-          fontSize: '8px',
-          marginBottom: '3px',
+          width: '100%',
+          height: '1rem',
+          fontSize: '0.75rem',
+          margin: '0.6rem 0',
         }}
       >
-        <div>
+        <div style={{ width: '5vw' }}>
           {adjectives[0]}
         </div>
-        <div>
+        <div width={{ width: '5vw' }}>
           {adjectives[1]}
         </div>
-        <div>
+        <div width={{ width: '5vw' }}>
           {adjectives[2]}
         </div>
       </div>

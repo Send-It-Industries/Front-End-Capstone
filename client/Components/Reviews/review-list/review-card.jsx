@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import HelpfulButtons from './helpful-buttons';
 import Stars from '../../Helpers/Stars';
 
@@ -33,11 +35,18 @@ const ReviewCard = ({ review }) => {
       >
         <span>
           <Stars
-            starDimension="25px"
+            starDimension="1.25rem"
             starRating={starRating}
           />
         </span>
-        <span>{newDate}</span>
+        <div>
+          <span style={{ fontWeight: 'lighter', marginRight: '0.5rem' }}>
+            {`Review by ${review.reviewer_name},`}
+          </span>
+          <span style={{ fontWeight: 'lighter' }}>
+            {`on ${newDate}`}
+          </span>
+        </div>
       </div>
       <h4>{review.summary}</h4>
       <p style={{
@@ -46,7 +55,16 @@ const ReviewCard = ({ review }) => {
       >
         {review.body}
       </p>
-      {review.recommend ? <div> I recommend this product </div> : null }
+      {review.recommend
+        ? (
+          <div>
+            <span>
+              <FontAwesomeIcon icon={faCheck} />
+            </span>
+            <span> I recommend this product </span>
+          </div>
+        )
+        : null }
       <div>{review.response}</div>
       {/* {review.photos[0] ? <div>{review.photos[0].url}</div> : null} */}
       <HelpfulButtons helpfulness={review.helpfulness} reviewId={review.review_id} />

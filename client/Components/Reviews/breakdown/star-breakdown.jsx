@@ -68,87 +68,135 @@ const StarBreakdown = () => {
   // }, [filter.count]);
 
   return (
-    <div>
-      {filteredReviews.length ? <button type="button" tabIndex={0} onClick={clearFilters}> Clear Filters </button> : null}
+    <div style={{ width: '30vw', marginTop: '1.5rem' }}>
+      {filteredReviews.length ? (
+        <button
+          type="button"
+          tabIndex={0}
+          onClick={clearFilters}
+          style={{
+            width: '6rem',
+            height: '1.5rem',
+            margin: '0.5rem 0',
+            background: 'white',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            cursor: 'pointer',
+          }}
+        >
+          Clear Filters
+        </button>
+      ) : null}
       <div
         style={{
-          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+          width: '30vw',
+          display: 'flex',
+          flexDirection: 'row',
+          textDecorationLine: 'underline',
+          cursor: 'pointer',
+          alignContent: 'center',
+          // justifyContent: 'flex-start',
+          marginTop: '0.75rem',
         }}
         onClick={() => (starClickHandler(5))}
         role="button"
         tabIndex={0}
       >
-        <div>
+        <div style={{ width: '4vw' }}>
           5 stars:
         </div>
-        <div style={{ margin: '5px' }}>
-          <ProgressBar percent={percentFiveStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        <div style={{ margin: '0.35rem', width: '20vw' }}>
+          <ProgressBar percent={percentFiveStar} height="0.52rem" width="100%" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
         </div>
       </div>
       <div
         style={{
-          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+          width: '30vw',
+          display: 'flex',
+          flexDirection: 'row',
+          textDecorationLine: 'underline',
+          cursor: 'pointer',
+          alignContent: 'center',
+          marginTop: '0.75rem',
         }}
         onClick={() => (starClickHandler(4))}
         role="button"
         tabIndex={0}
       >
-        <div>
+        <div style={{ width: '4vw' }}>
           4 stars:
         </div>
-        <div style={{ margin: '5px' }}>
-          <ProgressBar percent={percentFourStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        <div style={{ margin: '0.35rem', width: '20vw' }}>
+          <ProgressBar percent={percentFourStar} height="0.52rem" width="20vw" radius="0px" fillColor="rgb(109, 122, 130)" color="rgb(220,220,220)" margin="0.25rem 0.5rem" />
         </div>
       </div>
 
       <div
         style={{
-          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+          width: '30vw',
+          display: 'flex',
+          flexDirection: 'row',
+          textDecorationLine: 'underline',
+          cursor: 'pointer',
+          alignContent: 'center',
+          marginTop: '0.75rem',
         }}
         onClick={() => (starClickHandler(3))}
         role="button"
         tabIndex={0}
       >
-        <div>
+        <div style={{ width: '4vw' }}>
           3 stars:
         </div>
-        <div style={{ margin: '5px' }}>
-          <ProgressBar percent={percentThreeStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        <div style={{ margin: '0.35rem', width: '20vw' }}>
+          <ProgressBar percent={percentThreeStar} height="0.52rem" width="20vw" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
         </div>
       </div>
 
       <div
         style={{
-          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+          width: '30vw',
+          display: 'flex',
+          flexDirection: 'row',
+          textDecorationLine: 'underline',
+          cursor: 'pointer',
+          alignContent: 'center',
+          margin: '0.75rem 0',
         }}
         onClick={() => (starClickHandler(2))}
         role="button"
         tabIndex={0}
       >
-        <div>
+        <div style={{ width: '4vw' }}>
           2 stars:
         </div>
-        <div style={{ margin: '5px' }}>
-          <ProgressBar percent={percentTwoStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        <div style={{ margin: '0.35rem', width: '20vw' }}>
+          <ProgressBar percent={percentTwoStar} height="0.52rem" width="20vw" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
         </div>
       </div>
 
       <div
         style={{
-          display: 'flex', flexDirection: 'row', textDecorationLine: 'underline', cursor: 'pointer', alignContent: 'center',
+          width: '30vw',
+          display: 'flex',
+          flexDirection: 'row',
+          textDecorationLine: 'underline',
+          cursor: 'pointer',
+          alignContent: 'center',
+          marginTop: '0.75rem',
         }}
         onClick={() => (starClickHandler(1))}
         role="button"
         tabIndex={0}
       >
-        <div>
+        <div style={{ width: '4vw' }}>
           1 stars:
         </div>
-        <div style={{ margin: '5px' }}>
-          <ProgressBar percent={percentOneStar} height="7px" width="100px" radius="0px" fillColor="rgb(109, 122, 130)" margin="5px 10px" />
+        <div style={{ margin: '0.35rem', width: '20vw' }}>
+          <ProgressBar percent={percentOneStar} height="0.52rem" width="20vw" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
         </div>
       </div>
-      <br />
     </div>
 
   );

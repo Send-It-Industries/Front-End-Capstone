@@ -7,10 +7,10 @@ import CharacteristicBreakdown from './characteristics-breakdown';
 const Breakdown = () => (
   <div
     style={{
-      maxWidth: '25%',
+      width: '30vw',
     }}
   >
-    Ratings & Reviews
+    <div style={{ fontSize: '1rem', fontWeight: 'lighter' }}>RATINGS & REVIEWS </div>
     <AverageRating />
     <Recommended />
     <StarBreakdown />

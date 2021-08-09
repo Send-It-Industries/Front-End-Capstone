@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useLayoutEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '../Contexts/AppContext';
@@ -6,7 +6,7 @@ import useElementSizeById from '../Helpers/Hooks/useElementSizeById';
 
 // style needs top, left, width, height, flexDirection,
 const ImageCarousel = ({ displayCount }) => {
-  const { selectedStyle, displayImageIndex, setDisplayImageIndex } = useContext(AppContext);
+  const { selectedStyle, displayImageIndex, setDisplayImageIndex, expanded } = useContext(AppContext);
 
   const [, imageCarouselHeight] = useElementSizeById('thumbnailCarouselImages');
 
@@ -15,12 +15,37 @@ const ImageCarousel = ({ displayCount }) => {
     start: 0,
     end: displayCount,
   });
+  const [imageWidth, setImageWidth] = useState(0.13 * imageCarouselHeight);
+  const imageCount = selectedStyle.photos.length > displayCount ? displayCount : selectedStyle.photos.length;
 
   useEffect(() => {
     const photoCount = selectedStyle.photos.length;
     const end = photoCount < displayCount ? photoCount : displayCount;
     setDisplayEdges(({ start }) => ({ start, end }));
   }, []);
+
+  const updateImageWidth = () => {
+    if (document.getElementById('thumbnailCarouselImages')) {
+      const { height } = document.getElementById('thumbnailCarouselImages').getBoundingClientRect();
+      if (expanded) {
+        setImageWidth(0.13 * height);
+      } else {
+        setImageWidth(0.13 * height);
+      }
+    }
+  };
+
+  useLayoutEffect(() => {
+    window.addEventListener('resize', updateImageWidth);
+    updateImageWidth();
+    return (() => {
+      window.removeEventListener('resize', updateImageWidth);
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    updateImageWidth();
+  }, [expanded]);
 
   useEffect(() => {
     if (displayImageIndex < displayEdges.start) {
@@ -53,6 +78,14 @@ const ImageCarousel = ({ displayCount }) => {
     opacity: '1',
   };
 
+  const expandedCarouselStyle = {
+    left: -imageWidth,
+    justifyItems: 'left',
+    justifyContent: 'start',
+    alignItems: 'center',
+    height: '40%',
+  };
+
   const carouselStyle = {
     position: 'absolute',
     left: '2%',
@@ -60,70 +93,66 @@ const ImageCarousel = ({ displayCount }) => {
     display: 'grid',
     height: `${10 * selectedStyle.photos.length + (selectedStyle.photos.length > displayCount ? 10 : 0)}%`,
     maxHeight: '80%',
-    width: 0.16 * imageCarouselHeight,
+    width: imageWidth,
     minWidth: '7%',
-    // gridTemplateColumns: '12%',
     gridTemplateRows: selectedStyle.photos.length > displayCount ? '3% 89% 3%' : '100%',
     rowGap: '1%',
     justifyItems: 'center',
-    // backgroundColor: 'grey',
-    // backgroundColor: 'rgba(128,128,128, .0)',
     justifyContent: 'space-evenly',
-    // border: '1px solid black',
     border: 'none',
     cursor: 'default',
   };
 
   const carouselImagesStyle = {
-    // margin: '5% 0',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
     gridRow: selectedStyle.photos.length > displayCount ? '2 / 3' : '1 / 2',
     width: '100%',
-    // alignItems: 'center',
-    // gridTemplateRows: `repeat(${displayEdges.end}, auto)`,
-    // height: '100%',
-    // width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '100%',
+    gridTemplateRows: `repeat(${imageCount}, ${((100 - (2 * imageCount)) / imageCount)}%)`,
+    rowGap: '2%',
+    height: '100%',
   };
 
-  // const imagesContainerStyle = {
-  //   minHeight: '50px',
-  //   flex: '0 1 10%',
-  //   objectFit: 'contain',
-  //   // boxSizing: 'border-box',
-  //   // borderBottom: '5px',
-  //   marginBottom: '5px',
-  //   borderBottom: '5px',
-  // };
-
   const imageStyle = {
-    flex: '0 1 12%',
-    objectFit: 'cover',
-    height: 0.13 * imageCarouselHeight, // instead of 13% make a fractional based off
-    width: 0.13 * imageCarouselHeight, // of length of array if < displayCount
-    // width: '100%',
-    // height: '50px', // imageCarouselHeight,
-    // maxHeight: '100px',
+    paddingTop: '100%',
+    height: 0,
+    width: imageWidth,
     maxWidth: '100px',
+    maxHeight: '100px',
     marginBottom: '2%',
     borderBottom: '5px',
     boxSizing: 'border-box',
     border: '1px solid black',
     opacity: '.5',
     cursor: 'pointer',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'none',
+    backgroundPosition: 'center',
+    position: 'relative',
+    display: 'grid',
+  };
+
+  const expandedImageStyle = {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    background: 'rgb(117, 129, 107)',
+    display: 'grid',
+    placeItems: 'center',
   };
 
   const upArrowBtnStyle = {
     gridRow: '1 / 2',
     opacity: '.7',
     cursor: 'pointer',
+    justifySelf: 'center',
   };
 
   const downArrowBtnStyle = {
     gridRow: '3 / 4',
     opacity: '.7',
     cursor: 'pointer',
+    justifySelf: 'center',
   };
 
   const incrementView = () => {
@@ -144,45 +173,60 @@ const ImageCarousel = ({ displayCount }) => {
     ));
   };
 
-  // isSelected = (i) => {
-  //   return
-  // };
-
   return (
     selectedStyle.photos.length > 1 ? (
-      <div id="thumbnailCarousel" style={carouselStyle}>
+
+      <div id="thumbnailCarousel" style={expanded ? { ...carouselStyle, ...expandedCarouselStyle } : { ...carouselStyle, left: '2%' }}>
         {displayEdges.start ? (
           <div
             role="button"
             style={upArrowBtnStyle}
             onClick={decrementView}>
             <FontAwesomeIcon icon={faAngleUp} />
-          </div>) : null}
-        <div id="thumbnailCarouselImages" style={carouselImagesStyle}>
+          </div>
+        ) : null}
+
+
+        <div
+          id="thumbnailCarouselImages"
+          style={carouselImagesStyle}
+        >
           {selectedStyle.photos.slice(displayEdges.start, displayEdges.end)
             .map(({ thumbnail_url }, i) => (
               // <div style={displayImageIndex === i ? (
               //   { ...imagesContainerStyle, ...selected }) : imagesContainerStyle}
               // >
-              <img
+              <div
                 style={selectedImageIndex === i ? (
-                  { ...imageStyle, ...selected }) : imageStyle}
-                src={thumbnail_url}
+                  {
+                    ...imageStyle, ...selected,
+                    backgroundImage: `url(${thumbnail_url})`
+                  }) : { ...imageStyle, backgroundImage: `url(${thumbnail_url})` }}
                 key={i}
-                alt={`${selectedStyle.style_id}`}
                 onClick={(e) => (setDisplayImageIndex(i + displayEdges.start))}
-              />
-              // </div>
+              >
+                {expanded ? (
+                  <div style={expandedImageStyle}>
+                    <div>
+                      {i + 1}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
             ))}
         </div>
-        {displayEdges.end !== (selectedStyle.photos.length) ? (
-          <div
-            role="button"
-            style={downArrowBtnStyle}
-            onClick={incrementView}>
-            <FontAwesomeIcon icon={faAngleDown} />
 
-          </div>) : null}
+        {
+          displayEdges.end !== (selectedStyle.photos.length) ? (
+            <div
+              role="button"
+              style={downArrowBtnStyle}
+              onClick={incrementView}>
+              <FontAwesomeIcon icon={faAngleDown} />
+
+            </div>
+          ) : null
+        }
       </div>
     ) : (null)
   );

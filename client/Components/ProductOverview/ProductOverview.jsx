@@ -11,7 +11,7 @@ const ProductOverview = () => {
   const productOverviewStyle = {
     display: 'grid',
     gridTemplateRows: 'minmax(550px, 55vmin) minmax(125px, 10vmin)',
-    gridTemplateColumns: '72% 25%',
+    gridTemplateColumns: '67% 35%',
     columnGap: '3%',
     rowGap: '7%',
     width: '90vw',

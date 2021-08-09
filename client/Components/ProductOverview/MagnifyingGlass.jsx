@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useElementSizeById from '../Helpers/Hooks/useElementSizeById';
 
-const MagnifyingGlass = ({ imageId, imageUrl, zoom }) => {
+const MagnifyingGlass = ({ imageId, imageUrl, zoom, onClick }) => {
   const [imageWidth, imageHeight] = useElementSizeById(imageId);
 
   const magnifyingGlassStyle = {
@@ -10,26 +10,42 @@ const MagnifyingGlass = ({ imageId, imageUrl, zoom }) => {
     border: '2px solid black',
     borderRadius: '50%',
     cursor: 'none',
-    width: 0.1 * imageWidth,
-    height: 0.1 * imageWidth,
+    width: 0.25 * imageWidth,
+    height: 0.25 * imageWidth,
     backgroundImage: `url(${imageUrl})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: `${imageWidth * zoom}px ${imageHeight * zoom}px`,
+    display: 'none',
   };
 
   const moveGlass = (e) => {
     e.preventDefault();
-    const mouseX = e.offsetX;
-    const mouseY = e.offsetY;
+    let mouseX = e.offsetX;
+    let mouseY = e.offsetY;
     const { width, height } = e.target.getBoundingClientRect();
     const posX = (mouseX / width) * 100;
     const posY = (mouseY / height) * 100;
     const magGlass = document.getElementById('magnifyingGlass');
 
+    if (mouseX > width - ((0.25 * width) / 2)) {
+      mouseX = width - ((0.25 * width) / 2);
+    }
+    if (mouseX < ((0.25 * width) / 2)) {
+      mouseX = ((0.25 * width) / 2);
+    }
+
+    if (mouseY > height - ((0.25 * width) / 2)) {
+      mouseY = height - ((0.25 * width) / 2);
+    }
+    if (mouseY < ((0.25 * width) / 2)) {
+      mouseY = ((0.25 * width) / 2);
+    }
+
     if (magGlass) {
-      magGlass.style.left = `${(mouseX - (0.1 * width) / 2)}px`;
-      magGlass.style.top = `${(mouseY - (0.1 * width) / 2)}px`;
+      magGlass.style.left = `${(mouseX - (0.25 * width) / 2) + e.target.offsetLeft}px`;
+      magGlass.style.top = `${(mouseY - (0.25 * width) / 2) + e.target.offsetTop}px`;
       magGlass.style.backgroundPosition = `${posX}% ${posY}%`;
+      magGlass.style.display = 'block';
     }
   };
 
@@ -47,7 +63,7 @@ const MagnifyingGlass = ({ imageId, imageUrl, zoom }) => {
   }, []);
 
   return (
-    <div id="magnifyingGlass" style={magnifyingGlassStyle} />
+    <div id="magnifyingGlass" style={magnifyingGlassStyle} onClick={onClick}/>
   );
 };
 

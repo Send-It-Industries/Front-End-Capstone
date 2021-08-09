@@ -28,17 +28,19 @@ const ReviewSummary = () => {
         </div>
       )
       : (
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          width: '100vw',
-          height: '100vh',
-          padding: '5px',
-          margin: '5px',
-          maxHeight: '700px',
-          // overflowY: 'auto',
-        }}
+        <div
+          id="Reviews"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '100vw',
+            height: '100vh',
+            padding: '5px',
+            margin: '5px',
+            maxHeight: '700px',
+            // overflowY: 'auto',
+          }}
         >
           <div style={{
             fontSize: '3rem',

@@ -68,7 +68,7 @@ const StarBreakdown = () => {
   // }, [filter.count]);
 
   return (
-    <div style={{ width: '30vw', marginTop: '1.5rem' }}>
+    <div style={{ width: '20vw', marginTop: '1.5rem' }}>
       {filteredReviews.length ? (
         <button
           type="button"
@@ -90,7 +90,7 @@ const StarBreakdown = () => {
       ) : null}
       <div
         style={{
-          width: '30vw',
+          width: '20vw',
           display: 'flex',
           flexDirection: 'row',
           textDecorationLine: 'underline',
@@ -106,13 +106,13 @@ const StarBreakdown = () => {
         <div style={{ width: '4vw' }}>
           5 stars:
         </div>
-        <div style={{ margin: '0.35rem', width: '20vw' }}>
+        <div style={{ margin: '0.35rem', width: '16vw' }}>
           <ProgressBar percent={percentFiveStar} height="0.52rem" width="100%" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
         </div>
       </div>
       <div
         style={{
-          width: '30vw',
+          width: '20vw',
           display: 'flex',
           flexDirection: 'row',
           textDecorationLine: 'underline',
@@ -127,14 +127,14 @@ const StarBreakdown = () => {
         <div style={{ width: '4vw' }}>
           4 stars:
         </div>
-        <div style={{ margin: '0.35rem', width: '20vw' }}>
-          <ProgressBar percent={percentFourStar} height="0.52rem" width="20vw" radius="0px" fillColor="rgb(109, 122, 130)" color="rgb(220,220,220)" margin="0.25rem 0.5rem" />
+        <div style={{ margin: '0.35rem', width: '16vw' }}>
+          <ProgressBar percent={percentFourStar} height="0.52rem" width="100%" radius="0px" fillColor="rgb(109, 122, 130)" color="rgb(220,220,220)" margin="0.25rem 0.5rem" />
         </div>
       </div>
 
       <div
         style={{
-          width: '30vw',
+          width: '20vw',
           display: 'flex',
           flexDirection: 'row',
           textDecorationLine: 'underline',
@@ -149,14 +149,14 @@ const StarBreakdown = () => {
         <div style={{ width: '4vw' }}>
           3 stars:
         </div>
-        <div style={{ margin: '0.35rem', width: '20vw' }}>
-          <ProgressBar percent={percentThreeStar} height="0.52rem" width="20vw" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
+        <div style={{ margin: '0.35rem', width: '16vw' }}>
+          <ProgressBar percent={percentThreeStar} height="0.52rem" width="100%" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
         </div>
       </div>
 
       <div
         style={{
-          width: '30vw',
+          width: '20vw',
           display: 'flex',
           flexDirection: 'row',
           textDecorationLine: 'underline',
@@ -171,14 +171,14 @@ const StarBreakdown = () => {
         <div style={{ width: '4vw' }}>
           2 stars:
         </div>
-        <div style={{ margin: '0.35rem', width: '20vw' }}>
-          <ProgressBar percent={percentTwoStar} height="0.52rem" width="20vw" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
+        <div style={{ margin: '0.35rem', width: '16vw' }}>
+          <ProgressBar percent={percentTwoStar} height="0.52rem" width="100%" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
         </div>
       </div>
 
       <div
         style={{
-          width: '30vw',
+          width: '20vw',
           display: 'flex',
           flexDirection: 'row',
           textDecorationLine: 'underline',
@@ -193,8 +193,8 @@ const StarBreakdown = () => {
         <div style={{ width: '4vw' }}>
           1 stars:
         </div>
-        <div style={{ margin: '0.35rem', width: '20vw' }}>
-          <ProgressBar percent={percentOneStar} height="0.52rem" width="20vw" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
+        <div style={{ margin: '0.35rem', width: '16vw' }}>
+          <ProgressBar percent={percentOneStar} height="0.52rem" width="100%" radius="0px" fillColor="rgb(109, 122, 130)" margin="0.25rem 0.5rem" />
         </div>
       </div>
     </div>

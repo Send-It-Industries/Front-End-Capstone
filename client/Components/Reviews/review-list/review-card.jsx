@@ -24,6 +24,7 @@ const ReviewCard = ({ review }) => {
         borderBottom: '1px solid',
         margin: '10px',
         padding: '5px',
+        width: '90%',
       }}
       data-testid="reviewCard"
     >

@@ -118,8 +118,6 @@ const ImageCarousel = ({ displayCount }) => {
     height: '100%',
   };
 
-  const expandedImagesStyle = {};
-
   const imageStyle = {
     paddingTop: '100%',
     height: 0,
@@ -135,6 +133,17 @@ const ImageCarousel = ({ displayCount }) => {
     backgroundSize: 'cover',
     backgroundRepeat: 'none',
     backgroundPosition: 'center',
+    position: 'relative',
+    display: 'grid',
+  };
+
+  const expandedImageStyle = {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    background: 'rgb(117, 129, 107)',
+    display: 'grid',
+    placeItems: 'center',
   };
 
   const upArrowBtnStyle = {
@@ -202,8 +211,15 @@ const ImageCarousel = ({ displayCount }) => {
                   }) : { ...imageStyle, backgroundImage: `url(${thumbnail_url})` }}
                 key={i}
                 onClick={(e) => (setDisplayImageIndex(i + displayEdges.start))}
-              />
-              // </div>
+              >
+                {expanded ? (
+                  <div style={expandedImageStyle}>
+                    <div>
+                      {i + 1}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
             ))}
         </div>
 

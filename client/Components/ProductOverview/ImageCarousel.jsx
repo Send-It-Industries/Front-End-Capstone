@@ -15,8 +15,8 @@ const ImageCarousel = ({ displayCount }) => {
     start: 0,
     end: displayCount,
   });
-
   const [imageWidth, setImageWidth] = useState(0.13 * imageCarouselHeight);
+  const imageCount = selectedStyle.photos.length > displayCount ? displayCount : selectedStyle.photos.length;
 
   useEffect(() => {
     const photoCount = selectedStyle.photos.length;
@@ -27,7 +27,11 @@ const ImageCarousel = ({ displayCount }) => {
   const updateImageWidth = () => {
     if (document.getElementById('thumbnailCarouselImages')) {
       const { height } = document.getElementById('thumbnailCarouselImages').getBoundingClientRect();
-      setImageWidth(0.13 * height);
+      if (expanded) {
+        setImageWidth(0.13 * height);
+      } else {
+        setImageWidth(0.13 * height);
+      }
     }
   };
 
@@ -74,6 +78,14 @@ const ImageCarousel = ({ displayCount }) => {
     opacity: '1',
   };
 
+  const expandedCarouselStyle = {
+    left: -imageWidth,
+    justifyItems: 'left',
+    justifyContent: 'start',
+    alignItems: 'center',
+    height: '40%',
+  };
+
   const carouselStyle = {
     position: 'absolute',
     left: '2%',
@@ -81,7 +93,7 @@ const ImageCarousel = ({ displayCount }) => {
     display: 'grid',
     height: `${10 * selectedStyle.photos.length + (selectedStyle.photos.length > displayCount ? 10 : 0)}%`,
     maxHeight: '80%',
-    width: 0.16 * imageCarouselHeight,
+    width: imageWidth,
     minWidth: '7%',
     gridTemplateRows: selectedStyle.photos.length > displayCount ? '3% 89% 3%' : '100%',
     rowGap: '1%',
@@ -91,14 +103,22 @@ const ImageCarousel = ({ displayCount }) => {
     cursor: 'default',
   };
 
+  const expandedCarouselImagesStyle = {
+    // gridTemplateRows: `repeat(${imageCount}, ${imageWidth}px)`,
+    // height: '50%',
+  };
+
   const carouselImagesStyle = {
     gridRow: selectedStyle.photos.length > displayCount ? '2 / 3' : '1 / 2',
     width: '100%',
     display: 'grid',
     gridTemplateColumns: '100%',
-    gridTemplateRows: `repeat(${selectedStyle.photos.length > displayCount ? displayCount : selectedStyle.photos.length}, ${(88 / (selectedStyle.photos.length > displayCount ? displayCount : selectedStyle.photos.length))}%)`,
+    gridTemplateRows: `repeat(${imageCount}, ${((100 - (2 * imageCount)) / imageCount)}%)`,
     rowGap: '2%',
+    height: '100%',
   };
+
+  const expandedImagesStyle = {};
 
   const imageStyle = {
     paddingTop: '100%',
@@ -121,12 +141,14 @@ const ImageCarousel = ({ displayCount }) => {
     gridRow: '1 / 2',
     opacity: '.7',
     cursor: 'pointer',
+    justifySelf: 'center',
   };
 
   const downArrowBtnStyle = {
     gridRow: '3 / 4',
     opacity: '.7',
     cursor: 'pointer',
+    justifySelf: 'center',
   };
 
   const incrementView = () => {
@@ -150,7 +172,7 @@ const ImageCarousel = ({ displayCount }) => {
   return (
     selectedStyle.photos.length > 1 ? (
 
-      <div id="thumbnailCarousel" style={carouselStyle}>
+      <div id="thumbnailCarousel" style={expanded ? { ...carouselStyle, ...expandedCarouselStyle } : { ...carouselStyle, left: '2%' }}>
         {displayEdges.start ? (
           <div
             role="button"
@@ -158,10 +180,15 @@ const ImageCarousel = ({ displayCount }) => {
             onClick={decrementView}>
             <FontAwesomeIcon icon={faAngleUp} />
           </div>
-        ) : null }
+        ) : null}
 
 
-        <div id="thumbnailCarouselImages" style={carouselImagesStyle}>
+        <div
+          id="thumbnailCarouselImages"
+          style={expanded ? (
+            { ...carouselImagesStyle, ...expandedCarouselImagesStyle }) : (
+            carouselImagesStyle)}
+        >
           {selectedStyle.photos.slice(displayEdges.start, displayEdges.end)
             .map(({ thumbnail_url }, i) => (
               // <div style={displayImageIndex === i ? (

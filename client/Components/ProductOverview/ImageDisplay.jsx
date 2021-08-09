@@ -39,7 +39,6 @@ const ImageDisplay = () => {
     gridRow: '1 / 2',
     boxSizing: 'border-box',
     backgroundColor: 'rgba(117, 129, 107, .8)',
-    overflow: 'hidden',
     display: 'grid',
     gridTemplateRows: '100%',
     gridTemplateColumns: '100%',
@@ -74,7 +73,10 @@ const ImageDisplay = () => {
   };
 
   const handleExpandedClick = (e) => {
-    toggleZoom();
+    if (zoomed) {
+      setZoomed(false);
+    }
+    toggleExpandedView();
   };
 
   return (
@@ -90,7 +92,7 @@ const ImageDisplay = () => {
       <img
         id="productImage"
         style={imageStyle}
-        onClick={expanded ? handleExpandedClick : toggleExpandedView}
+        onClick={expanded ? toggleZoom : toggleExpandedView}
         src={selectedStyle.photos[displayImageIndex].url}
       />
 
@@ -107,7 +109,7 @@ const ImageDisplay = () => {
 
       <div
         role="button"
-        onClick={toggleExpandedView}
+        onClick={handleExpandedClick}
         style={{ ...btnStyle, ...enhanceBtnStyle }}>
         {
           expanded ? (<FontAwesomeIcon icon={faCompress} />) : (<FontAwesomeIcon icon={faExpand} />)

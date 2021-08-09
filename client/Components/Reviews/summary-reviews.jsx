@@ -10,6 +10,7 @@ const ReviewSummary = () => {
     (reviews.length && reviewMeta.product_id)
       ? (
         <div
+          id="Reviews"
           style={{
             width: '90vw',
             maxWidth: '1250px',

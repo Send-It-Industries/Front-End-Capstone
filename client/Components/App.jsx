@@ -14,7 +14,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18100');
+  const [productId, setProductId] = useState('18083');
   const [selectedStyle, setSelectedStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
@@ -132,7 +132,7 @@ const App = () => {
   const appStyle = {
     display: 'grid',
     gridTemplateColumns: '100%',
-    gridTemplateRows: '3% 1.5% 80vh auto auto',
+    gridTemplateRows: '3% 1.5% auto auto auto',
     rowGap: '.5%',
     justifyItems: 'center',
   };

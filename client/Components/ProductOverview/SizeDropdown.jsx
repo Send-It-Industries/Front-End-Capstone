@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 const SizeDropdown = ({ open, skus, disabled, selectedSku, onSelect, style, showDefault }) => {
-  const [displayMessage, setDisplayMessage] = useState('SELECT A SIZE');
+  const [displayMessage, setDisplayMessage] = useState('SELECT SIZE');
   const [openFromClick, setOpenFromClick] = useState(open);
 
   const selectorStyle = {
     width: '100%',
     height: '100%',
     position: 'absolute',
+    cursor: 'pointer',
   };
 
   const btnStyle = {
@@ -43,7 +44,7 @@ const SizeDropdown = ({ open, skus, disabled, selectedSku, onSelect, style, show
     if (disabled) {
       setDisplayMessage('OUT OF STOCK');
     } else {
-      setDisplayMessage('SELECT A SIZE');
+      setDisplayMessage('SELECT SIZE');
     }
   }, [disabled]);
 
@@ -69,7 +70,7 @@ const SizeDropdown = ({ open, skus, disabled, selectedSku, onSelect, style, show
       if (disabled) {
         setDisplayMessage('OUT OF STOCK');
       } else {
-        setDisplayMessage('SELECT A SIZE');
+        setDisplayMessage('SELECT SIZE');
       }
     }
   }, [showDefault]);
@@ -81,7 +82,7 @@ const SizeDropdown = ({ open, skus, disabled, selectedSku, onSelect, style, show
   };
 
   return (
-    <div style={{ ...style, position: 'relative' }}>
+    <div style={{ ...style, position: 'relative', cursor: 'pointer' }}>
       <select
         disabled={disabled}
         id="skuSelect"

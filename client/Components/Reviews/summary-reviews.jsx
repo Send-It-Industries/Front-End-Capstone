@@ -11,6 +11,7 @@ const ReviewSummary = () => {
     (reviews.length && reviewMeta.product_id)
       ? (
         <div
+          id="Reviews"
           style={{
             font: 'roboto',
             width: '65vw',

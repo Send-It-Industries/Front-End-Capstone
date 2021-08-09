@@ -7,6 +7,16 @@ import MagnifyingGlass from './MagnifyingGlass';
 import AppContext from '../Contexts/AppContext';
 
 const ImageDisplay = () => {
+  const {
+    selectedStyle,
+    displayImageIndex,
+    setDisplayImageIndex,
+    expanded,
+    toggleExpandedView,
+  } = useContext(AppContext);
+
+  const [zoomed, setZoomed] = useState(false);
+
   const btnStyle = {
     // gridColumn: '1 / 2',
     // gridRow: '1 / 2',
@@ -15,6 +25,7 @@ const ImageDisplay = () => {
     fontSize: '3rem',
     opacity: '.6',
     color: 'black',
+    cursor: 'pointer',
   };
 
   const enhanceBtnStyle = {
@@ -40,17 +51,10 @@ const ImageDisplay = () => {
     justifyItems: 'center',
     border: 'none',
     padding: '0 2%',
+    cursor: expanded ? (zoomed ? 'zoom-out' :'crosshair') : 'zoom-in',
   };
 
   // const [expanded, setExpanded] = useState(false);
-
-  const {
-    selectedStyle,
-    displayImageIndex,
-    setDisplayImageIndex,
-    expanded,
-    toggleExpandedView,
-  } = useContext(AppContext);
 
   const imageStyle = {
     // style img tag
@@ -98,6 +102,10 @@ const ImageDisplay = () => {
     ))
   );
 
+  const toggleZoom = () => {
+    setZoomed((isZoomed) => (!isZoomed));
+  };
+
   return (
     <div id="imageDisplay" style={imageDisplayStyle} onMouseOut={() => (setHovering(false))}>
 
@@ -114,7 +122,8 @@ const ImageDisplay = () => {
         id="productImage"
         style={imageStyle}
         onMouseEnter={() => (setHovering(true))}
-        onMouseOut={() => (setHovering(false))} />
+        onMouseOut={() => (setHovering(false))}
+        onClick={expanded ? toggleZoom : toggleExpandedView} />
 
       {/* <img id="productImage" src={selectedStyle.photos[displayImageIndex].url} alt="Product Display" style={imageStyle} onMouseEnter={() => (setHovering(true))} onMouseOut={()=> (setHovering(false))}/> */}
 
@@ -138,7 +147,7 @@ const ImageDisplay = () => {
 
       <ImageCarousel displayCount={7} />
 
-      {expanded && hovering ? <div onMouseEnter={() => (setHovering(true))}><MagnifyingGlass imageId="productImage" imageUrl={selectedStyle.photos[displayImageIndex].url} zoom={2.5} /></div> : null}
+      {expanded && hovering && false ? <div onMouseEnter={() => (setHovering(true))}><MagnifyingGlass imageId="productImage" imageUrl={selectedStyle.photos[displayImageIndex].url} zoom={2.5} /></div> : null}
 
     </div>
   );

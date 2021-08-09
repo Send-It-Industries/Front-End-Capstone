@@ -20,14 +20,14 @@ const ProductFeatures = () => {
   const sloganStyle = {
     gridColumn: '1 / 2',
     gridRow: '1 / 2',
-    fontSize: '1.3rem',
+    fontSize: '1.4rem',
     fontWeight: 'bold',
   };
   const descriptionStyle = {
     gridColumn: '1 / 2',
     gridRow: '2 / 3',
     paddingRight: 0.1 * featuresWidth,
-    fontSize: '.8rem',
+    fontSize: '1rem',
     color: 'dark-grey',
   };
   const featuresContainerStyle = {
@@ -37,8 +37,8 @@ const ProductFeatures = () => {
   };
   const featuresStyle = {
     margin: 'auto 0',
-    padding: '7% 0 7% 10%',
-    fontSize: '1rem',
+    paddingLeft: '10%',
+    fontSize: '1.02rem',
 
   };
   return (
@@ -49,13 +49,13 @@ const ProductFeatures = () => {
         <div style={featuresStyle}>
           {
             productInfo.features.map(({ feature, value }) => (
-              <div>
-                <span style={{ color: 'green' }}>
+              <div style={{ margin: '2% 0', display: 'grid', gridTemplateColumns: '1.5rem auto', justifyItems: 'start' }}>
+                <div style={{ color: 'green', display: 'inline-block' }}>
                   <FontAwesomeIcon icon={faCheck} />
-                </span>
-                <span>
+                </div>
+                <div style={{ display: 'inline-block' }}>
                   {` ${feature}${value ? ` - ${value}` : ''}`}
-                </span>
+                </div>
               </div>
             ))
           }

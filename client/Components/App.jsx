@@ -14,7 +14,7 @@ const App = () => {
   // ------------------------------------------------------------------------------------
   // ------------------                State                 ----------------------------
   // ------------------------------------------------------------------------------------
-  const [productId, setProductId] = useState('18100');
+  const [productId, setProductId] = useState('18083');
   const [selectedStyle, setSelectedStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
@@ -190,7 +190,7 @@ const App = () => {
     <AppContext.Provider value={contextVal}>
       <div style={appStyle}>
         <SendItHeader />
-        <div>add Banner</div>
+        <div>Ad Banner</div>
         <ProductOverview />
         {/* <ProductFeed />
         <ProductFeed /> */}

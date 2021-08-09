@@ -71,6 +71,7 @@ const ImageCarousel = ({ displayCount }) => {
     justifyContent: 'space-evenly',
     // border: '1px solid black',
     border: 'none',
+    cursor: 'default',
   };
 
   const carouselImagesStyle = {
@@ -110,17 +111,21 @@ const ImageCarousel = ({ displayCount }) => {
     boxSizing: 'border-box',
     border: '1px solid black',
     opacity: '.5',
+    cursor: 'pointer',
   };
 
   const upArrowBtnStyle = {
     gridRow: '1 / 2',
     opacity: '.7',
+    cursor: 'pointer',
   };
 
   const downArrowBtnStyle = {
     gridRow: '3 / 4',
     opacity: '.7',
+    cursor: 'pointer',
   };
+
   const incrementView = () => {
     setDisplayEdges((prevEdges) => (
       {

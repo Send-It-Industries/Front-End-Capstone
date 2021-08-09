@@ -12,18 +12,41 @@ const Sort = () => {
     fetchReviews(productId, e.target.value);
   };
 
+  // const selectStyle = {
+  //   position: 'relative',
+  //   top: '100%',
+  //   backgroundColor: 'white',
+  //   border: '1px solid grey',
+  //   fontSize: '1rem',
+  //   boxShadow: '0px 10px 10px lightgrey',
+  // };
+
+  const selectStyle = {
+    // appearance: 'none',
+    border: 'none',
+    borderBottom: 'solid 1px',
+    fontWeight: 'bold',
+    // textDecorationLine: 'underline',
+    cursor: 'pointer',
+    alignContent: 'center',
+    marginTop: '0.75rem',
+    fontFamily: 'Roboto',
+    fontSize: '1rem',
+  };
+
   return (
     <div
       style={{
         fontWeight: 'bold',
-        marginBottom: '10px',
+        marginTop: '2rem',
+        marginBottom: '0.75rem',
       }}
     >
       {`${reviewCount} reviews, sorted by: `}
-      <select name="sortType" value={currentSort} onChange={selectHandler}>
-        <option value="relevant"> relevant</option>
+      <select name="sortType" value={currentSort} onChange={selectHandler} style={selectStyle}>
+        <option value="relevant">relevance </option>
         <option value="newest"> recent </option>
-        <option value="helpful"> helpful</option>
+        <option value="helpful"> helpful </option>
       </select>
     </div>
   );

@@ -152,8 +152,24 @@ const AddReview = () => {
 
   return (
     <div>
-      <button type="button" onClick={() => setOpen(true)}>
-        Add Review
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        style={{
+          width: '10rem',
+          height: '3.5rem',
+          margin: '0.5rem 0.85rem',
+          background: 'white',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          cursor: 'pointer',
+          fontSize: '1.25rem',
+          color: 'rgb(109, 122, 130)',
+          // fontWeight: 'bold',
+        }}
+      >
+        Add A Review +
       </button>
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
         {/* Header     */}
@@ -165,23 +181,29 @@ const AddReview = () => {
         <h2>Submit a Review!</h2>
         <div>
           Review of:
-          <span> </span>
-          {productInfo.name}
+          <span style={{ fontWeight: 'bold', marginLeft: '0.75rem' }}>
+            {productInfo.name}
+          </span>
         </div>
         <br />
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        <div style={{
+          // display: 'flex',
+          // flexDirection: 'row',
+          // justifyContent: 'space-between',
+        }}
+        >
           <div>
             <label>What is your nickname:</label>
             <input
               name="name"
               type="text"
-              style={{ width: '35%' }}
+              style={{ width: '35%', margin: '0.5rem 0.75rem' }}
               onChange={handleInputChange}
               value={newReview.name}
               maxLength={60}
               placeholder="Example: jackson11!"
             />
-            <div>For privacy reasons, do not use your full name or email address</div>
+            <div style={{ fontWeight: 'lighter', marginBottom: '01rem' }}>For privacy reasons, do not use your full name or email address</div>
           </div>
           {/* <br /> */}
           {/* Email     */}
@@ -190,13 +212,13 @@ const AddReview = () => {
             <input
               name="email"
               type="text"
-              style={{ width: '35%' }}
+              style={{ width: '35%', margin: '0.5rem 0.75rem' }}
               onChange={handleInputChange}
               value={newReview.email}
               maxLength={60}
               placeholder="Example: EmailAddress@domain.com"
             />
-            <div>For authentication reasons, you will not be emailed</div>
+            <div style={{ fontWeight: 'lighter', marginBottom: '0.5rem' }}>For authentication reasons, you will not be emailed</div>
           </div>
         </div>
         <br />
@@ -209,7 +231,7 @@ const AddReview = () => {
             {starDescriber}
           </div>
         </div>
-        <div onChange={handleInputChange}>
+        <div onChange={handleInputChange} style={{ marginTop: '0.75rem' }}>
           <label>Would you recommend this product?</label>
           <input type="radio" name="recommend" value="yes" id="choice-yes" />
           Yes
@@ -229,52 +251,55 @@ const AddReview = () => {
           />
         ))}
         <br />
-        <label>Review Summary</label>
-        <input
-          name="summary"
-          type="text"
-          style={{ width: '35%', height: '20px' }}
-          onChange={handleInputChange}
-          value={newReview.summary}
-          placeholder="Example: Best purchase Ever!"
-          maxLength={60}
-        />
-        <br />
-        <label>Review:</label>
-        <textarea
-          name="body"
-          rows={16}
-          style={{
-            width: '35%', height: '300px', resize: 'none', minHeight: '10vh',
-          }}
-          onChange={handleInputChange}
-          value={newReview.body}
-          placeholder="Why did you like this product or... not?"
-          maxLength={1000}
-        />
-        {bodyCount > 0
-          ? (
-            <div style={{ fontSize: '12px' }}>
-              Minimum required character left:
-              {' '}
-              {bodyCount}
-            </div>
-          ) : <div style={{ fontSize: '12px' }}> Sufficient Characters </div>}
-        <br />
-        <div>
-          Upload Photos
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <label>Review Summary</label>
+          <input
+            name="summary"
+            type="text"
+            style={{ width: '65%', height: '20px', marginTop: '0.25rem' }}
+            onChange={handleInputChange}
+            value={newReview.summary}
+            placeholder="Example: Best purchase Ever!"
+            maxLength={60}
+          />
           <br />
-          <input type="file" onChange={fileChangeHandler} />
-        </div>
-        <br />
-        <button onClick={handleSubmit} type="button" style={{ width: '35%' }}>
-          Submit
-        </button>
+          <label>Review:</label>
+          <textarea
+            name="body"
+            rows={16}
+            style={{
+              width: '65%', height: '250px', resize: 'none', minHeight: '10vh', marginTop: '0.25rem',
+            }}
+            onChange={handleInputChange}
+            value={newReview.body}
+            placeholder="Why did you like this product or... not?"
+            maxLength={1000}
+          />
+          {bodyCount > 0
+            ? (
+              <div style={{ fontSize: '12px' }}>
+                Minimum required character left:
+                {' '}
+                {bodyCount}
+              </div>
+            ) : <div style={{ fontSize: '12px' }}> Sufficient Characters </div>}
+          <br />
+          <div>
+            Upload Photos
+          </div>
+          <div>
+            <input type="file" onChange={fileChangeHandler} style={{ marginTop: '0.25rem' }} />
+          </div>
+          <br />
+          <button onClick={handleSubmit} type="button" style={{ width: '35%', marginLeft: '4rem' }}>
+            Submit
+          </button>
 
-        <div style={{ visibility: formErrors === '' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
-          Please enter the following:
-          <br />
-          { formErrors }
+          <div style={{ visibility: formErrors === '' ? 'hidden' : 'visible', color: 'red', whiteSpace: 'pre' }}>
+            Please enter the following:
+            <br />
+            { formErrors }
+          </div>
         </div>
         {/* </div> */}
       </Modal>

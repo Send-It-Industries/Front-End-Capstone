@@ -16,7 +16,11 @@ const Recommended = () => {
   })();
 
   return (
-    <div>
+    <div style={{
+      width: '100%',
+      marginTop: '0.5rem',
+    }}
+    >
       {
       `${percentRec}% of reviews recommend this product`
       }

@@ -26,7 +26,7 @@ const ReviewList = () => {
         width: '55vw',
         height: '100vh',
         padding: '5px',
-        margin: '5px',
+        margin: '2vw',
         maxHeight: '700px',
         // overflowY: 'auto',
       }}

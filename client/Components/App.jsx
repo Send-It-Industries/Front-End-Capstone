@@ -58,11 +58,8 @@ const App = () => {
       .then(([infoRes, styleRes]) => [infoRes.data, styleRes.data])
       .then(([productInfo, productStyles]) => {
         setProductInfo({ ...productInfo, styles: productStyles.results });
-        setSelectedStyle(
-          () =>
-            productStyles.results.filter((style) => style['default?'])[0] ||
-            productStyles.results[0]
-        );
+        setSelectedStyle(() => (productStyles.results.filter((style) => style['default?'])[0] || productStyles.results[0]
+        ));
         setDisplayImageIndex(0);
       });
   // const fetchProductInfo = (id) => axios.get(`/api/products/${id}`);
@@ -126,15 +123,15 @@ const App = () => {
     ));
   }, []);
 
-  useEffect(() => {
-    fetchProduct(productId).then(() => (
-      Promise.all([
-        fetchQA(productId),
-        fetchReviews(productId),
-        fetchMetaReview(productId),
-      ])
-    ));
-  }, [productId]);
+  // useEffect(() => {
+  //   fetchProduct(productId).then(() => (
+  //     Promise.all([
+  //       fetchQA(productId),
+  //       fetchReviews(productId),
+  //       fetchMetaReview(productId),
+  //     ])
+  //   ));
+  // }, [productId]);
 
   useEffect(() => {
     if (reviewMeta.product_id) {

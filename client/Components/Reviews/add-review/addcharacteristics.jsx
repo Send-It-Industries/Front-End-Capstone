@@ -30,7 +30,7 @@ const characteristic = ({ characteristic, id, changeHandler }) => {
       }}
       >
         <div style={buttonStyle}>
-          <input type="radio" name={id} value="1" onChange={changeHandler} style={{justifySelf: 'center'}} />
+          <input type="radio" name={id} value="1" onChange={changeHandler} style={{ justifySelf: 'center' }} />
           <label style={{ display: 'block', fontSize: '12px', marginTop: '0.5rem' }}>{adjectives[characteristic][0]}</label>
         </div>
         <div style={buttonStyle}>

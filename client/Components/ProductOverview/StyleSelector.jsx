@@ -15,7 +15,7 @@ const StyleSelector = () => {
   let thumbnailDiameter = 0.25 * Math.min(productSelectWidth, 0.45 * productSelectHeight);
 
   useEffect(() => {
-    thumbnailDiameter = 0.25 * Math.min(productSelectWidth, 0.45 * productSelectHeight)
+    thumbnailDiameter = 0.25 * Math.min(productSelectWidth, 0.45 * productSelectHeight);
   }, [productSelectWidth, productSelectHeight]);
 
   const styleSelectStyle = {

@@ -25,6 +25,12 @@ beforeEach(async () => {
   axiosMock.get.mockResolvedValueOnce({ data: testDataQA });
   axiosMock.get.mockResolvedValueOnce({ data: testData.reviews });
   axiosMock.get.mockResolvedValueOnce({ data: testData.reviewMeta });
+
+  axiosMock.get.mockResolvedValueOnce({ data: testData.productInfo });
+  axiosMock.get.mockResolvedValueOnce({ data: testData.productStyle });
+  axiosMock.get.mockResolvedValueOnce({ data: testDataQA });
+  axiosMock.get.mockResolvedValueOnce({ data: testData.reviews });
+  axiosMock.get.mockResolvedValueOnce({ data: testData.reviewMeta });
 });
 afterEach(cleanup);
 

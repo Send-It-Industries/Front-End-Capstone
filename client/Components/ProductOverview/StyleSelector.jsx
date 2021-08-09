@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faCircle } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '../Contexts/AppContext';
@@ -11,7 +11,12 @@ const StyleSelector = () => {
     displayImageIndex,
     setSelectedStyle,
   } = useContext(AppContext);
-  const [prodectSelectWidth] = useElementSizeById('ProductSelect');
+  const [productSelectWidth, productSelectHeight] = useElementSizeById('ProductSelect');
+  let thumbnailDiameter = 0.25 * Math.min(productSelectWidth, 0.45 * productSelectHeight);
+
+  useEffect(() => {
+    thumbnailDiameter = 0.25 * Math.min(productSelectWidth, 0.45 * productSelectHeight)
+  }, [productSelectWidth, productSelectHeight]);
 
   const styleSelectStyle = {
     overflow: 'visible',
@@ -25,27 +30,26 @@ const StyleSelector = () => {
   };
 
   const styleThumbnailStyle = {
-    flex: '0 1 20%',
+    flex: '0 1 25%',
     borderRadius: '50%',
     boxSizing: 'border-box',
-    width: 0.18 * prodectSelectWidth, // based off of 4 images update with margins
-    height: 0.18 * prodectSelectWidth,
+    width: thumbnailDiameter,
+    height: thumbnailDiameter,
     minWidth: '25px',
     minHeight: '25px',
-    maxWidth: '70px',
-    maxHeight: '70px',
+    maxWidth: '65px',
+    maxHeight: '65px',
     objectFit: 'cover',
-    margin: '1%',
     border: '1px solid black',
   };
 
   const stylesImagesStyle = {
     width: '100%',
-    maxWidth: '280px', // based off of 4 images update with margins
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignSelf: 'flex-start',
-    height: '60%',
+    display: 'grid',
+    gridGap: 0.12 * thumbnailDiameter,
+    gridTemplateColumns: `repeat(4, ${thumbnailDiameter}px)`,
+    maxHeight: productSelectWidth,
+    alignSelf: 'start',
   };
 
   const selected = {

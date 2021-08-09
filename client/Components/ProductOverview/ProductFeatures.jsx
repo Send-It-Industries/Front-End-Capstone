@@ -22,6 +22,9 @@ const ProductFeatures = () => {
     gridRow: '1 / 2',
     fontSize: '1.4rem',
     fontWeight: 'bold',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
   };
   const descriptionStyle = {
     gridColumn: '1 / 2',

@@ -11,12 +11,18 @@ const AverageRating = () => {
       style={{
         display: 'flex',
         flexDirection: 'row',
+        marginTop: '1rem',
       }}
     >
-      <div>
+      <div style={{
+        fontSize: '3rem', color: 'rgb(109, 122, 130)', fontWeight: 'bold', marginRight: '0.75rem',
+      }}
+      >
         {avgReview.average}
       </div>
-      <Stars starDimension="15px" />
+      <div style={{ marginTop: '0.5rem' }}>
+        <Stars starDimension="1.25rem" />
+      </div>
     </div>
   );
 };

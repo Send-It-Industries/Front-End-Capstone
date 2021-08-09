@@ -169,7 +169,7 @@ const AddReview = () => {
           // fontWeight: 'bold',
         }}
       >
-        Add A Review +
+        Add a Review +
       </button>
       <Modal isOpen={isOpen} close={() => setOpen(false)}>
         {/* Header     */}

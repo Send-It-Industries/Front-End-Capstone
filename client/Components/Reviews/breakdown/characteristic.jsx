@@ -38,7 +38,7 @@ const Characteristic = ({ characteristic }) => {
 
   // console.log(adjectives);
   return (
-    <div style={{ width: '20vw' }}>
+    <div style={{ width: '18vw' }}>
       <div style={{ marginTop: '1rem' }}>
         {characteristic[0]}
       </div>

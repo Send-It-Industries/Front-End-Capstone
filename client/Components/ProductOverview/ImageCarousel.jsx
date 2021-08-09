@@ -103,11 +103,6 @@ const ImageCarousel = ({ displayCount }) => {
     cursor: 'default',
   };
 
-  const expandedCarouselImagesStyle = {
-    // gridTemplateRows: `repeat(${imageCount}, ${imageWidth}px)`,
-    // height: '50%',
-  };
-
   const carouselImagesStyle = {
     gridRow: selectedStyle.photos.length > displayCount ? '2 / 3' : '1 / 2',
     width: '100%',
@@ -194,9 +189,7 @@ const ImageCarousel = ({ displayCount }) => {
 
         <div
           id="thumbnailCarouselImages"
-          style={expanded ? (
-            { ...carouselImagesStyle, ...expandedCarouselImagesStyle }) : (
-            carouselImagesStyle)}
+          style={carouselImagesStyle}
         >
           {selectedStyle.photos.slice(displayEdges.start, displayEdges.end)
             .map(({ thumbnail_url }, i) => (

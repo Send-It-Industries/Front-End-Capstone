@@ -46,7 +46,7 @@ const ImageDisplay = () => {
     justifyItems: 'center',
     border: 'none',
     padding: '0 2%',
-    cursor: expanded ? (zoomed ? 'zoom-out' : 'crosshair') : 'zoom-in',
+    cursor: 'default',
   };
 
   const imageStyle = {
@@ -54,6 +54,7 @@ const ImageDisplay = () => {
     maxWidth: '100%',
     maxHeight: '100%',
     boxSizing: 'border-box',
+    cursor: expanded ? (zoomed ? 'zoom-out' : 'crosshair') : 'zoom-in',
   };
 
   const incrementDisplayImageIndex = () => (

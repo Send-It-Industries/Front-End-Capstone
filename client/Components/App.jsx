@@ -190,7 +190,7 @@ const App = () => {
     <AppContext.Provider value={contextVal}>
       <div style={appStyle}>
         <SendItHeader />
-        <div>add Banner</div>
+        <div>Ad Banner</div>
         <ProductOverview />
         {/* <ProductFeed />
         <ProductFeed /> */}

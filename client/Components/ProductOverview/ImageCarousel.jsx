@@ -208,7 +208,7 @@ const ImageCarousel = ({ displayCount }) => {
                 {expanded ? (
                   <div style={expandedImageStyle}>
                     <div>
-                      {i + 1}
+                      {i + 1 + displayEdges.start }
                     </div>
                   </div>
                 ) : null}

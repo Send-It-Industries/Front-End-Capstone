@@ -32,7 +32,7 @@ const SendItHeader = () => {
   return (
     <div style={headerStyle}>
       <img
-      style={{height: '90%', objectFit: 'contain', margin: '3px'}}
+      style={{height: '50px',width: '50px', objectFit: 'contain', margin: '3px'}}
       src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf1RoL7Zefr2aZuKPY0ik1Yq5I2eegyUG8uw&usqp=CAU`} />
       {/* <div style={{ position: 'absolute', top: '0', right: '45%', fontSize: '2rem' }} onClick={incrementCurrentProduct}>{'>'}</div>
       <div style={{ position: 'absolute', top: '0', right: '50%', fontSize: '2rem' }} onClick={changeCurrentProduct}>{'+'}</div>

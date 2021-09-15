@@ -1,5 +1,7 @@
 /* eslint-disable linebreak-style */
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   // set mode to dev to set process.env.NODE_ENV on DefinePlugin to value development;
@@ -32,6 +34,22 @@ module.exports = {
       },
     ],
   },
+   optimization: {
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: { sourceMap: false }
+      })
+    ]
+  },
+plugins: [
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 0,
+      minRatio: 0.8
+    })
+  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },

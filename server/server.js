@@ -6,6 +6,14 @@ const app = express();
 const path = require('path');
 const axios = require('axios');
 const token = require('../config/config');
+const compression = require('compression');
+
+app.use(compression());
+app.use('*.js', function (req, res, next) {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use(express.json());

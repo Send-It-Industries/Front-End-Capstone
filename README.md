@@ -2,8 +2,9 @@
 Front end web development capstone project. Hackreactor 2021. Project Catwalk comprises a complete redesign of a ficticious retail portal in order to modernize the website. The focus of this project is to implement a minimum viable product for the retail application.
 
 ## Setup
+- Clone this repo
 - Checkout 'deployed' branch for most recent version
-- Clone this repo and run `npm install` to install all the dependencies.
+- Run `npm install` to install all the dependencies.
 - Create a config/config.js file with any valid github token
 
 ## Usage

@@ -3,6 +3,7 @@ Front end web development capstone project. Hackreactor 2021. Project Catwalk co
 
 ## Setup
 Clone this repo to your desktop and run `npm install` to install all the dependencies.
+Create a config/config.js file with any valid github token
 
 ## Usage
 After you clone this repo to your desktop, go to its root directory and run `npm install` to install its dependencies.

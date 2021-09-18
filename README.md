@@ -4,7 +4,8 @@ Front end web development capstone project. Hackreactor 2021. Project Catwalk co
 ## Setup
 - Clone this repo 
 - Check out 'deployed' branch for lastest version
--  run `npm install` to install all the dependencies.
+- Run `npm install` to install all the dependencies.
+- Create a config/config.js file with any valid Github token
 
 ## Usage
 Once the dependencies are installed, you can run  `npm run bundle` to start the application. This will compile all the jsx to your local machine under 'client/dist/bundle.js' and start an express server on port 3000 through nodemon. You will then be able to access it at localhost:3000

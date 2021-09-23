@@ -40,6 +40,7 @@ Modal Add Answer form with validation for required fields and valid email. Allow
 ![qa3] (./readmeImages/qa3)
 
 ### Ratings and Reviews
+Author: JJ Marquis
 
 Shows inital view of reviews section. Characteristics and review average are product specific and render according to data from reviews. Stars and rating bars fill in proportion to relevant review data
 ![reviews1] (./readmeImages/reviews1)

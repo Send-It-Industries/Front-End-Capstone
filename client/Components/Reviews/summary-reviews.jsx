@@ -14,7 +14,7 @@ const ReviewSummary = () => {
           id="Reviews"
           style={{
             font: 'roboto',
-            width: '80vw',
+            width: '80%',
             maxWidth: '1250px',
             maxHeight: '100vh',
             marginTop: '0.5rem',

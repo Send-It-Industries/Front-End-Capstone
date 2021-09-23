@@ -38,3 +38,14 @@ Modal Add Review form with validation for required fields and valid email
 
 Modal Add Answer form with validation for required fields and valid email. Allows answers to be added to specific product.
 ![qa3] (./readmeImages/qa3)
+
+### Ratings and Reviews
+
+Shows inital view of reviews section. Characteristics and review average are product specific and render according to data from reviews. Stars and rating bars fill in proportion to relevant review data
+![reviews1] (./readmeImages/reviews1)
+
+User can sort by relevance, helpfulness, and recency, as well as expand review field to show more reviews. If users click a star rating, only reviews at the rating will display
+![reviews2] (./readmeImages/reviews2)
+
+Users can add reviews to a specific product with only relevant characterstics availble for rating. Form has validation for required fields, and valid email. New reviews display in real time
+![reviews3] (./readmeImages/reviews3)

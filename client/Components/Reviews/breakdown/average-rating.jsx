@@ -4,7 +4,7 @@ import AppContext from '../../Contexts/AppContext';
 
 const AverageRating = () => {
   const { avgReview } = useContext(AppContext);
-  // console.log(starData);
+  // console.log(avgReview.average);
 
   return (
     <div

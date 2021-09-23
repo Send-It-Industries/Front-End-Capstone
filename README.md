@@ -17,13 +17,16 @@ Once the dependencies are installed, you can run  `npm run bundle` to start the 
 ### Product Overview
 Author: Keanu Hasty
 
-Shows landing page, image carousel, available styles, and add button that conditionally render size dropdown is none is selected
+Shows landing page, image carousel, available styles, and add button that conditionally render size dropdown is none is selected.
+
 ![overview1](./readmeImages/overview1.png)
 
-On click, will display large format of selected image with reduce size button as well as image carousel to move between images
+On click, will display large format of selected image with reduce size button as well as image carousel to move between images.
+
 ![overview2](./readmeImages/overview2.png)
 
-When clicking on the image, displays magnifying glass zoom on large format image
+When clicking on the image, displays magnifying glass zoom on large format image.
+
 ![overview3](./readmeImages/overview3.png)
 
 
@@ -31,12 +34,15 @@ When clicking on the image, displays magnifying glass zoom on large format image
 Author: Richard Cuffee
 
 Initial view of QA section with answers expanded for one of the questions. Report button hides reported entries, and helpful button only allows one click per user per entry.
+
 ![qa1](./readmeImages/qa1.png)
 
-Modal Add Review form with validation for required fields and valid email
+Modal Add Review form with validation for required fields and valid email.
+
 ![qa2](./readmeImages/qa2.png)
 
 Modal Add Answer form with validation for required fields and valid email. Allows answers to be added to specific product.
+
 ![qa3](./readmeImages/qa3.png)
 
 ### Ratings and Reviews
@@ -46,8 +52,10 @@ Shows inital view of reviews section. Characteristics and review average are pro
 
 ![reviews1](./readmeImages/reviews1.png)
 
-User can sort by relevance, helpfulness, and recency, as well as expand review field to show more reviews. If users click a star rating, only reviews at the rating will display
+User can sort by relevance, helpfulness, and recency, as well as expand review field to show more reviews. If users click a star rating, only reviews at the rating will display.
+
 ![reviews2](./readmeImages/reviews2.png)
 
-Users can add reviews to a specific product with only relevant characterstics availble for rating. Form has validation for required fields, and valid email. New reviews display in real time
+Users can add reviews to a specific product with only relevant characterstics availble for rating. Form has validation for required fields, and valid email. New reviews display in real time.
+
 ![reviews3](./readmeImages/reviews3.png)

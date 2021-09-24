@@ -66,7 +66,7 @@ Users can add reviews to a specific product with only relevant characterstics av
 
 ## Authors
 
-Keanu Hasty
+Keanu Hasty  
 <a href="https://github.com/hastyk52" target="_blank">
 <img src=https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
 </a>
@@ -74,7 +74,7 @@ Keanu Hasty
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
 </a>
 
-Richard Cuffee
+Richard Cuffee  
 <a href="https://github.com/rgcuffee" target="_blank">
 <img src=https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
 </a>
@@ -82,7 +82,7 @@ Richard Cuffee
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
 </a>
 
-JJ Marquis
+JJ Marquis  
 <a href="https://github.com/JJMrqs" target="_blank">
 <img src=https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
 </a>

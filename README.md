@@ -14,7 +14,7 @@ Front end web development capstone project. Hackreactor 2021. Project Catwalk co
 ## Usage
 After you clone this repo to your desktop, go to its root directory and run `npm install` to install its dependencies.
 
-Once the dependencies are installed, you can run  `npm run bundle` to start the application. This will compile all the jsx to your local machine under 'client/dist/bundle.js' and start an express server on port 3000 through nodemon. You will then be able to access it at localhost:3000
+Once the dependencies are installed, you can run  `npm run bundle` to start the application. This will compile all the jsx to your local machine under `client/dist/bundle.js` and start an express server on port 3000 through nodemon. The webpack will recreate the bundle on any changes inside of `client` and nodemon will update the server on any changes inside of `server`. You will be able to access the client at `localhost:3000` by default.
 
 ## Demo by Feature
 

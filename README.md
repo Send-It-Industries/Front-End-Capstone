@@ -21,7 +21,7 @@ Once the dependencies are installed, you can run  `npm run bundle` to start the 
 ### Product Overview
 Author: Keanu Hasty
 
-Shows landing page, image carousel, available styles, and add button that conditionally render size dropdown is none is selected.
+Shows landing page, image carousel, available styles, and add button that opens size dropdown if no size is selected.
 
 ![overview1](./readmeImages/overview1.png)
 

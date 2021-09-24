@@ -69,7 +69,7 @@ Users can add reviews to a specific product with only relevant characterstics av
 Keanu Hasty  
 <a href="https://github.com/hastyk52" target="_blank">
 <img src=https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
-</a>
+</a>  
 <a href="https://www.linkedin.com/in/keanu-hasty/" target="_blank">
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
 </a>
@@ -77,7 +77,7 @@ Keanu Hasty
 Richard Cuffee  
 <a href="https://github.com/rgcuffee" target="_blank">
 <img src=https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
-</a>
+</a>  
 <a href="https://www.linkedin.com/in/richard-cuffee-0b0b6962/" target="_blank">
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
 </a>
@@ -85,7 +85,7 @@ Richard Cuffee
 JJ Marquis  
 <a href="https://github.com/JJMrqs" target="_blank">
 <img src=https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
-</a>
+</a>  
 <a href="https://www.linkedin.com/in/jj-marquis/" target="_blank">
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
 </a>

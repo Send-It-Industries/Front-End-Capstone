@@ -9,5 +9,7 @@ client/dist/bundle.js
 
 # package-lock.json
 ## API keys All Access Key for GitHub ##
-config/config.js
+config/config.local.js
+.env
+
 

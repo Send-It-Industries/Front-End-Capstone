@@ -5,7 +5,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const axios = require('axios');
-const token = require('../config/config');
+
+const token = process.env.TOKEN;
 
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use(express.json());
@@ -49,7 +50,9 @@ app.all('/api*', (req, res) => {
 //   next(); // pass control to the next handler
 });
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log('👂👀 Listening on PORT 3000 👂👀');
 });

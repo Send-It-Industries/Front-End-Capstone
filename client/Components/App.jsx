@@ -88,17 +88,17 @@ const App = () => {
       .then(({ data }) => setReviewMeta(data));
   // ------------------                Create/Read Combo                ----------------------------
   const createReview = (review) => {
-    console.log('Submit Button Pressed!', review);
+    // console.log('Submit Button Pressed!', review);
     axios
       .post('api/reviews', review)
       .then((res) => {
-        console.log('post likely successful. See for yourself: ', res);
+        // console.log('post likely successful. See for yourself: ', res);
         fetchReviews(productId, currentSort);
-        console.log(currentSort);
+        // console.log(currentSort);
       })
-      .then((res) => {
-        console.log('Tried to make fetch happen', res);
-      })
+      // .then((res) => {
+      //   console.log('Tried to make fetch happen', res);
+      // })
       .catch((err) => {
         console.log(err);
       });

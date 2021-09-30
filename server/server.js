@@ -6,7 +6,11 @@ const app = express();
 const path = require('path');
 const axios = require('axios');
 
-const token = process.env.TOKEN;
+require('dotenv').config();
+
+const token = require('../config/config');
+
+console.log('token: ', token);
 
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use(express.json());
@@ -24,8 +28,8 @@ app.all('/api*', (req, res) => {
   } = req;
   url = url.split('/api').join('');
 
-  console.log('url: ', url);
-  console.log('query: ', query);
+  // console.log('url: ', url);
+  // console.log('query: ', query);
   // console.log('params: ', params);
   // console.log('body: ', body);
 
@@ -54,5 +58,5 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log('👂👀 Listening on PORT 3000 👂👀');
+  console.log(`👂👀 Listening on PORT ${port} 👂👀`);
 });

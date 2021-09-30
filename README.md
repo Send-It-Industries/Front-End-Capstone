@@ -5,6 +5,9 @@
 
 Front end web development capstone project. Hackreactor 2021. Project Catwalk comprises a complete redesign of a ficticious retail portal in order to modernize the website. The focus of this project is to implement a minimum viable product for the retail application.
 
+## Deployment
+The deployed app can be found at: https://warm-plains-41974.herokuapp.com/
+
 ## Setup
 - Clone this repo
 - Checkout 'deployed' branch for most recent version
@@ -66,26 +69,26 @@ Users can add reviews to a specific product with only relevant characterstics av
 
 ## Authors
 
-#### Keanu Hasty  
+#### Keanu Hasty
 <a href="https://github.com/hastyk52" target="_blank">
 <img src=https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
-</a>  
+</a>
 <a href="https://www.linkedin.com/in/keanu-hasty/" target="_blank">
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
 </a>
 
-#### Richard Cuffee  
+#### Richard Cuffee
 <a href="https://github.com/rgcuffee" target="_blank">
 <img src=https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
-</a>  
+</a>
 <a href="https://www.linkedin.com/in/richard-cuffee-0b0b6962/" target="_blank">
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
 </a>
 
-#### JJ Marquis  
+#### JJ Marquis
 <a href="https://github.com/JJMrqs" target="_blank">
 <img src=https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
-</a>  
+</a>
 <a href="https://www.linkedin.com/in/jj-marquis/" target="_blank">
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
 </a>

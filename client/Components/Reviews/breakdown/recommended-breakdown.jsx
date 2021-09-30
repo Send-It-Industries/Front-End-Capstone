@@ -4,13 +4,13 @@ import AppContext from '../../Contexts/AppContext';
 const Recommended = () => {
   const { reviewMeta } = useContext(AppContext);
   const { recommended } = reviewMeta;
-  console.log(recommended);
+  // console.log(recommended);
   const percentRec = (() => {
     if (recommended) {
       const yes = parseInt(recommended.true, 10) || 0;
       const no = parseInt(recommended.false, 10) || 0;
       const total = yes + no;
-      console.log('yes: ', yes, 'no: ', no, 'total: ', total);
+      // console.log('yes: ', yes, 'no: ', no, 'total: ', total);
       return Math.round((yes / total) * 100);
     }
     return 0;

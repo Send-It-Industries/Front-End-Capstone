@@ -12,6 +12,7 @@ The deployed app can be found at: https://warm-plains-41974.herokuapp.com/
 - Clone this repo
 - Run `npm install` to install all the dependencies.
 - Create a config/config.js file with any valid github token
+- Alternatively, create a .env file and add any valid githib token
 
 ## Usage
 After you clone this repo to your desktop, go to its root directory and run `npm install` to install its dependencies.

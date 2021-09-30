@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Front end web development capstone project. Hackreactor 2021",
   "main": "index.js",
+  "engines": {
+    "node": "14.17.0",
+    "npm": "7.20.0"
+  },
   "scripts": {
     "test": "jest tests",
     "build": "webpack",

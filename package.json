@@ -8,14 +8,16 @@
     "build": "webpack",
     "react-dev": "webpack --watch",
     "start": "npx nodemon --delay 1000ms server/server.js",
-    "bundle": "npm run react-dev & npm start"
+    "start-prod": "node --delay 1000ms server/server.js",
+    "bundle": "npm run react-dev & npm start",
+    "bundle-prod": "npm run build & npm run start-prod"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Send-It-Industries/Front-End-Capstone.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "JJ Marquis, Keanu Hasty, Richard Cuffee",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Send-It-Industries/Front-End-Capstone/issues"
